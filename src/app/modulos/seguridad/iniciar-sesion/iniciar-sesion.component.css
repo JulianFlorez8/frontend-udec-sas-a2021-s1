@@ -1,0 +1,22 @@
+html,
+body {
+  height: 100%;
+}
+html {
+  display: table;
+  margin: auto;
+}
+
+#login-page {
+  width: 500px;
+}
+
+.card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+
+.mensajeValidacion {
+  color: red;
+}

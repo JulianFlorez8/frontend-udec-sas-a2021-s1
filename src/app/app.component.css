@@ -1,0 +1,8 @@
+.container {
+  display: flex;
+  min-height: 66.3vh;
+  flex-direction: column;
+}
+main {
+  flex: 1 0 auto;
+}

@@ -1,1 +1,63 @@
-<p>iniciar-sesion works!</p>
+<div id="login-page" class="row">
+  <div class="col s12 z-depth-6 card-panel">
+    <form [formGroup]="fgValidacion">
+      <div class="row"></div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">mail_outline</i>
+          <input
+            formControlName="correo"
+            class="validate"
+            id="email"
+            type="email"
+          />
+          <label for="email" data-error="wrong" data-success="right"
+            >Correo</label
+          >
+          <div
+            class="mensajeValidacion"
+            *ngIf="
+              obtenerFGV.correo.errors &&
+              (obtenerFGV.correo.dirty || obtenerFGV.correo.touched)
+            "
+          >
+            <strong>Este campo es requerido</strong>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">lock_outline</i>
+          <input formControlName="contrasena" id="password" type="password" />
+          <label for="password">Contraseña</label>
+          <div
+            class="mensajeValidacion"
+            *ngIf="
+              obtenerFGV.contrasena.errors &&
+              (obtenerFGV.contrasena.dirty || obtenerFGV.contrasena.touched)
+            "
+          >
+            <strong>Este campo es requerido</strong>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <a href="#" class="btn waves-effect waves-light col s12"
+            >Iniciar sesión</a
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6 m6 l6">
+          <p class="margin medium-small"><a href="#">Register Now!</a></p>
+        </div>
+        <div class="input-field col s6 m6 l6">
+          <p class="margin right-align medium-small">
+            <a href="#">Forgot password?</a>
+          </p>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
