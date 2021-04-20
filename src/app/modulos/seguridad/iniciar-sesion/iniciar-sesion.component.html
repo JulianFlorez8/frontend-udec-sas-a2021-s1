@@ -6,10 +6,10 @@
         <div class="input-field col s12">
           <i class="material-icons prefix">mail_outline</i>
           <input
-            formControlName="correo"
+            formControlName="identificacion_usuario"
             class="validate"
             id="email"
-            type="email"
+            type="text"
           />
           <label for="email" data-error="wrong" data-success="right"
             >Correo</label
@@ -17,8 +17,9 @@
           <div
             class="mensajeValidacion"
             *ngIf="
-              obtenerFGV.correo.errors &&
-              (obtenerFGV.correo.dirty || obtenerFGV.correo.touched)
+              obtenerFGV.identificacion_usuario.errors &&
+              (obtenerFGV.identificacion_usuario.dirty ||
+                obtenerFGV.identificacion_usuario.touched)
             "
           >
             <strong>Este campo es requerido</strong>
@@ -43,6 +44,12 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
+          <input
+            type="button"
+            (click)="IniciarSesion()"
+            class="fadeIn fourth"
+            value="Log In"
+          />
           <a href="#" class="btn waves-effect waves-light col s12"
             >Iniciar sesión</a
           >
