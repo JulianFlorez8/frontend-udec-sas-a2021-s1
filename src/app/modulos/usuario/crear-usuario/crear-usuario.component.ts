@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, FormGroupName, AbstractFormGroupDirective } from '@angular/forms';
 import { UsuariosService } from 'src/app/services/usuarios.service';
-import{ UsuarioModel} from '../../../modelos/usuario.model'
+import{ UsuarioModel} from '../../../models/usuario.model'
 @Component({
   selector: 'app-crear-usuario',
   templateUrl: './crear-usuario.component.html',
@@ -11,27 +11,29 @@ export class CrearUsuarioComponent implements OnInit {
   
   
 
-  fgValidator: FormGroup;
-
+  
+  fgValidator: FormGroup= this.fb.group({});
 
   constructor(
     private fb: FormBuilder,
-    private service: UsuariosService
+    private service: UsuariosService,
+    
   ) { }
-
+  
   ngOnInit(): void {
     this.FormularioValidacion();
   }
   FormularioValidacion(){
     this.fgValidator= this.fb.group({
-      nombre:new FormControl(['',[Validators.required, Validators.minLength(5)]]),
-      apellido1:new FormControl(['',[Validators.required, Validators.minLength(5)]]),
-      apellido2:new FormControl(['',[Validators.required, Validators.minLength(5)]]),
-      correo:new FormControl(['',[Validators.required, Validators.email]]),
-      celular:new FormControl(['',[Validators.required, Validators.minLength(5)]]),
-      rol:new FormControl(['',[Validators.required, Validators.minLength(5)]]),
-      usuario:new FormControl(['',[Validators.required, Validators.minLength(5)]]),
-      ciudad:new FormControl(['',[Validators.required, Validators.minLength(5)]]),
+      nombre: ['',[Validators.required]],
+      apellido1:['',[Validators.required]],
+      apellido2:['',[Validators.required]],
+      documento: ['', [Validators.required]],
+      correo:['',[Validators.required, Validators.email]],
+      celular:['',[Validators.required]],
+      rol:['',[Validators.required]],
+      usuario:['',[Validators.required]],
+      ciudad:['',[Validators.required]],
     })
   }
 
@@ -55,14 +57,16 @@ export class CrearUsuarioComponent implements OnInit {
   //Obtenego datos del formulario y los paso al modelo de usuario
   getUsuarioData(): UsuarioModel{
     let model= new UsuarioModel();
-        model.nombre= this.fgv.nombre.value;
-      model.apellido1= this.fgv.apellido1.value;
-      model.apellido2= this.fgv.apellido2.value;
-      model.correo= this.fgv.correo.value;
-      model.celular= this.fgv.celular.value;
-      model.rol= this.fgv.rol.value;
-      model.usuario= this.fgv.usuario.value;
-      model.ciudad= this.fgv.ciudad.value;
+        model.Nombre= this.fgv.nombre.value;
+      model.Apellido_1= this.fgv.apellido1.value;
+      model.Apellido_2= this.fgv.apellido2.value;
+      model.Documento=this.fgv.documento.value;
+      model.Correo= this.fgv.correo.value;
+      model.Celular= (this.fgv.celular.value).toString();
+      model.Rol= this.fgv.rol.value;
+      model.Usuario= this.fgv.usuario.value;
+      model.Contrasena="";
+      model.Ciudad= this.fgv.ciudad.value;
       return model;
   }
   get fgv(){

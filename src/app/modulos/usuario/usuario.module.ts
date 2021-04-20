@@ -15,13 +15,14 @@ import { HttpClientModule } from '@angular/common/http';
     EditarUsuarioComponent,
     ListarUsuarioComponent,
     EliminarUsuarioComponent,
-    HttpClientModule
+    
   ],
   imports: [
     CommonModule,
     UsuarioRoutingModule,
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ]
 })
 export class UsuarioModule { }
