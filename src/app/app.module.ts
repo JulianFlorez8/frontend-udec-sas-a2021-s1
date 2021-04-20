@@ -8,6 +8,7 @@ import { BarraNavegacionLateralComponent } from './publico/paginaMaestra/barra-n
 import { PiePaginaComponent } from './publico/paginaMaestra/pie-pagina/pie-pagina.component';
 import { InicioComponent } from './publico/inicio/inicio.component';
 import { Error404Component } from './publico/errores/error404/error404.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { Error404Component } from './publico/errores/error404/error404.component
     InicioComponent,
     Error404Component,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

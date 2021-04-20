@@ -6,20 +6,20 @@
         <div class="input-field col s12">
           <i class="material-icons prefix">mail_outline</i>
           <input
-            formControlName="identificacion_usuario"
+            formControlName="Usuario"
             class="validate"
-            id="email"
+            id="Usuario"
             type="text"
           />
-          <label for="email" data-error="wrong" data-success="right"
+          <label for="Usuario" data-error="wrong" data-success="right"
             >Usuario</label
           >
           <div
             class="mensajeValidacion"
             *ngIf="
-              obtenerFGV.identificacion_usuario.errors &&
-              (obtenerFGV.identificacion_usuario.dirty ||
-                obtenerFGV.identificacion_usuario.touched)
+              obtenerFGV.Usuario.errors &&
+              (obtenerFGV.Usuario.dirty ||
+                obtenerFGV.Usuario.touched)
             "
           >
             <strong>Este campo es requerido</strong>

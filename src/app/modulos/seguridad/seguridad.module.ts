@@ -7,6 +7,7 @@ import { CerrarSesionComponent } from './cerrar-sesion/cerrar-sesion.component';
 import { ResetearContrasenaComponent } from './resetear-contrasena/resetear-contrasena.component';
 import { CambiarContrasenaComponent } from './cambiar-contrasena/cambiar-contrasena.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SeguridadRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
 })
 export class SeguridadModule {}

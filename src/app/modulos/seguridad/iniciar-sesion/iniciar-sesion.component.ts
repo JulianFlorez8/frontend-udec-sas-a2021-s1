@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsConfig } from '../../../config/forms-config';
 import { SecurityService } from '../../../services/security.service';
-import { UsuarioModel } from 'src/app/models/seguridad/usuario.model';
+import { inicioSesionModel } from 'src/app/models/seguridad/inicioSesion.model';
 
 declare const ShowNotificationMessage: any;
 
@@ -24,7 +24,7 @@ export class IniciarSesionComponent implements OnInit {
 
   ConstruirFormulario() {
     this.fgValidacion = this.fb.group({
-      identificacion_usuario: ['', Validators.required],
+      Usuario: ['', Validators.required],
       contrasena: ['', Validators.required],
     });
   }
@@ -46,9 +46,9 @@ export class IniciarSesionComponent implements OnInit {
   /**
    * Build a model instance to send it
    */
-  obtenerDatos(): UsuarioModel {
-    let model = new UsuarioModel();
-    model.identificacion_usuario = this.obtenerFGV.identificacion_usuario.value;
+  obtenerDatos(): inicioSesionModel {
+    let model = new inicioSesionModel();
+    model.Usuario = this.obtenerFGV.usuario.value;
     model.contrasena = this.obtenerFGV.contrasena.value;
     return model;
   }

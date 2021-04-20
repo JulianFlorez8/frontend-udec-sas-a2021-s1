@@ -1,4 +1,5 @@
   export class inicioSesionModel{
-   /* usuario: string;
-    contrasena: string;*/
+    Usuario: string='';
+  contrasena: string='';
+  constructor(){}
 }
