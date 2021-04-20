@@ -56,4 +56,17 @@ export class IniciarSesionComponent implements OnInit {
   get obtenerFGV() {
     return this.fgValidacion.controls;
   }
+  /*
+  inicioSesion(){
+    if (this.fgValidacion.invalid){
+      alert('formulario invalido...')
+    }
+    else{
+      let model = new inicioSesionModel({
+        usuario: string;
+    contrasena: string;
+      })
+    }
+  }
+*/
 }

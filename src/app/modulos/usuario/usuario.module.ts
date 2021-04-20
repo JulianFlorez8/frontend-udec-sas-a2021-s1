@@ -6,18 +6,23 @@ import { CrearUsuarioComponent } from './crear-usuario/crear-usuario.component';
 import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
 import { ListarUsuarioComponent } from './listar-usuario/listar-usuario.component';
 import { EliminarUsuarioComponent } from './eliminar-usuario/eliminar-usuario.component';
-
+import {FormsModule, ReactiveFormsModule}from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     CrearUsuarioComponent,
     EditarUsuarioComponent,
     ListarUsuarioComponent,
-    EliminarUsuarioComponent
+    EliminarUsuarioComponent,
+    
   ],
   imports: [
     CommonModule,
-    UsuarioRoutingModule
+    UsuarioRoutingModule,
+    FormsModule, 
+    ReactiveFormsModule,
+    HttpClientModule
   ]
 })
 export class UsuarioModule { }
