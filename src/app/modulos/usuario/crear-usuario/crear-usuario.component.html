@@ -1,1 +1,65 @@
 <p>crear-usuario works!</p>
+<!--<form [formGroup]="crearUsuarioValidator">-->
+    <!--MEta aqui el formulario-->
+    <input formControlName="nombre" name="nombre ">
+<!--</form>-->
+<section class="container">
+    <div class="row">
+    <h3 class="center-align">Creacion Usuarios</h3>
+        <article class="col s6 offset-s3">
+            <!--[formGroup]="fgValidator"-->
+            <form  >
+                <div class="input-field">
+                    <i class="material-icons prefix">perm_identity</i>
+                    <label for="nombre">Nombre</label>
+                    <input formControlName="nombre" type="text" name="nombre" required>
+                </div>
+
+                <div class="input-field">
+                    <i class="material-icons prefix">person_pin</i>
+                    <label for="apellido">Primer Apellido</label>
+                    <input formControlName="apellido1" type="text" name="apellido1" required>
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">person_pin</i>
+                    <label for="apellido">Segundo Apellido</label>
+                    <input formControlName="apellido2" type="text" name="apellido2" required>
+                </div>
+                
+                <div class="input-field">
+                    <i class="material-icons prefix">email</i>
+                    <label for="email">Correo</label>
+                    <input formControlName="correo" type="email" name="correo" required>
+                </div>
+
+                <div class="input-field">
+                    <i class="material-icons prefix">person_pin</i>
+                    <label for="celular">Celular</label>
+                    <input formControlName="celular" type="text" name="celular" required>
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">perm_identity</i>
+                    <label for="rol">Rol</label>
+                    <input formControlName="rol" type="text" name="rol" >
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">perm_identity</i>
+                    <label for="usuario">Usuario</label>
+                    <input formControlName="usuario" type="text" name="usuario" required>
+                </div>
+
+                <div class="input-field">
+                    <i class="material-icons prefix">mode_edit</i>
+                    <label for="ciudad">Ciudad</label><!--Cambiar por desplegable-->
+                    <textarea formControlName="ciudad" name="ciudad" id="" rows="10" class="materialize-textarea"  length="140" required></textarea>
+                </div>
+                
+                <p class="center-align">
+                    <button class="waves-effect waves-light btn" type="submit" (click)="RegitrarUsuario()"><i class="material-icons right"></i>Registrar</button>
+                </p>
+
+            </form>
+
+        </article>
+    </div>
+</section>

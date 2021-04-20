@@ -28,6 +28,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'usuario',
+    loadChildren: () =>
+      import('./modulos/usuario/usuario.module').then(
+        (m) => m.UsuarioModule
+      ),
+  },
+  {
     path: 'error-404',
     component: Error404Component,
   },

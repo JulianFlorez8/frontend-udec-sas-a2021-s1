@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import{inicioSesionModel} from '../../../modelos/seguridad/inicioSesion.model';
 @Component({
   selector: 'app-iniciar-sesion',
   templateUrl: './iniciar-sesion.component.html',
@@ -25,4 +25,18 @@ export class IniciarSesionComponent implements OnInit {
   get obtenerFGV() {
     return this.fgValidacion.controls;
   }
+  /*
+  inicioSesion(){
+    if (this.fgValidacion.invalid){
+      alert('formulario invalido...')
+    }
+    else{
+      let model = new inicioSesionModel({
+        usuario: string;
+    contrasena: string;
+      })
+    }
+  }
+*/
+
 }
