@@ -1,81 +1,72 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl, FormGroupName, AbstractFormGroupDirective } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl,
+  FormGroupName,
+  AbstractFormGroupDirective,
+} from '@angular/forms';
 import { UsuariosService } from 'src/app/services/usuarios.service';
-import{ UsuarioModel} from '../../../models/usuario.model'
+import { UsuarioModel } from '../../../models/usuario.model';
 @Component({
   selector: 'app-crear-usuario',
   templateUrl: './crear-usuario.component.html',
   styleUrls: ['./crear-usuario.component.css'],
 })
 export class CrearUsuarioComponent implements OnInit {
-<<<<<<< HEAD
-  constructor() {}
+  fgValidator: FormGroup = this.fb.group({});
 
-  ngOnInit(): void {}
-=======
-  
-  
+  constructor(private fb: FormBuilder, private service: UsuariosService) {}
 
-  
-  fgValidator: FormGroup= this.fb.group({});
-
-  constructor(
-    private fb: FormBuilder,
-    private service: UsuariosService,
-    
-  ) { }
-  
   ngOnInit(): void {
     this.FormularioValidacion();
   }
-  FormularioValidacion(){
-    this.fgValidator= this.fb.group({
-      nombre: ['',[Validators.required]],
-      apellido1:['',[Validators.required]],
-      apellido2:['',[Validators.required]],
+  FormularioValidacion() {
+    this.fgValidator = this.fb.group({
+      nombre: ['', [Validators.required]],
+      apellido1: ['', [Validators.required]],
+      apellido2: ['', [Validators.required]],
       documento: ['', [Validators.required]],
-      correo:['',[Validators.required, Validators.email]],
-      celular:['',[Validators.required]],
-      rol:['',[Validators.required]],
-      usuario:['',[Validators.required]],
-      ciudad:['',[Validators.required]],
-    })
+      correo: ['', [Validators.required, Validators.email]],
+      celular: ['', [Validators.required]],
+      rol: ['', [Validators.required]],
+      usuario: ['', [Validators.required]],
+      ciudad: ['', [Validators.required]],
+    });
   }
 
   RegitrarUsuario() {
     if (this.fgValidator.invalid) {
       alert('Formulario Invalido');
     } else {
-      let usuario= this.getUsuarioData();
-      this.service.creacionUsuarios(usuario).subscribe(data => {
+      let usuario = this.getUsuarioData();
+      this.service.creacionUsuarios(usuario).subscribe((data) => {
         console.log(data);
-        if(data){
+        if (data) {
           alert('Registro Exitoso, contraseña enviada a su correo electronico');
-        }
-        else{
+        } else {
           alert('Fallo el registro');
         }
       });
-      
     }
   }
   //Obtenego datos del formulario y los paso al modelo de usuario
-  getUsuarioData(): UsuarioModel{
-    let model= new UsuarioModel();
-        model.Nombre= this.fgv.nombre.value;
-      model.Apellido_1= this.fgv.apellido1.value;
-      model.Apellido_2= this.fgv.apellido2.value;
-      model.Documento=this.fgv.documento.value;
-      model.Correo= this.fgv.correo.value;
-      model.Celular= (this.fgv.celular.value).toString();
-      model.Rol= this.fgv.rol.value;
-      model.Usuario= this.fgv.usuario.value;
-      model.Contrasena="";
-      model.Ciudad= this.fgv.ciudad.value;
-      return model;
+  getUsuarioData(): UsuarioModel {
+    let model = new UsuarioModel();
+    model.Nombre = this.fgv.nombre.value;
+    model.Apellido_1 = this.fgv.apellido1.value;
+    model.Apellido_2 = this.fgv.apellido2.value;
+    model.Documento = this.fgv.documento.value;
+    model.Correo = this.fgv.correo.value;
+    model.Celular = this.fgv.celular.value.toString();
+    model.Rol = this.fgv.rol.value;
+    model.Usuario = this.fgv.usuario.value;
+    model.Contrasena = '';
+    model.Ciudad = this.fgv.ciudad.value;
+    return model;
   }
-  get fgv(){
+  get fgv() {
     return this.fgValidator.controls;
   }
->>>>>>> 29a5fee246008746780365bc9f84c51a8ce36707
 }
