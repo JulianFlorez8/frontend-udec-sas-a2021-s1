@@ -17,9 +17,9 @@
           <div
             class="mensajeValidacion"
             *ngIf="
-              obtenerFGV.Usuario.errors &&
-              (obtenerFGV.Usuario.dirty ||
-                obtenerFGV.Usuario.touched)
+            fgv.Usuario.errors &&
+              (fgv.Usuario.dirty ||
+              fgv.Usuario.touched)
             "
           >
             <strong>Este campo es requerido</strong>
@@ -34,8 +34,8 @@
           <div
             class="mensajeValidacion"
             *ngIf="
-              obtenerFGV.contrasena.errors &&
-              (obtenerFGV.contrasena.dirty || obtenerFGV.contrasena.touched)
+            fgv.contrasena.errors &&
+              (fgv.contrasena.dirty || fgv.contrasena.touched)
             "
           >
             <strong>Este campo es requerido</strong>
@@ -44,20 +44,15 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input
-            type="button"
-            (click)="IniciarSesion()"
-            class="fadeIn fourth"
-            value="Log In"
-          />
-          <a href="#" class="btn waves-effect waves-light col s12"
+          
+          <a class="btn waves-effect waves-light col s12" (click)='IniciarSesion()'
             >Iniciar sesión</a
           >
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6 m6 l6">
-          <p class="margin medium-small"><a href="#">Opcion </a></p>
+          
         </div>
         <div class="input-field col s6 m6 l6">
           <p class="margin right-align medium-small">

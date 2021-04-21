@@ -10,5 +10,6 @@ export class UsuarioModel{
         Usuario: string='';
         Contrasena: string='';
         Ciudad: string='';
+        codigoCiudad?: number;
         constructor(){}
 }

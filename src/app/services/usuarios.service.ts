@@ -7,8 +7,6 @@ import{ ServiceConfig} from '../config/service.config';
   providedIn: 'root'
 })
 
-
-
 export class UsuariosService {
   entity:String ='usuarios';
   constructor(

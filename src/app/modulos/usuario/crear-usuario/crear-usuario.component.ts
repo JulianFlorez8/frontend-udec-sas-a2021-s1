@@ -17,7 +17,9 @@ import { UsuarioModel } from '../../../models/usuario.model';
 export class CrearUsuarioComponent implements OnInit {
   fgValidator: FormGroup = this.fb.group({});
 
-  constructor(private fb: FormBuilder, private service: UsuariosService) {}
+  constructor(
+    private fb: FormBuilder, 
+    private service: UsuariosService) {}
 
   ngOnInit(): void {
     this.FormularioValidacion();

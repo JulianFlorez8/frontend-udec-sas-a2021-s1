@@ -1,11 +1,11 @@
 import { Component, OnInit, SecurityContext } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CredencialesModel } from 'src/app/models/seguridad/credenciales.model';
+import { SeguridadService } from 'src/app/services/seguridad/seguridad.service';
 import { FormsConfig } from '../../../config/forms-config';
-import { SecurityService } from '../../../services/security.service';
-import { inicioSesionModel } from 'src/app/models/seguridad/inicioSesion.model';
 
-declare const ShowNotificationMessage: any;
+
 
 @Component({
   selector: 'app-iniciar-sesion',
@@ -17,56 +17,61 @@ export class IniciarSesionComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private service: SecurityService,
-    private route: ActivatedRoute,
-    private router: Router
+    private service: SeguridadService
   ) {}
-
-  ConstruirFormulario() {
-    this.fgValidacion = this.fb.group({
-      Usuario: ['', Validators.required],
-      contrasena: ['', Validators.required],
-    });
-  }
-
   ngOnInit(): void {
     this.ConstruirFormulario();
   }
+  ConstruirFormulario() {
+    this.fgValidacion = this.fb.group({
+      Usuario: ['', [Validators.required]],
+      contrasena: ['', [Validators.required]],
+    });
+  }
+
+ 
 
   IniciarSesion() {
     if (this.fgValidacion.invalid) {
-      ShowNotificationMessage('Invalid Form.');
+      alert('Formulario invalido.');
     } else {
-      let model = this.obtenerDatos();
-      console.log(model);
-      this.service.LoginUser(model).subscribe((data) => {});
+      let credenciales = this.obtenerDatos();
+      this.service.ingresoUsuarios(credenciales).subscribe((data) => {
+        console.log(data);
+        if (data) {
+          alert('Bienvenido');
+        } else {
+          alert('Fallo el registro');
+        }
+      });
+      /*this.service.LoginUser(model).subscribe((data) => {
+      console.log('datos');
+      alert(data);
+      if (data){
+          alert('Bienvenido Usuario');
+          console.log(data);
+          alert(data.token);
+          alert(data.usuario);
+      }
+      else{
+          alert("Error");
+        }
+      });*/
     }
   }
 
   /**
    * Build a model instance to send it
    */
-  obtenerDatos(): inicioSesionModel {
-    let model = new inicioSesionModel();
-    model.Usuario = this.obtenerFGV.usuario.value;
-    model.contrasena = this.obtenerFGV.contrasena.value;
+  obtenerDatos(): CredencialesModel {
+    let model = new CredencialesModel();
+    model.Usuario = this.fgv.Usuario.value;
+    model.contrasena = this.fgv.contrasena.value;
     return model;
   }
 
-  get obtenerFGV() {
+  get fgv() {
     return this.fgValidacion.controls;
   }
-  /*
-  inicioSesion(){
-    if (this.fgValidacion.invalid){
-      alert('formulario invalido...')
-    }
-    else{
-      let model = new inicioSesionModel({
-        usuario: string;
-    contrasena: string;
-      })
-    }
-  }
-*/
+  
 }
