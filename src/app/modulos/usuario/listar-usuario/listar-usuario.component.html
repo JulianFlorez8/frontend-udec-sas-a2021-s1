@@ -1,1 +1,97 @@
-<p>listar-usuario works!</p>
+<div class="table-title">
+  <div class="row">
+    <div class="col-sm-6">
+      <h4>Administración usuarios</h4>
+    </div>
+    <div class="col-sm-6">
+      <a
+        routerLink="#addEmployeeModal"
+        class="btn btn-success"
+        data-toggle="modal"
+        ><i class="material-icons">&#xE147;</i> <span>Crear Usuario</span></a
+      >
+    </div>
+  </div>
+</div>
+<table class="highlight responsive-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Item Name</th>
+      <th>Item Price</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>Alvin</td>
+      <td>Eclair</td>
+      <td>$0.87</td>
+      <td>
+        <a routerLink="#editEmployeeModal" class="edit" data-toggle="modal"
+          ><i
+            class="orange-text material-icons"
+            data-toggle="tooltip"
+            title="Edit"
+            >&#xE254;</i
+          ></a
+        >
+        <a routerLink="#deleteEmployeeModal" class="delete" data-toggle="modal"
+          ><i
+            class="red-text material-icons"
+            data-toggle="tooltip"
+            title="Delete"
+            >&#xE872;</i
+          ></a
+        >
+      </td>
+    </tr>
+    <tr>
+      <td>Alan</td>
+      <td>Jellybean</td>
+      <td>$3.76</td>
+      <td>
+        <a routerLink="#editEmployeeModal" class="edit" data-toggle="modal"
+          ><i
+            class="orange-text material-icons"
+            data-toggle="tooltip"
+            title="Edit"
+            >&#xE254;</i
+          ></a
+        >
+        <a routerLink="#deleteEmployeeModal" class="delete" data-toggle="modal"
+          ><i
+            class="red-text material-icons"
+            data-toggle="tooltip"
+            title="Delete"
+            >&#xE872;</i
+          ></a
+        >
+      </td>
+    </tr>
+    <tr>
+      <td>Jonathan</td>
+      <td>Lollipop</td>
+      <td>$7.00</td>
+      <td>
+        <a routerLink="#editEmployeeModal" class="edit" data-toggle="modal"
+          ><i
+            class="orange-text material-icons"
+            data-toggle="tooltip"
+            title="Edit"
+            >&#xE254;</i
+          ></a
+        >
+        <a routerLink="#deleteEmployeeModal" class="delete" data-toggle="modal"
+          ><i
+            class="red-text material-icons"
+            data-toggle="tooltip"
+            title="Delete"
+            >&#xE872;</i
+          ></a
+        >
+      </td>
+    </tr>
+  </tbody>
+</table>

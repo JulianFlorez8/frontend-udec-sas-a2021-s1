@@ -1,10 +1,12 @@
 <nav>
   <div class="nav-wrapper grey darken-3">
     <a routerLink="/" class="brand-logo">Logo</a>
-    <a routerLink="#" data-target="mobile-demo" class="sidenav-trigger"
-      ><i class="material-icons">menu</i></a
-    >
     <ul class="right hide-on-med-and-down">
+      <li>
+        <a class="sidenav-trigger show-on-large" data-target="menu-side">
+          Admin
+        </a>
+      </li>
       <li><a routerLink="sass.html">Sass</a></li>
       <li><a routerLink="badges.html">Components</a></li>
       <li><a routerLink="collapsible.html">Javascript</a></li>
@@ -12,6 +14,40 @@
     </ul>
   </div>
 </nav>
+
+<ul id="menu-side" class="sidenav">
+  <li>
+    <a routerLink="inicio" class="sidenav-close">
+      <i class="material-icons">home</i>Inicio
+    </a>
+  </li>
+  <li>
+    <a routerLink="usuario/listar-usuario" class="sidenav-close">
+      <i class="material-icons">security</i>
+      <span>Seguridad</span>
+    </a>
+  </li>
+  <li>
+    <a class="dropdown-trigger" data-target="dropdown1">
+      <i class="material-icons">edit</i>
+      <span>Parametrización ></span>
+    </a>
+  </li>
+  <li>
+    <a routerLink="#!"><i class="material-icons">payment</i>Ventas?</a>
+  </li>
+  <li>
+    <a routerLink="#!"><i class="material-icons">description</i>Informes</a>
+  </li>
+</ul>
+
+<ul id="dropdown1" class="dropdown-content">
+  <li><a routerLink="#!" class="sidenav-close">País</a></li>
+  <li><a routerLink="#!" class="sidenav-close">Ciudad</a></li>
+  <li><a routerLink="#!" class="sidenav-close">Proyecto</a></li>
+  <li><a routerLink="#!" class="sidenav-close">Bloque</a></li>
+  <li><a routerLink="#!" class="sidenav-close">Inmueble</a></li>
+</ul>
 
 <ul class="sidenav" id="mobile-demo">
   <li><a href="sass.html">Sass</a></li>
