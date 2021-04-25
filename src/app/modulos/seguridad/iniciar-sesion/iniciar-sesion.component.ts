@@ -38,16 +38,17 @@ export class IniciarSesionComponent implements OnInit {
     } else {
       let usuario = this.getCredencialesData();
       this.service.ingresoUsuarios(usuario).subscribe((data) => {
-        console.log(data);
-        if (data) {
-          alert('Bienvenido');
-        } else {
-          alert('por favor reintente');
-        }
-        
-      });
+        alert('Bienvenido');
+        let res= this.service.guardarSesion(data);
+        this.router.navigate(["/inicio"]);
+      },err=>{
+        alert('Usuario o contraseña NO validos');
+      }
+    
+    
+      );
     }
-  }
+}
   //Obtenego datos del formulario y los paso al modelo de credenciales
   getCredencialesData(): CredencialesModel {
     let credenciales = new CredencialesModel();

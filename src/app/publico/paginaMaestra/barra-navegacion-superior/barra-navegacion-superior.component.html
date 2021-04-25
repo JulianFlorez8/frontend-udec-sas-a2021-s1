@@ -4,13 +4,14 @@
     <ul class="right hide-on-med-and-down">
       <li>
         <a class="sidenav-trigger show-on-large" data-target="menu-side">
-          Admin
+          Administrador
         </a>
       </li>
       <li><a routerLink="sass.html">Sass</a></li>
       <li><a routerLink="badges.html">Components</a></li>
       <li><a routerLink="collapsible.html">Javascript</a></li>
-      <li><a routerLink="seguridad/iniciar-sesion">Iniciar sesión</a></li>
+      <li *ngIf="!logeado"><a routerLink="seguridad/iniciar-sesion">Iniciar sesión</a></li>
+      <li *ngIf="logeado"><a routerLink="seguridad/cerrar-sesion">Cerrar sesión</a></li>
     </ul>
   </div>
 </nav>
