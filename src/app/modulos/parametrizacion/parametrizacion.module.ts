@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { ParametrizacionRoutingModule } from './parametrizacion-routing.module';
 import { CrearPaisComponent } from './pais/crear-pais/crear-pais.component';
 import { EditarPaisComponent } from './pais/editar-pais/editar-pais.component';
@@ -22,6 +21,11 @@ import { EliminarInmuebleComponent } from './inmueble/eliminar-inmueble/eliminar
 import { CrearInmuebleComponent } from './inmueble/crear-inmueble/crear-inmueble.component';
 import { ListarInmuebleComponent } from './inmueble/listar-inmueble/listar-inmueble.component';
 import { EditarInmuebleComponent } from './inmueble/editar-inmueble/editar-inmueble.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { EditarClienteComponent } from './cliente/editar-cliente/editar-cliente.component';
+import { EliminarClienteComponent } from './cliente/eliminar-cliente/eliminar-cliente.component';
+import { ListarClienteComponent } from './cliente/listar-cliente/listar-cliente.component';
 
 
 @NgModule({
@@ -45,11 +49,17 @@ import { EditarInmuebleComponent } from './inmueble/editar-inmueble/editar-inmue
     EliminarInmuebleComponent,
     CrearInmuebleComponent,
     ListarInmuebleComponent,
-    EditarInmuebleComponent
+    EditarInmuebleComponent,
+    EditarClienteComponent,
+    EliminarClienteComponent,
+    ListarClienteComponent
   ],
   imports: [
     CommonModule,
-    ParametrizacionRoutingModule
+    ParametrizacionRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ]
 })
 export class ParametrizacionModule { }

@@ -7,6 +7,7 @@ import {
   FormGroupName,
   AbstractFormGroupDirective,
 } from '@angular/forms';
+import { ArchivosService } from 'src/app/services/parametrizacion/archivos.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { UsuarioModel } from '../../../models/usuario.model';
 @Component({
@@ -16,8 +17,8 @@ import { UsuarioModel } from '../../../models/usuario.model';
 })
 export class CrearUsuarioComponent implements OnInit {
   fgValidator: FormGroup = this.fb.group({});
-
   constructor(
+    private servicioSubida: ArchivosService,
     private fb: FormBuilder, 
     private service: UsuariosService) {}
 
@@ -71,4 +72,9 @@ export class CrearUsuarioComponent implements OnInit {
   get fgv() {
     return this.fgValidator.controls;
   }
+
+
+
+
+  
 }

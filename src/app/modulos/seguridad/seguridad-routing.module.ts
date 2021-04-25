@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CambiarContrasenaComponent } from './cambiar-contrasena/cambiar-contrasena.component';
+import { CerrarSesionComponent } from './cerrar-sesion/cerrar-sesion.component';
 import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.component';
 import { ResetearContrasenaComponent} from './resetear-contrasena/resetear-contrasena.component';
 const routes: Routes = [
@@ -10,6 +12,14 @@ const routes: Routes = [
   {
     path: 'resetear-contrasena',
     component: ResetearContrasenaComponent,
+  },
+  {
+    path: 'cerrar-sesion',
+    component: CerrarSesionComponent,
+  },
+  {
+    path: 'cambiar-contrasena',
+    component: CambiarContrasenaComponent,
   },
 ];
 

@@ -1,1 +1,10 @@
 <p>crear-proyecto works!</p>
+
+  <form [formGroup]="uploadForm">
+
+    <input formControlName="file" (change)="onFileSelect($event)" name="image" class="form-control" type="file">
+    <input type="button" value="Upload" (click)="cargarImagen()"/>
+</form>
+<form [formGroup]="fgValidator">
+    <input type="hidden" formControlName="image"/>
+</form>

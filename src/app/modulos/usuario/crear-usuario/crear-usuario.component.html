@@ -6,15 +6,12 @@
     <div class="row">
     <h3 class="center-align">Creacion Usuarios</h3>
         <article class="col s6 offset-s3">
-            <!--[formGroup]="fgValidator"-->
             <form [formGroup]="fgValidator" >
                 <div class="input-field">
                     <i class="material-icons prefix">perm_identity</i>
                     <label for="nombre">Nombre</label>
                     <input formControlName="nombre" type="text" name="nombre" required>
                 </div>
-
-                
 
                 <div class="input-field">
                     <i class="material-icons prefix">person_pin</i>
@@ -24,7 +21,7 @@
                 <div class="input-field">
                     <i class="material-icons prefix">person_pin</i>
                     <label for="apellido">Segundo Apellido</label>
-                    <input formControlName="apellido2" type="text" name="apellido2" required>
+                    <input formControlName="apellido2" type="text" name="apellido2" >
                 </div>
                 <div class="input-field">
                     <i class="material-icons prefix">perm_identity</i>
