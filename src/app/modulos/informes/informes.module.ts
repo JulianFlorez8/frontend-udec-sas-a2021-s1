@@ -2,10 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { InformesRoutingModule } from './informes-routing.module';
+import { InformeVentasComponent } from './informe-ventas/informe-ventas.component';
+import { InformeProyectosComponent } from './informe-proyectos/informe-proyectos.component';
+import { InformePagosComponent } from './informe-pagos/informe-pagos.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    InformeVentasComponent,
+    InformeProyectosComponent,
+    InformePagosComponent
+  ],
   imports: [
     CommonModule,
     InformesRoutingModule
