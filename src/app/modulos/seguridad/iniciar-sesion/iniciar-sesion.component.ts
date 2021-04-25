@@ -1,6 +1,7 @@
 import { Component, OnInit, SecurityContext } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ServiceConfig } from 'src/app/config/service.config';
 import { CredencialesModel } from 'src/app/models/seguridad/credenciales.model';
 import { SeguridadService } from 'src/app/services/seguridad/seguridad.service';
 import { FormsConfig } from '../../../config/forms-config';
@@ -15,12 +16,14 @@ import{ InicioModel } from'../../../models/seguridad/Inicio.model';
 })
 export class IniciarSesionComponent implements OnInit {
   fgValidator: FormGroup = this.fb.group({});
-
+  siteKey: string=ServiceConfig.keyCaptchap;
   constructor(
     private fb: FormBuilder, 
     private service: SeguridadService,
     private route: ActivatedRoute,
-    private router:Router) {}
+    private router:Router) {
+      
+    }
 
   ngOnInit(): void {
     this.FormularioValidacion();
@@ -29,6 +32,8 @@ export class IniciarSesionComponent implements OnInit {
     this.fgValidator = this.fb.group({
       Usuario: ['', [Validators.required]],
       contrasena: ['', [Validators.required]],
+      recaptcha: ['', Validators.required]
+
     });
   }
 

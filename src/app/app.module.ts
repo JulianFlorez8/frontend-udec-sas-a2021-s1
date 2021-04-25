@@ -9,6 +9,7 @@ import { PiePaginaComponent } from './publico/paginaMaestra/pie-pagina/pie-pagin
 import { InicioComponent } from './publico/inicio/inicio.component';
 import { Error404Component } from './publico/errores/error404/error404.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxCaptchaModule } from 'ngx-captcha';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,12 @@ import { HttpClientModule } from '@angular/common/http';
     InicioComponent,
     Error404Component,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule, 
+    AppRoutingModule, 
+    HttpClientModule,
+    NgxCaptchaModule
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

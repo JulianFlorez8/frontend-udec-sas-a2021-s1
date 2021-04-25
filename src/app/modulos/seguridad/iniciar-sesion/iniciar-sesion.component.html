@@ -44,7 +44,9 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
-          Espacio para el captcha
+          <ngx-recaptcha2 formControlName="recaptcha" #captchaElem [siteKey]="siteKey" >
+
+          </ngx-recaptcha2>
           </div>
         </div>
       
