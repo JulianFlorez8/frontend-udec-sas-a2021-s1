@@ -12,10 +12,9 @@ export class SeguridadService {
   constructor(
     private http: HttpClient
   ) { }
-  ingresoUsuarios( model: CredencialesModel): Observable<InicioModel>{
-    console.log(model);
-    return this.http.post<InicioModel>(`${ServiceConfig.BASE_URL}${this.entity}`, model,{
-      headers: new HttpHeaders({})
+  ingresoUsuarios( Credenciales: CredencialesModel): Observable<InicioModel>{
+    return this.http.post<InicioModel>( `${ServiceConfig.BASE_URL}${this.entity}`, Credenciales, {
+      headers: new HttpHeaders()
     })
   }
 }

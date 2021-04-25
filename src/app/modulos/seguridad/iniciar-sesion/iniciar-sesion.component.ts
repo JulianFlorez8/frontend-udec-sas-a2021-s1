@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CredencialesModel } from 'src/app/models/seguridad/credenciales.model';
 import { SeguridadService } from 'src/app/services/seguridad/seguridad.service';
 import { FormsConfig } from '../../../config/forms-config';
+import{ InicioModel } from'../../../models/seguridad/Inicio.model';
 
 
 
@@ -13,65 +14,48 @@ import { FormsConfig } from '../../../config/forms-config';
   styleUrls: ['./iniciar-sesion.component.css'],
 })
 export class IniciarSesionComponent implements OnInit {
-  fgValidacion: FormGroup = this.fb.group({});
+  fgValidator: FormGroup = this.fb.group({});
 
   constructor(
-    private fb: FormBuilder,
-    private service: SeguridadService
-  ) {}
+    private fb: FormBuilder, 
+    private service: SeguridadService,
+    private route: ActivatedRoute,
+    private router:Router) {}
+
   ngOnInit(): void {
-    this.ConstruirFormulario();
+    this.FormularioValidacion();
   }
-  ConstruirFormulario() {
-    this.fgValidacion = this.fb.group({
+  FormularioValidacion() {
+    this.fgValidator = this.fb.group({
       Usuario: ['', [Validators.required]],
       contrasena: ['', [Validators.required]],
     });
   }
 
- 
-
   IniciarSesion() {
-    if (this.fgValidacion.invalid) {
-      alert('Formulario invalido.');
+    if (this.fgValidator.invalid) {
+      alert('Formulario Invalido');
     } else {
-      let credenciales = this.obtenerDatos();
-      this.service.ingresoUsuarios(credenciales).subscribe((data) => {
+      let usuario = this.getCredencialesData();
+      this.service.ingresoUsuarios(usuario).subscribe((data) => {
         console.log(data);
         if (data) {
           alert('Bienvenido');
         } else {
-          alert('Fallo el registro');
+          alert('por favor reintente');
         }
+        
       });
-      /*this.service.LoginUser(model).subscribe((data) => {
-      console.log('datos');
-      alert(data);
-      if (data){
-          alert('Bienvenido Usuario');
-          console.log(data);
-          alert(data.token);
-          alert(data.usuario);
-      }
-      else{
-          alert("Error");
-        }
-      });*/
     }
   }
-
-  /**
-   * Build a model instance to send it
-   */
-  obtenerDatos(): CredencialesModel {
-    let model = new CredencialesModel();
-    model.Usuario = this.fgv.Usuario.value;
-    model.contrasena = this.fgv.contrasena.value;
-    return model;
+  //Obtenego datos del formulario y los paso al modelo de credenciales
+  getCredencialesData(): CredencialesModel {
+    let credenciales = new CredencialesModel();
+    credenciales.Usuario = this.fgv.Usuario.value;
+    credenciales.contrasena = this.fgv.contrasena.value;
+    return credenciales;
   }
-
   get fgv() {
-    return this.fgValidacion.controls;
+    return this.fgValidator.controls;
   }
-  
 }

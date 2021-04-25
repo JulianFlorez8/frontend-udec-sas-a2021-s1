@@ -1,6 +1,6 @@
 export class CredencialesModel{
 
-    Usuario: string ='';
+  Usuario: string ='';
   contrasena: string ='';
     constructor(){}
 }
