@@ -1,4 +1,4 @@
-export class UsuarioModel{
+export class ClienteModel{
     Documento: number=0;
     Nombre: string= '';
     Apellido_1: string='';

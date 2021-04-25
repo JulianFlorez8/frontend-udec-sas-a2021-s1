@@ -5,6 +5,9 @@ import { Observable } from 'rxjs';
 import{ ServiceConfig} from '../config/service.config';
 import { CambioContrasenaModel } from '../models/seguridad/cambio-contrasena';
 import { ResetearContrasenaModel } from '../models/seguridad/resetear-contrasena';
+import { CiudadModel } from '../models/parametrizacion/ciudad.model';
+import { ClienteModel } from '../models/parametrizacion/cliente.model';
+import { ProyectoModel } from '../models/parametrizacion/proyectos.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -63,4 +66,48 @@ export class UsuariosService {
     return this.http.get<UsuarioModel[]>(`${ServiceConfig.BASE_URL}${this.entity}`) ;
   }
 
+
+  obtenerCiudadUsuario(id: number): Observable<CiudadModel>{//me dice la ciudad del usuario
+    return this.http.get<CiudadModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}/ciudad`)
+  }
+
+
+  obtenerClientesUsuario(id: number): Observable<ClienteModel[]>{
+    return this.http.get<ClienteModel[]>( `${ServiceConfig.BASE_URL}${this.entity}/${id}/clientes`)
+  }
+  parcharClientesUsuario(id: number, model:ClienteModel): Observable<ClienteModel>
+  {
+    return this.http.patch<ClienteModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}/clientes`, model, {
+      headers: new HttpHeaders({})
+    })
+  }
+  crearClientesUsuario(id: number, model:ClienteModel): Observable<ClienteModel>
+  {
+    return this.http.post<ClienteModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}/clientes`, model, {
+      headers: new HttpHeaders({})
+    })
+  }
+  eliminarClientesUsuario(id: number)
+  {
+    return this.http.delete( `${ServiceConfig.BASE_URL}${this.entity}/${id}/clientes`)
+}
+obtenerProyectosUsuario(id: number): Observable<ProyectoModel[]>{
+  return this.http.get<ProyectoModel[]>( `${ServiceConfig.BASE_URL}${this.entity}/${id}/proyectos`)
+}
+parcharProyectosUsuario(id: number, model:ProyectoModel): Observable<ProyectoModel>
+{
+  return this.http.patch<ProyectoModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}/proyectos`, model, {
+    headers: new HttpHeaders({})
+  })
+}
+crearProyectosUsuario(id: number, model:ProyectoModel): Observable<ProyectoModel>
+{
+  return this.http.post<ProyectoModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}/proyectos`, model, {
+    headers: new HttpHeaders({})
+  })
+}
+eliminarProyectosUsuario(id: number)
+{
+  return this.http.delete( `${ServiceConfig.BASE_URL}${this.entity}/${id}/proyectos`)
+}
 }
