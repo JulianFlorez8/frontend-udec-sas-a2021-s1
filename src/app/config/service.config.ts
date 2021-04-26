@@ -3,4 +3,5 @@ export namespace ServiceConfig {
   export const vendedorUserRol = 1;
   export const adminUserRol = 2;
   export const keyCaptchap='6LcdwbMaAAAAAEeaA3vB7aNu9AagOtFLuvZdYANN';
+  export const AESKey = 'ProyectoM@J';
 }

@@ -6,8 +6,7 @@ import { CredencialesModel } from 'src/app/models/seguridad/credenciales.model';
 import { SeguridadService } from 'src/app/services/seguridad/seguridad.service';
 import { FormsConfig } from '../../../config/forms-config';
 import{ InicioModel } from'../../../models/seguridad/Inicio.model';
-
-
+import {AES} from 'crypto-js/';
 
 @Component({
   selector: 'app-iniciar-sesion',
@@ -58,7 +57,7 @@ export class IniciarSesionComponent implements OnInit {
   getCredencialesData(): CredencialesModel {
     let credenciales = new CredencialesModel();
     credenciales.Usuario = this.fgv.Usuario.value;
-    credenciales.contrasena = this.fgv.contrasena.value;
+    credenciales.contrasena = AES.encrypt(this.fgv.contrasena.value, ServiceConfig.AESKey).toString();
     return credenciales;
   }
   get fgv() {
