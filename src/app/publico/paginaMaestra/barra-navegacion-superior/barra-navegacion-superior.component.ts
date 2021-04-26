@@ -11,13 +11,15 @@ export class BarraNavegacionSuperiorComponent implements OnInit {
   logeado: Boolean = false;
   suscripcion?: Subscription;
   rol: string | undefined = '';
+  nombreC: string | undefined = '';
   constructor(private service: SeguridadService) {}
 
   ngOnInit(): void {
     this.suscripcion = this.service.getDatosUsuario().subscribe((data) => {
       this.logeado = data.logeado;
       this.rol = data.usuario?.Rol;
-      console.log(this.rol);
+      this.nombreC = `${data.usuario?.Nombre} ${data.usuario?.Apellido_1} ${data.usuario?.Apellido_2}`;
+      console.log(this.nombreC);
     });
   }
 }
