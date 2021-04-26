@@ -5,9 +5,9 @@
       ><i class="material-icons">menu</i></a
     >
     <ul class="right hide-on-med-and-down">
-      <li>
+      <li *ngIf="logeado">
         <a class="sidenav-trigger show-on-large" data-target="menu-side">
-          Administrador
+          Modulos
         </a>
       </li>
       <li><a routerLink="sass.html">Sass</a></li>
@@ -35,14 +35,14 @@
       <span>Seguridad</span>
     </a>
   </li>
-  <li>
+  <li *ngIf="rol == 'Administrador'">
     <a class="dropdown-trigger" data-target="dropdown1">
       <i class="material-icons">edit</i>
       <span>Parametrización ></span>
     </a>
   </li>
-  <li>
-    <a routerLink="#!"><i class="material-icons">payment</i>Ventas?</a>
+  <li *ngIf="rol == 'Vendedor'">
+    <a routerLink="#!"><i class="material-icons">payment</i>Ventas</a>
   </li>
   <li>
     <a routerLink="#!"><i class="material-icons">description</i>Informes</a>
@@ -58,7 +58,7 @@
 </ul>
 
 <ul class="sidenav" id="mobile-demo">
-  <li>
+  <li *ngIf="rol == 'Administrador'">
     <a class="sidenav-trigger sidenav-close" data-target="menu-side">
       Administrador
     </a>
