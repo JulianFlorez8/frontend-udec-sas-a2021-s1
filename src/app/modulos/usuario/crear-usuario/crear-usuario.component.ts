@@ -10,6 +10,10 @@ import {
 import { ArchivosService } from 'src/app/services/parametrizacion/archivos.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { UsuarioModel } from '../../../models/usuario.model';
+import{ CiudadService} from 'src/app/services/parametrizacion/ciudad.service';
+import { PaisService } from 'src/app/services/parametrizacion/pais.service';
+import { PaisModel } from 'src/app/models/parametrizacion/pais.model';
+import { CiudadModel } from 'src/app/models/parametrizacion/ciudad.model';
 @Component({
   selector: 'app-crear-usuario',
   templateUrl: './crear-usuario.component.html',
@@ -17,13 +21,21 @@ import { UsuarioModel } from '../../../models/usuario.model';
 })
 export class CrearUsuarioComponent implements OnInit {
   fgValidator: FormGroup = this.fb.group({});
+  codigoPais?: string[];
+  paises?: PaisModel[];
+  ciudades?: CiudadModel[];
   constructor(
     private servicioSubida: ArchivosService,
     private fb: FormBuilder, 
-    private service: UsuariosService) {}
+    private service: UsuariosService,
+    private servicioCiudades: CiudadService,
+    private servicioPaises: PaisService
+    ) {}
+    
 
   ngOnInit(): void {
     this.FormularioValidacion();
+    this.getPaises();
   }
   FormularioValidacion() {
     this.fgValidator = this.fb.group({
@@ -72,9 +84,21 @@ export class CrearUsuarioComponent implements OnInit {
   get fgv() {
     return this.fgValidator.controls;
   }
+getPaises(){
+  this.servicioPaises.obtenerPaises().subscribe(paises=>{
+    console.log(paises);
+    this.paises=paises;
+    console.log(this.paises[0].nombre);
+    
+  })
+}
 
-
-
+getCiudades(id:number){//Le entra como parametro el codigo del pais seleccionado
+  this.servicioPaises.obtenerCiudadesPais(id).subscribe(ciudades=>{
+    console.log(ciudades);
+    
+  })
+}
 
   
 }
