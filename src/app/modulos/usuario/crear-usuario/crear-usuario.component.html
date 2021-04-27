@@ -53,6 +53,7 @@
         </div>
         <div class="input-field">
           <i class="material-icons prefix">perm_identity</i>
+          <label for="rol">Rol</label>
           <select formControlName="rol" class="browser-default pl">
             <option value="Vendedor">Vendedor</option>
             <option value="Administrador">Administrador</option>
@@ -68,11 +69,20 @@
             required
           />
         </div>
+        <div class="input-field">
+          <i class="material-icons prefix">perm_identity</i>
+          <label for="Pais">Pais</label>
+          <select   formControlName="pais" class="browser-default pl" id="pais">
+            <option></option>
 
+          </select>
+        </div>
         <div class="input-field">
           <i class="material-icons prefix">perm_identity</i>
           <label for="ciudad">Ciudad</label>
-          <input formControlName="ciudad" type="text" name="ciudad" required />
+          <select formControlName="ciudad" class="browser-default pl" id="ciudad">
+            <option></option>
+          </select>
         </div>
         <p class="center-align">
           <button
