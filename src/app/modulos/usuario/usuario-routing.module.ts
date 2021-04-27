@@ -8,6 +8,7 @@ const routes: Routes = [
   {
     path: 'crear-usuario',
     component: CrearUsuarioComponent,
+    outlet: 'modal',
   },
   {
     path: 'editar-usuario/:id',
@@ -20,6 +21,13 @@ const routes: Routes = [
   {
     path: 'listar-usuario',
     component: ListarUsuarioComponent,
+    children: [
+      {
+        path: 'a',
+        component: CrearUsuarioComponent,
+        outlet: 'modal',
+      },
+    ],
   },
 ];
 @NgModule({

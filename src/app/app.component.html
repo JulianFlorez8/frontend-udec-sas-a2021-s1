@@ -6,8 +6,10 @@
   <router-outlet></router-outlet>
 </div>
 <!-- Modal Structure -->
-<router-outlet name="modal"></router-outlet>
-<div id="modal1" class="modal modal-fixed-footer"></div>
+
+<div id="modal1" class="modal modal-fixed-footer">
+  <router-outlet name="modal"></router-outlet>
+</div>
 <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
 
 <app-pie-pagina>

@@ -5,6 +5,7 @@
     </div>
     <div class="col-sm-6">
       <button
+        [routerLink]="['/usuario', { outlets: { modal: ['crear-usuario'] } }]"
         class="waves-effect waves-light btn modal-trigger"
         data-target="modal1"
       >
