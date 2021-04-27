@@ -9,6 +9,7 @@ import { InicioComponent } from './publico/inicio/inicio.component';
 import { Error404Component } from './publico/errores/error404/error404.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxCaptchaModule } from 'ngx-captcha';
+import { ModalComponent } from './paginaMaestra/modal/modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,6 +18,7 @@ import { NgxCaptchaModule } from 'ngx-captcha';
     PiePaginaComponent,
     InicioComponent,
     Error404Component,
+    ModalComponent,
   ],
   imports: [
     BrowserModule, 
