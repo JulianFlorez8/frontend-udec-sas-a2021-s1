@@ -3,16 +3,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { Error404Component } from './publico/errores/error404/error404.component';
 import { InicioComponent } from './publico/inicio/inicio.component';
 import { ModalComponent } from './publico/paginaMaestra/modal/modal.component';
+import { CrearUsuarioComponent } from './modulos/usuario/crear-usuario/crear-usuario.component';
 
 const routes: Routes = [
-  {
-    path: 'inicio',
-    component: InicioComponent,
-  },
   {
     path: '',
     pathMatch: 'full',
     redirectTo: '/inicio',
+  },
+  {
+    path: 'inicio',
+    component: InicioComponent,
   },
   {
     path: 'parametrizacion',
@@ -36,10 +37,6 @@ const routes: Routes = [
   {
     path: 'error-404',
     component: Error404Component,
-  },
-  {
-    path: '#modal1',
-    component: ModalComponent,
   },
   {
     path: '**',
