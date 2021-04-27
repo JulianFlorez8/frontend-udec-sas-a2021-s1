@@ -4,15 +4,28 @@
       <h4>Administración usuarios</h4>
     </div>
     <div class="col-sm-6">
-      <a
-        routerLink="#addEmployeeModal"
-        class="btn btn-success"
-        data-toggle="modal"
-        ><i class="material-icons">&#xE147;</i> <span>Crear Usuario</span></a
+      <button
+        class="waves-effect waves-light btn modal-trigger"
+        data-target="modalx"
       >
+        <i class="material-icons">&#xE147;</i> <span>Crear Usuario</span>
+      </button>
+      <button data-target="modalx" class="btn modal-trigger">Modal</button>
     </div>
   </div>
 </div>
+
+<!-- Modal Structure -->
+<div id="modalx" class="modal">
+  <div class="modal-content">
+    <h4>Modal Header</h4>
+    <p>A bunch of text</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+  </div>
+</div>
+
 <table class="highlight responsive-table">
   <thead>
     <tr>
