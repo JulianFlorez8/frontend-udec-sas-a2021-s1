@@ -1,1 +1,51 @@
-<p>listar-inmueble works!</p>
+<div class="table-title">
+  <div class="row">
+    <div class="col-sm-6">
+      <h4>Administración inmuebles</h4>
+    </div>
+    <div class="col-sm-6">
+      <button
+        class="waves-effect waves-light btn modal-trigger"
+        data-target="modal1"
+      >
+        <i class="material-icons">&#xE147;</i> <span>Crear Inmueble</span>
+      </button>
+    </div>
+  </div>
+</div>
+<table class="highlight responsive-table">
+  <thead class="white-text grey darken-2">
+    <tr>
+      <th>Codigo</th>
+      <th>Identificador</th>
+      <th>Valor</th>
+      <th>Codigo Bloque</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let x of lista">
+      <td>
+        {{ x.codigo }}
+      </td>
+      <td>
+        {{ x.identificador }}
+      </td>
+      <td>
+        {{ x.valor }}
+      </td>
+      <td>
+        {{ x.codigoBloque }}
+      </td>
+      <td>
+        <a class="edit" routerLink="../editar-ciudad/{{ x }}.Documento"
+          ><i class="orange-text material-icons" title="Edit">&#xE254;</i></a
+        >
+        <a class="delete" routerLink="../eliminar-ciudad/{{ x }}.Documento"
+          ><i class="red-text material-icons" title="Delete">&#xE872;</i></a
+        >
+      </td>
+    </tr>
+  </tbody>
+</table>
