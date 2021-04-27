@@ -6,26 +6,14 @@
     <div class="col-sm-6">
       <button
         class="waves-effect waves-light btn modal-trigger"
-        data-target="modalx"
+        data-target="modal1"
       >
         <i class="material-icons">&#xE147;</i> <span>Crear Usuario</span>
       </button>
-      <button data-target="modalx" class="btn modal-trigger">Modal</button>
     </div>
   </div>
 </div>
-
-<!-- Modal Structure -->
-<div id="modalx" class="modal">
-  <div class="modal-content">
-    <h4>Modal Header</h4>
-    <p>A bunch of text</p>
-  </div>
-  <div class="modal-footer">
-    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-  </div>
-</div>
-
+<a class="modal-trigger waves-effect waves-light btn" href="#modal1">Modal</a>
 <table class="highlight responsive-table">
   <thead>
     <tr>
@@ -42,21 +30,11 @@
       <td>Eclair</td>
       <td>$0.87</td>
       <td>
-        <a routerLink="#editEmployeeModal" class="edit" data-toggle="modal"
-          ><i
-            class="orange-text material-icons"
-            data-toggle="tooltip"
-            title="Edit"
-            >&#xE254;</i
-          ></a
+        <a class="edit modal-trigger" href="#modal1"
+          ><i class="orange-text material-icons" title="Edit">&#xE254;</i></a
         >
-        <a routerLink="#deleteEmployeeModal" class="delete" data-toggle="modal"
-          ><i
-            class="red-text material-icons"
-            data-toggle="tooltip"
-            title="Delete"
-            >&#xE872;</i
-          ></a
+        <a class="delete modal-trigger" href="#modal1"
+          ><i class="red-text material-icons" title="Delete">&#xE872;</i></a
         >
       </td>
     </tr>

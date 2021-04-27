@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Error404Component } from './publico/errores/error404/error404.component';
 import { InicioComponent } from './publico/inicio/inicio.component';
+import { ModalComponent } from './publico/paginaMaestra/modal/modal.component';
 
 const routes: Routes = [
   {
@@ -30,13 +31,15 @@ const routes: Routes = [
   {
     path: 'usuario',
     loadChildren: () =>
-      import('./modulos/usuario/usuario.module').then(
-        (m) => m.UsuarioModule
-      ),
+      import('./modulos/usuario/usuario.module').then((m) => m.UsuarioModule),
   },
   {
     path: 'error-404',
     component: Error404Component,
+  },
+  {
+    path: '#modal1',
+    component: ModalComponent,
   },
   {
     path: '**',
