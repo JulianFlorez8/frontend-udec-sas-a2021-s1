@@ -38,8 +38,9 @@ const routes: Routes = [
     component: Error404Component,
   },
   {
-    path: '#modal1',
+    path: 'modal',
     component: ModalComponent,
+    outlet: 'modal',
   },
   {
     path: '**',

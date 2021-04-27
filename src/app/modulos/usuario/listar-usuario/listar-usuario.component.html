@@ -15,72 +15,64 @@
 </div>
 <a class="modal-trigger waves-effect waves-light btn" href="#modal1">Modal</a>
 <table class="highlight responsive-table">
-  <thead>
+  <thead class="white-text grey darken-2">
     <tr>
-      <th>Name</th>
-      <th>Item Name</th>
-      <th>Item Price</th>
+      <th>Nombre</th>
+      <th>Apellido 1</th>
+      <th>Apellido 2</th>
+      <th>Celular</th>
+      <th>Ciudad</th>
+      <th>Contraseña</th>
+      <th>Correo</th>
+      <th>Documento</th>
+      <th>Rol</th>
+      <th>Usuario</th>
+      <th>Codigo ciudad</th>
       <th>Acciones</th>
     </tr>
   </thead>
 
   <tbody>
-    <tr>
-      <td>Alvin</td>
-      <td>Eclair</td>
-      <td>$0.87</td>
+    <tr *ngFor="let x of lista">
       <td>
-        <a class="edit modal-trigger" href="#modal1"
+        {{ x.Nombre }}
+      </td>
+      <td>
+        {{ x.Apellido_1 }}
+      </td>
+      <td>
+        {{ x.Apellido_2 }}
+      </td>
+      <td>
+        {{ x.Celular }}
+      </td>
+      <td>
+        {{ x.Ciudad }}
+      </td>
+      <td>
+        {{ x.Contrasena }}
+      </td>
+      <td>
+        {{ x.Correo }}
+      </td>
+      <td>
+        {{ x.Documento }}
+      </td>
+      <td>
+        {{ x.Rol }}
+      </td>
+      <td>
+        {{ x.Usuario }}
+      </td>
+      <td>
+        {{ x.codigoCiudad }}
+      </td>
+      <td>
+        <a class="edit" routerLink="../editar-usuario/{{ x }}.Documento"
           ><i class="orange-text material-icons" title="Edit">&#xE254;</i></a
         >
-        <a class="delete modal-trigger" href="#modal1"
+        <a class="delete" routerLink="../eliminar-usuario/{{ x }}.Documento"
           ><i class="red-text material-icons" title="Delete">&#xE872;</i></a
-        >
-      </td>
-    </tr>
-    <tr>
-      <td>Alan</td>
-      <td>Jellybean</td>
-      <td>$3.76</td>
-      <td>
-        <a routerLink="#editEmployeeModal" class="edit" data-toggle="modal"
-          ><i
-            class="orange-text material-icons"
-            data-toggle="tooltip"
-            title="Edit"
-            >&#xE254;</i
-          ></a
-        >
-        <a routerLink="#deleteEmployeeModal" class="delete" data-toggle="modal"
-          ><i
-            class="red-text material-icons"
-            data-toggle="tooltip"
-            title="Delete"
-            >&#xE872;</i
-          ></a
-        >
-      </td>
-    </tr>
-    <tr>
-      <td>Jonathan</td>
-      <td>Lollipop</td>
-      <td>$7.00</td>
-      <td>
-        <a routerLink="#editEmployeeModal" class="edit" data-toggle="modal"
-          ><i
-            class="orange-text material-icons"
-            data-toggle="tooltip"
-            title="Edit"
-            >&#xE254;</i
-          ></a
-        >
-        <a routerLink="#deleteEmployeeModal" class="delete" data-toggle="modal"
-          ><i
-            class="red-text material-icons"
-            data-toggle="tooltip"
-            title="Delete"
-            >&#xE872;</i
-          ></a
         >
       </td>
     </tr>
