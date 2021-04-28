@@ -67,11 +67,12 @@ const routes: Routes = [
     component: EditarBloqueComponent,
   },
   {
-    path: 'eliminar-bloque',
+    path: 'eliminar-bloque/:bloque',
     component: EliminarBloqueComponent,
   },
   {
     path: 'listar-bloque',
+    
     component: ListarBloqueComponent,
   },
   {

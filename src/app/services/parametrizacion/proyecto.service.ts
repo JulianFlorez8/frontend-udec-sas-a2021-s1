@@ -6,19 +6,27 @@ import { BloqueModel } from 'src/app/models/parametrizacion/bloque.model';
 import { CiudadModel } from 'src/app/models/parametrizacion/ciudad.model';
 import { ProyectoModel } from 'src/app/models/parametrizacion/proyectos.model';
 import { UsuarioModel } from 'src/app/models/usuario.model';
+import { SeguridadService } from '../seguridad/seguridad.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProyectoService {
+  token:String='';
   entity:String ='proyectos';
   cuenta: String= 'proyectos/count';
   constructor(
-    private http: HttpClient
-  ) { }
+    private http: HttpClient,
+    private servicioSeguridad: SeguridadService
+    
+  ) {this.token= this.servicioSeguridad.getToken() }
   creacionProyecto( model: ProyectoModel): Observable <ProyectoModel>{
+    console.log(this.token);
+    
     return this.http.post<ProyectoModel>( `${ServiceConfig.BASE_URL}${this.entity}`, model, {
-      headers: new HttpHeaders({})
+      headers: new HttpHeaders({
+        Autorization: `Bearer ${this.token}`
+      })
     })
   }
   obtenerCantidadProyectos(): Observable<number>{

@@ -15,6 +15,7 @@ export class SeguridadService {
   ) { 
     this.verificarSesionActiva();
   }
+ 
   setDatosUsuario(value:InicioModel){
     this.datosUsuario.next(value);
   }
@@ -53,5 +54,17 @@ export class SeguridadService {
       let datosUsuario= JSON.parse(sesionActiva);
       this.setDatosUsuario(datosUsuario);
     }
+  }
+  getToken(): String {
+    let actualSesion = this.getSesion();
+    if(actualSesion)
+    {
+      return JSON.parse(actualSesion).token;
+
+    }
+    else{
+      return '';
+    }
+    
   }
 }
