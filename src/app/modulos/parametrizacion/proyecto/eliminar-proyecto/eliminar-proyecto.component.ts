@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProyectoService } from 'src/app/services/parametrizacion/proyecto.service';
 
 @Component({
   selector: 'app-eliminar-proyecto',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EliminarProyectoComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private service: ProyectoService,
+  ) { }
 
   ngOnInit(): void {
+  }
+
+
+  eliminarPais(idProyecto: number){
+    this.service.eliminarProyecto(idProyecto);
+    
   }
 
 }

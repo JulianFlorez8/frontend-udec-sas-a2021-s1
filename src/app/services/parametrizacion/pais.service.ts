@@ -35,7 +35,7 @@ export class PaisService {
   obtenerPais(id: number,model: PaisModel): Observable<PaisModel>{//Revisar retorno
     return this.http.get<PaisModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}`)
   }
-  eliminarPago(id: number){//Revisar retorno
+  eliminarPais(id: number){//Revisar retorno
     return this.http.delete(`${ServiceConfig.BASE_URL}${this.entity}/${id}`);
   }
   obtenerPaises():Observable<PaisModel[]>{//Sin filtro

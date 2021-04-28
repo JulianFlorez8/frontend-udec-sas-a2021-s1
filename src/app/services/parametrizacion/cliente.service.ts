@@ -20,29 +20,29 @@ export class ClienteService {
       headers: new HttpHeaders({})
     })
   }
-  obtenerCantidadUsuarios(): Observable<number>{
+  obtenerCantidadCliente(): Observable<number>{
     return this.http.get<number>(`${ServiceConfig.BASE_URL}${this.cuenta}`)
   }
-  actualizarUsuario(id: number,model: ClienteModel): Observable<ClienteModel>{//Revisar retorno
+  actualizarCliente(id: number,model: ClienteModel): Observable<ClienteModel>{//Revisar retorno
     return this.http.put<ClienteModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}`, model, {
       headers: new HttpHeaders({})
     })
   }
-  parcharUsuario(id: number,model: ClienteModel): Observable<ClienteModel>{//Revisar retorno
+  parcharCliente(id: number,model: ClienteModel): Observable<ClienteModel>{//Revisar retorno
     return this.http.patch<ClienteModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}`, model, {
       headers: new HttpHeaders({})
     })
   }
-  obtenerUsuario(id: number,model: ClienteModel): Observable<ClienteModel>{//Revisar retorno
+  obtenerrCliente(id: number,model: ClienteModel): Observable<ClienteModel>{//Revisar retorno
     return this.http.get<ClienteModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}`)
   }
-  eliminarUsuario(id: number,model: ClienteModel){//Revisar retorno
+  eliminarCliente(id: number){//Revisar retorno
     return this.http.delete(`${ServiceConfig.BASE_URL}${this.entity}/${id}`);
   }
-  obtenerUsuarios():Observable<ClienteModel[]>{//Sin filtro
+  obtenerClientes():Observable<ClienteModel[]>{//Sin filtro
     return this.http.get<ClienteModel[]>(`${ServiceConfig.BASE_URL}${this.entity}`)    
   }
-  parcharUsuarios(model: ClienteModel):Observable<ClienteModel>{//Sin filtro
+  parcharClientes(model: ClienteModel):Observable<ClienteModel>{//Sin filtro
     return this.http.patch<ClienteModel>( `${ServiceConfig.BASE_URL}${this.entity}`, model, {
       headers: new HttpHeaders({})
     })

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BloqueService } from 'src/app/services/parametrizacion/bloque.service';
 
 @Component({
   selector: 'app-eliminar-bloque',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EliminarBloqueComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private service: BloqueService,
+  ) { }
 
   ngOnInit(): void {
+  }
+
+
+  eliminarBloque(idBloque: number){
+    this.service.eliminarBloque(idBloque);
+    
   }
 
 }

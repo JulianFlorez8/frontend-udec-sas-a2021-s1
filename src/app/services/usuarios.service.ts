@@ -51,7 +51,7 @@ export class UsuariosService {
   obtenerUsuario(id: number,model: UsuarioModel): Observable<UsuarioModel>{//Revisar retorno
     return this.http.get<UsuarioModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}`)
   }
-  eliminarUsuario(id: number,model: UsuarioModel){//Revisar retorno
+  eliminarUsuario(id: number){//Revisar retorno
     return this.http.delete(`${ServiceConfig.BASE_URL}${this.entity}/${id}`);
   }
   obtenerUsuarios():Observable<UsuarioModel[]>{//Sin filtro

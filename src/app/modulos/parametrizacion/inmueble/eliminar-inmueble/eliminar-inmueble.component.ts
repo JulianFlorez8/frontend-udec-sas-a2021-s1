@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InmuebleService } from 'src/app/services/parametrizacion/inmueble.service';
 
 @Component({
   selector: 'app-eliminar-inmueble',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EliminarInmuebleComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private service: InmuebleService,
+  ) { }
 
   ngOnInit(): void {
   }
 
+
+  eliminarInmueble(idInmueble: number){
+    this.service.eliminarInmueble(idInmueble);
+    
+  }
 }

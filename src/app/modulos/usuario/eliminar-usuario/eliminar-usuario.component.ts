@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
   selector: 'app-eliminar-usuario',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EliminarUsuarioComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private service: UsuariosService,
+  ) { }
 
   ngOnInit(): void {
   }
+
+
+  eliminarUsuario(idUsuario: number){
+    this.service.eliminarUsuario(idUsuario);
+    
+  }
+
 
 }
