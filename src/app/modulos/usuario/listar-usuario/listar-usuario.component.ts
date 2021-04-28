@@ -36,4 +36,7 @@ export class ListarUsuarioComponent implements OnInit {
       }
     );
   }
+  imprimirUsuario(id: any) {
+    console.log(id);
+  }
 }

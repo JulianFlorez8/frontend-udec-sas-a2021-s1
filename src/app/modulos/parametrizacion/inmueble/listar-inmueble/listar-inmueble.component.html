@@ -7,6 +7,10 @@
       <button
         class="waves-effect waves-light btn modal-trigger"
         data-target="modal1"
+        [routerLink]="[
+          '/parametrizacion',
+          { outlets: { modal: ['crear-inmueble'] } }
+        ]"
       >
         <i class="material-icons">&#xE147;</i> <span>Crear Inmueble</span>
       </button>

@@ -7,6 +7,10 @@
       <button
         class="waves-effect waves-light btn modal-trigger"
         data-target="modal1"
+        [routerLink]="[
+          '/parametrizacion',
+          { outlets: { modal: ['crear-pais'] } }
+        ]"
       >
         <i class="material-icons">&#xE147;</i> <span>Crear País</span>
       </button>

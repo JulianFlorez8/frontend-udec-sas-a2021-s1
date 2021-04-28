@@ -29,6 +29,7 @@ const routes: Routes = [
   {
     path: 'crear-proyecto',
     component: CrearProyectoComponent,
+    outlet: 'modal',
   },
   {
     path: 'editar-proyecto',
@@ -61,6 +62,7 @@ const routes: Routes = [
   {
     path: 'crear-bloque',
     component: CrearBloqueComponent,
+    outlet: 'modal',
   },
   {
     path: 'editar-bloque',
@@ -72,7 +74,7 @@ const routes: Routes = [
   },
   {
     path: 'listar-bloque',
-    
+
     component: ListarBloqueComponent,
   },
   {
@@ -95,6 +97,7 @@ const routes: Routes = [
   {
     path: 'crear-inmueble',
     component: CrearInmuebleComponent,
+    outlet: 'modal',
   },
   {
     path: 'editar-inmueble',
@@ -111,6 +114,7 @@ const routes: Routes = [
   {
     path: 'crear-pais',
     component: CrearPaisComponent,
+    outlet: 'modal',
   },
   {
     path: 'editar-pais',
