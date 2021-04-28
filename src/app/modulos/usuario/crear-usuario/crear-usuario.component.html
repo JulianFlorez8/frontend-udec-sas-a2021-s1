@@ -72,15 +72,18 @@
         <div class="input-field">
           <i class="material-icons prefix">perm_identity</i>
           <label for="Pais">Pais</label>
-          <select   formControlName="pais" class="browser-default pl" id="pais">
+          <select formControlName="pais" class="browser-default pl" id="pais">
             <option></option>
-
           </select>
         </div>
         <div class="input-field">
           <i class="material-icons prefix">perm_identity</i>
           <label for="ciudad">Ciudad</label>
-          <select formControlName="ciudad" class="browser-default pl" id="ciudad">
+          <select
+            formControlName="ciudad"
+            class="browser-default pl"
+            id="ciudad"
+          >
             <option></option>
           </select>
         </div>
@@ -89,9 +92,11 @@
             class="waves-effect waves-light btn"
             type="submit"
             (click)="RegitrarUsuario()"
+            routerLink="[usuario/listar-usuario,{ outlets: { modal: null}]"
           >
             <i class="material-icons right"></i>Registrar
           </button>
+          <a routerLink="[{ outlets: { modal: null } }]">hola</a>
         </p>
       </form>
     </article>
