@@ -11,7 +11,7 @@ const routes: Routes = [
     outlet: 'modal',
   },
   {
-    path: 'editar-usuario/:id',
+    path: 'editar-usuario',
     component: EditarUsuarioComponent,
   },
   {
