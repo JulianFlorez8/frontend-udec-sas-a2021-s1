@@ -15,6 +15,7 @@ export class BloqueService {
     private http: HttpClient
   ) { }
   creacionBloque( model: BloqueModel): Observable <BloqueModel>{
+    
     return this.http.post<BloqueModel>( `${ServiceConfig.BASE_URL}${this.entity}`, model, {
       headers: new HttpHeaders({})
     })
