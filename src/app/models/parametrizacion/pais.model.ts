@@ -1,6 +1,6 @@
 export class PaisModel{
 
-    codigo: number =0;
+    codigo?: number ;
     nombre: string ='';
     constructor(){}
 }

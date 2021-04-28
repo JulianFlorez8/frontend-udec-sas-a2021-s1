@@ -34,6 +34,12 @@ export class EditarPaisComponent implements OnInit {
     } else {
       let pais = this.getPaisData();
       let codigo= this.fgv.pais.value;
+      if(!codigo)
+      {
+        codigo=0;
+      }
+      console.log(pais);
+      
       this.service.actualizarPais(codigo,pais).subscribe((data) => {
         console.log(data);
         if (data) {
@@ -47,7 +53,7 @@ export class EditarPaisComponent implements OnInit {
   //Obtenego datos del formulario y los paso al modelo de usuario
   getPaisData(): PaisModel {
     let model = new PaisModel();
-    model.codigo= this.fgv.pais.value;
+    model.codigo= parseInt(this.fgv.pais.value);
     model.nombre = this.fgv.nombre.value;
     
     return model;
@@ -67,8 +73,13 @@ export class EditarPaisComponent implements OnInit {
           const opcion= document.createElement('option');
           let nombrePais= pais.nombre;
           let codigoPais= pais.codigo;
-          opcion.value = codigoPais.toString();
+          if (codigoPais)
+          {
+             opcion.value = codigoPais.toString();
           opcion.text= nombrePais;
+
+          }
+        
           if(selectorPais)
           {
             selectorPais.appendChild(opcion);

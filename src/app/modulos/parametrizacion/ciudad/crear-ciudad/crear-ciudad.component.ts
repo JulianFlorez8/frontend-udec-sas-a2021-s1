@@ -52,7 +52,7 @@ export class CrearCiudadComponent implements OnInit {
   getCiudadData(): CiudadModel {
     let model = new CiudadModel();
     model.nombre = this.fgv.nombre.value;
-    model.codigoPais= this.fgv.codigoPais.value;
+    model.codigoPais= parseInt(this.fgv.codigoPais.value);
     return model;
   }
   get fgv() {
@@ -70,8 +70,12 @@ export class CrearCiudadComponent implements OnInit {
           const opcion= document.createElement('option');
           let nombrePais= pais.nombre;
           let codigoPais= pais.codigo;
-          opcion.value = codigoPais.toString();
+          if (codigoPais)
+          {
+             opcion.value = codigoPais.toString();
           opcion.text= nombrePais;
+
+          }
           if(selectorPais)
           {
             selectorPais.appendChild(opcion);

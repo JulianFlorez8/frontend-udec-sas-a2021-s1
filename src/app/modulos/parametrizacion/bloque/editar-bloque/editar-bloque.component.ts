@@ -63,10 +63,10 @@ export class EditarBloqueComponent implements OnInit {
   //Obtenego datos del formulario y los paso al modelo de usuario
   getBloqueData(): BloqueModel {
     let model = new BloqueModel();
-    model.codigo=this.fgv.bloque.value;
+    model.codigo=parseInt(this.fgv.bloque.value);
     model.nombre = this.fgv.nombre.value;
     model.descripcion= this.fgv.descripcion.value;
-    model.codigoProyecto=this.fgv.proyecto.value;
+    model.codigoProyecto=parseInt(this.fgv.proyecto.value);
  
     
     return model;

@@ -34,7 +34,7 @@ export class EliminarCiudadComponent implements OnInit {
     });
   }
 
-  eliminacionBloque() {
+  eliminacionCiudad() {
     if (this.fgValidator.invalid) {
       alert('Formulario Invalido');
     } else {
@@ -45,7 +45,7 @@ export class EliminarCiudadComponent implements OnInit {
   //Obtenego datos del formulario y los paso al modelo de usuario
   getCiudadData(): number {
     
-    return this.fgv.ciudad.value;
+    return parseInt(this.fgv.ciudad.value);
   }
   get fgv() {
     return this.fgValidator.controls;

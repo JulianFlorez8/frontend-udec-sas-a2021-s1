@@ -59,11 +59,11 @@ export class EditarInmuebleComponent implements OnInit {
   //Obtenego datos del formulario y los paso al modelo de usuario
   getInmuebleData(): InmuebleModel {
     let model = new InmuebleModel();
-    model.codigo=this.fgv.inmueble.value;
+    model.codigo=parseInt(this.fgv.inmueble.value);
     model.identificador = this.fgv.identificador.value;
-    model.valor = this.fgv.valor.value;
+    model.valor = parseInt(this.fgv.valor.value);
     let proyecto= this.fgv.proyecto.value;
-    model.codigoBloque = this.fgv.bloque.value;
+    model.codigoBloque = parseInt(this.fgv.bloque.value);
     
     return model;
   }

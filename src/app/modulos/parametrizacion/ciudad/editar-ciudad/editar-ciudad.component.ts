@@ -53,9 +53,9 @@ export class EditarCiudadComponent implements OnInit {
   //Obtenego datos del formulario y los paso al modelo de usuario
   getCiudadData(): CiudadModel {
     let model = new CiudadModel();
-    model.codigo= this.fgv.ciudad.value;
+    model.codigo= parseInt(this.fgv.ciudad.value);
     model.nombre = this.fgv.nombre.value;
-    model.codigoPais= this.fgv.codigoPais.value;
+    model.codigoPais= parseInt(this.fgv.codigoPais.value);
     return model;
   }
   get fgv() {
@@ -73,8 +73,13 @@ export class EditarCiudadComponent implements OnInit {
           const opcion= document.createElement('option');
           let nombrePais= pais.nombre;
           let codigoPais= pais.codigo;
-          opcion.value = codigoPais.toString();
+          if (codigoPais)
+          {
+             opcion.value = codigoPais.toString();
           opcion.text= nombrePais;
+
+          }
+         
           if(selectorPais)
           {
             selectorPais.appendChild(opcion);

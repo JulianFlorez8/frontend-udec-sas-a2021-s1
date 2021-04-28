@@ -56,12 +56,12 @@ export class EditarProyectoComponent implements OnInit {
 
   getProyectoData(): ProyectoModel {
     let model = new ProyectoModel();
-    model.codigo= this.fgv.proyecto.value;
+    model.codigo= parseInt(this.fgv.proyecto.value);
     model.nombre = this.fgv.nombre.value;
     model.descripcion = this.fgv.descripcion.value;
     model.imagen = this.fgv.image.value;
-    model.documentoUsuario = this.fgv.documentoUsuario.value;
-    model.codigoCiudad = this.fgv.ciudad.value;
+    model.documentoUsuario = parseInt(this.fgv.documentoUsuario.value);
+    model.codigoCiudad =parseInt(this.fgv.ciudad.value);
 
    
     return model;
@@ -152,8 +152,12 @@ export class EditarProyectoComponent implements OnInit {
           const opcion= document.createElement('option');
           let nombrePais= pais.nombre;
           let codigoPais= pais.codigo;
-          opcion.value = codigoPais.toString();
+          if (codigoPais)
+          {
+             opcion.value = codigoPais.toString();
           opcion.text= nombrePais;
+
+          }
           if(selectorPais)
           {
             selectorPais.appendChild(opcion);

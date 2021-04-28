@@ -59,7 +59,7 @@ export class CrearInmuebleComponent implements OnInit {
     model.identificador = this.fgv.identificador.value;
     model.valor = this.fgv.valor.value;
     let proyecto= this.fgv.proyecto.value;
-    model.codigoBloque = this.fgv.bloque.value;
+    model.codigoBloque = parseInt(this.fgv.bloque.value);
     
     return model;
   }

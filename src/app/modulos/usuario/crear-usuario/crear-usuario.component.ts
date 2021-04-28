@@ -98,8 +98,12 @@ export class CrearUsuarioComponent implements OnInit {
           const opcion= document.createElement('option');
           let nombrePais= pais.nombre;
           let codigoPais= pais.codigo;
-          opcion.value = codigoPais.toString();
+          if (codigoPais)
+          {
+             opcion.value = codigoPais.toString();
           opcion.text= nombrePais;
+
+          }
           if(selectorPais)
           {
             selectorPais.appendChild(opcion);

@@ -54,7 +54,8 @@ export class EditarUsuarioComponent implements OnInit {
       alert('Formulario Invalido');
     } else {
       let usuario = this.getUsuarioData();
-      this.service.creacionUsuarios(usuario).subscribe((data) => {
+      let cc= parseInt(this.fgv.usuario.value);
+      this.service.actualizarUsuario(cc,usuario).subscribe((data) => {
         console.log(data);
         if (data) {
           alert('Actualizacion exitosa');
@@ -67,10 +68,11 @@ export class EditarUsuarioComponent implements OnInit {
   //Obtenego datos del formulario y los paso al modelo de usuario
   getUsuarioData(): UsuarioModel {
     let model = new UsuarioModel();
+    model.Documento= parseInt(this.fgv.usuarioA.value);
     model.Nombre = this.fgv.nombre.value;
     model.Apellido_1 = this.fgv.apellido1.value;
     model.Apellido_2 = this.fgv.apellido2.value;
-    model.Documento = this.fgv.usuarioA.value;
+ 
     model.Correo = this.fgv.correo.value;
     model.Celular = this.fgv.celular.value.toString();
     model.Rol = this.fgv.rol.value;
@@ -94,8 +96,12 @@ export class EditarUsuarioComponent implements OnInit {
           const opcion= document.createElement('option');
           let nombrePais= pais.nombre;
           let codigoPais= pais.codigo;
-          opcion.value = codigoPais.toString();
+          if (codigoPais)
+          {
+             opcion.value = codigoPais.toString();
           opcion.text= nombrePais;
+
+          }
           if(selectorPais)
           {
             selectorPais.appendChild(opcion);

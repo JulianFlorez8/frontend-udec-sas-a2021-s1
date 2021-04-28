@@ -44,7 +44,7 @@ export class CrearPaisComponent implements OnInit {
   //Obtenego datos del formulario y los paso al modelo de usuario
   getPaisData(): PaisModel {
     let model = new PaisModel();
-    model.nombre = this.fgv.nombre.value;
+    model.nombre = this.fgv.nombre.value.toString();
     
     return model;
   }
