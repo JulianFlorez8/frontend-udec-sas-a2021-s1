@@ -21,7 +21,7 @@ import { CiudadModel } from 'src/app/models/parametrizacion/ciudad.model';
 })
 export class CrearUsuarioComponent implements OnInit {
   fgValidator: FormGroup = this.fb.group({});
-  codigoPais?: string[];
+  codigoPais?: string;
   paises?: PaisModel[];
   ciudades?: CiudadModel[];
   constructor(

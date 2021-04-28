@@ -1,10 +1,64 @@
 <p>crear-proyecto works!</p>
 
-  <form [formGroup]="uploadForm">
+ 
 
-    <input formControlName="file" (change)="onFileSelect($event)" name="image" class="form-control" type="file">
-    <input type="button" value="Upload" (click)="cargarImagen()"/>
-</form>
-<form [formGroup]="fgValidator">
-    <input type="hidden" formControlName="image"/>
-</form>
+
+
+<!--<form [formGroup]="crearUsuarioValidator">-->
+  <section class="container">
+    <div class="row">
+      <h3 class="center-align">Creacion Proyecto</h3>
+      <article class="col s6 offset-s3">
+        <form [formGroup]="uploadForm">
+
+          <input formControlName="file" (change)="onFileSelect($event)" name="image" class="form-control" type="file">
+          <input type="button" value="Upload" (click)="cargarImagen()"/>
+      </form>
+        <form [formGroup]="fgValidator">
+          <div class="input-field">
+            <i class="material-icons prefix">perm_identity</i>
+            <label for="nombre">Nombre</label>
+            <input formControlName="nombre" type="text" name="nombre" required />
+          </div>
+          <div class="input-field">
+            <i class="material-icons prefix">perm_identity</i>
+            <label for="descripcion">Descripcion</label>
+            <input formControlName="descripcion" type="text" name="descripcion" required />
+          </div>
+          <input type="hidden" formControlName="image"/>
+          <div class="input-field">
+            <i class="material-icons prefix">perm_identity</i>
+            <label for="documentoUsuario"> Usuario</label>
+            <select formControlName="documentoUsuario" class="browser-default pl" id="documentoUsuario">
+              <option></option>
+            </select>
+          </div>
+          <div class="input-field">
+            <i class="material-icons prefix">perm_identity</i>
+            <label for="Pais">Pais</label>
+            <select   formControlName="pais" class="browser-default pl" id="pais">
+              <option></option>
+  
+            </select>
+          </div>
+          <div class="input-field">
+            <i class="material-icons prefix">perm_identity</i>
+            <label for="ciudad">Ciudad</label>
+            <select formControlName="ciudad" class="browser-default pl" id="ciudad">
+              <option></option>
+            </select>
+          </div>
+          <p class="center-align">
+            <button
+              class="waves-effect waves-light btn"
+              type="submit"
+              (click)="RegitrarProyecto()"
+            >
+              <i class="material-icons right"></i>Registrar
+            </button>
+          </p>
+        </form>
+      </article>
+    </div>
+  </section>
+  

@@ -1,1 +1,27 @@
-<p>crear-pais works!</p>
+
+<!--<form [formGroup]="crearUsuarioValidator">-->
+    <section class="container">
+        <div class="row">
+          <h3 class="center-align">Creacion Pais</h3>
+          <article class="col s6 offset-s3">
+            <form [formGroup]="fgValidator">
+              <div class="input-field">
+                <i class="material-icons prefix">perm_identity</i>
+                <label for="nombre">Nombre</label>
+                <input formControlName="nombre" type="text" name="nombre" required />
+              </div>
+
+              <p class="center-align">
+                <button
+                  class="waves-effect waves-light btn"
+                  type="submit"
+                  (click)="RegitrarPais()"
+                >
+                  <i class="material-icons right"></i>Registrar
+                </button>
+              </p>
+            </form>
+          </article>
+        </div>
+      </section>
+      
