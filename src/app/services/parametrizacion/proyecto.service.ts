@@ -25,7 +25,7 @@ export class ProyectoService {
     
     return this.http.post<ProyectoModel>( `${ServiceConfig.BASE_URL}${this.entity}`, model, {
       headers: new HttpHeaders({
-        Autorization: `Bearer ${this.token}`
+        Authorization: `Bearer ${this.token}`
       })
     })
   }
@@ -34,7 +34,9 @@ export class ProyectoService {
   }
   actualizarProyecto(id: number,model: ProyectoModel): Observable<ProyectoModel>{//Revisar retorno
     return this.http.put<ProyectoModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}`, model, {
-      headers: new HttpHeaders({})
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.token}`
+      })
     })
   }
   parcharProyecto(id: number,model: ProyectoModel): Observable<ProyectoModel>{//Revisar retorno

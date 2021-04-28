@@ -4,20 +4,27 @@ import { Observable } from 'rxjs';
 import { ServiceConfig } from 'src/app/config/service.config';
 import { BloqueModel } from 'src/app/models/parametrizacion/bloque.model';
 import { ProyectoModel } from 'src/app/models/parametrizacion/proyectos.model';
+import { SeguridadService } from '../seguridad/seguridad.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BloqueService {
+  token:String='';
   entity:String ='bloques';
   cuenta: String= 'bloques/count';
   constructor(
-    private http: HttpClient
-  ) { }
+    private http: HttpClient,
+    private servicioSeguridad: SeguridadService
+  ) { 
+    this.token= this.servicioSeguridad.getToken() 
+  }
   creacionBloque( model: BloqueModel): Observable <BloqueModel>{
     
     return this.http.post<BloqueModel>( `${ServiceConfig.BASE_URL}${this.entity}`, model, {
-      headers: new HttpHeaders({})
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.token}`
+      })
     })
   }
   obtenerCantidadBloques(): Observable<number>{
@@ -25,7 +32,9 @@ export class BloqueService {
   }
   actualizarBloque(id: number,model: BloqueModel): Observable<BloqueModel>{//Revisar retorno
     return this.http.put<BloqueModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}`, model, {
-      headers: new HttpHeaders({})
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.token}`
+      })
     })
   }
   parcharBloque(id: number,model: BloqueModel): Observable<BloqueModel>{//Revisar retorno

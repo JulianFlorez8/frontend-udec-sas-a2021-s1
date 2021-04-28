@@ -8,6 +8,7 @@ import { ResetearContrasenaModel } from '../models/seguridad/resetear-contrasena
 import { CiudadModel } from '../models/parametrizacion/ciudad.model';
 import { ClienteModel } from '../models/parametrizacion/cliente.model';
 import { ProyectoModel } from '../models/parametrizacion/proyectos.model';
+import { SeguridadService } from './seguridad/seguridad.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -17,12 +18,16 @@ export class UsuariosService {
   cambio:String= 'cambio-contrasena';
   reseteo: String= 'reset-password';
   cuenta: String= 'usuarios/count';
+  token:String='';
   constructor(
-    private http: HttpClient
-  ) { }
+    private http: HttpClient,
+    private servicioSeguridad: SeguridadService
+  ) {this.token= this.servicioSeguridad.getToken()  }
   creacionUsuarios( model: UsuarioModel): Observable <UsuarioModel>{
     return this.http.post<UsuarioModel>( `${ServiceConfig.BASE_URL}${this.entity}`, model, {
-      headers: new HttpHeaders({})
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.token}`
+      })
     })
   }
   cambiarContrasena(model:CambioContrasenaModel ): Observable<CambioContrasenaModel>{
@@ -40,7 +45,9 @@ export class UsuariosService {
   }
   actualizarUsuario(id: number,model: UsuarioModel): Observable<UsuarioModel>{//Revisar retorno
     return this.http.put<UsuarioModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}`, model, {
-      headers: new HttpHeaders({})
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.token}`
+      })
     })
   }
   parcharUsuario(id: number,model: UsuarioModel): Observable<UsuarioModel>{//Revisar retorno

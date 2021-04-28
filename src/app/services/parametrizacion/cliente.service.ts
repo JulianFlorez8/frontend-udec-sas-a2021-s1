@@ -6,18 +6,26 @@ import { InmuebleModel } from 'src/app/models/parametrizacion/inmueble.model';
 import { UsuarioModel } from 'src/app/models/usuario.model';
 import{ ServiceConfig} from '../../config/service.config';
 import{ClienteModel} from '../../models/parametrizacion/cliente.model';
+import { SeguridadService } from '../seguridad/seguridad.service';
 @Injectable({
   providedIn: 'root'
 })
 export class ClienteService {
   entity:String ='clientes';
+  token:String='';
+
   cuenta: String= 'clientes/count';
   constructor(
-    private http: HttpClient
-  ) { }
+    private http: HttpClient,
+    private servicioSeguridad: SeguridadService
+  ) {
+    this.token= this.servicioSeguridad.getToken() 
+  }
   creacionCliente( model: ClienteModel): Observable <ClienteModel>{
     return this.http.post<ClienteModel>( `${ServiceConfig.BASE_URL}${this.entity}`, model, {
-      headers: new HttpHeaders({})
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.token}`
+      })
     })
   }
   obtenerCantidadCliente(): Observable<number>{
@@ -25,7 +33,9 @@ export class ClienteService {
   }
   actualizarCliente(id: number,model: ClienteModel): Observable<ClienteModel>{//Revisar retorno
     return this.http.put<ClienteModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}`, model, {
-      headers: new HttpHeaders({})
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.token}`
+      })
     })
   }
   parcharCliente(id: number,model: ClienteModel): Observable<ClienteModel>{//Revisar retorno

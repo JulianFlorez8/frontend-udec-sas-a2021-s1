@@ -7,6 +7,7 @@ import { ClienteModel } from 'src/app/models/parametrizacion/cliente.model';
 import { PaisModel } from 'src/app/models/parametrizacion/pais.model';
 import { ProyectoModel } from 'src/app/models/parametrizacion/proyectos.model';
 import { UsuarioModel } from 'src/app/models/usuario.model';
+import { SeguridadService } from '../seguridad/seguridad.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +15,18 @@ import { UsuarioModel } from 'src/app/models/usuario.model';
 export class CiudadService {
   entity:String ='ciudads';
   cuenta: String= 'ciudads/count';
+  token:String='';
+
   constructor(
-    private http: HttpClient
-  ) { }
+    private http: HttpClient,
+    
+private servicioSeguridad: SeguridadService
+  ) { this.token= this.servicioSeguridad.getToken() }
   creacionCiudad( model: CiudadModel): Observable <CiudadModel>{
     return this.http.post<CiudadModel>( `${ServiceConfig.BASE_URL}${this.entity}`, model, {
-      headers: new HttpHeaders({})
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.token}`
+      })
     })
   }
   obtenerCantidadCiudades(): Observable<number>{
@@ -27,7 +34,9 @@ export class CiudadService {
   }
   actualizarCiudad(id: number,model: CiudadModel): Observable<CiudadModel>{//Revisar retorno
     return this.http.put<CiudadModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}`, model, {
-      headers: new HttpHeaders({})
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.token}`
+      })
     })
   }
   parcharCiudad(id: number,model: CiudadModel): Observable<CiudadModel>{//Revisar retorno

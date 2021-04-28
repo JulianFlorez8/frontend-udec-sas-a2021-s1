@@ -4,19 +4,26 @@ import { Observable } from 'rxjs';
 import { ServiceConfig } from 'src/app/config/service.config';
 import { BloqueModel } from 'src/app/models/parametrizacion/bloque.model';
 import { InmuebleModel } from 'src/app/models/parametrizacion/inmueble.model';
+import { SeguridadService } from '../seguridad/seguridad.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InmuebleService {
+  token:String='';
   entity:String ='inmuebles';
   cuenta: String= 'inmuebles/count';
   constructor(
-    private http: HttpClient
-  ) { }
+    private http: HttpClient,
+    private servicioSeguridad: SeguridadService
+  ) { 
+    this.token= this.servicioSeguridad.getToken()
+  }
   creacionInmueble( model: InmuebleModel): Observable <InmuebleModel>{
     return this.http.post<InmuebleModel>( `${ServiceConfig.BASE_URL}${this.entity}`, model, {
-      headers: new HttpHeaders({})
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.token}`
+      })
     })
   }
   obtenerCantidadInmueble(): Observable<number>{
@@ -24,7 +31,9 @@ export class InmuebleService {
   }
   actualizarInmueble(id: number,model: InmuebleModel): Observable<InmuebleModel>{//Revisar retorno
     return this.http.put<InmuebleModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}`, model, {
-      headers: new HttpHeaders({})
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.token}`
+      })
     })
   }
   parcharInmueble(id: number,model: InmuebleModel): Observable<InmuebleModel>{//Revisar retorno
