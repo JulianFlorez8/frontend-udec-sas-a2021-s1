@@ -1,1 +1,29 @@
-<p>eliminar-inmueble works!</p>
+<!--<p>¿Seguro desea eliminar al bloque: {{ objeto }} ?</p>-->
+
+<!--<form [formGroup]="crearUsuarioValidator">-->
+    <section class="container">
+        <div class="row">
+          <h3 class="center-align">Eliminar Inmueble</h3>
+          <article class="col s6 offset-s3">
+            <form [formGroup]="fgValidator">
+                <div class="input-field">
+                    <i class="material-icons prefix">perm_identity</i>
+                    <label for="inmueble">Inmueble</label>
+                    <select formControlName="inmueble" class="browser-default pl" id="inmueble">
+                      <option></option>
+                    </select>
+                  </div>
+              <p class="center-align">
+                <button
+                  class="waves-effect waves-light btn"
+                  type="submit"
+                  (click)="eliminacionInmueble()"
+                >
+                  <i class="material-icons right"></i>Eliminar
+                </button>
+              </p>
+            </form>
+          </article>
+        </div>
+      </section>
+      

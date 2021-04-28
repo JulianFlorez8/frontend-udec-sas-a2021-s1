@@ -53,6 +53,7 @@ export class CrearBloqueComponent implements OnInit {
   //Obtenego datos del formulario y los paso al modelo de usuario
   getBloqueData(): BloqueModel {
     let model = new BloqueModel();
+    model.codigo=0;
     model.nombre = this.fgv.nombre.value;
     model.descripcion= this.fgv.descripcion.value;
     model.codigoProyecto= this.fgv.proyecto.value;

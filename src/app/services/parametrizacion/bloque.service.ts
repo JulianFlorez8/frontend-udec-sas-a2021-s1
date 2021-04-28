@@ -42,7 +42,7 @@ export class BloqueService {
       headers: new HttpHeaders({})
     })
   }
-  obtenerBloque(id: number,model: BloqueModel): Observable<BloqueModel>{//Revisar retorno
+  obtenerBloque(id: number): Observable<BloqueModel>{//Revisar retorno
     return this.http.get<BloqueModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}`)
   }
   eliminarBloque(id: number){//Revisar retorno
