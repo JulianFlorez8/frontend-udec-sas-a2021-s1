@@ -33,13 +33,11 @@ const routes: Routes = [
   {
     path: 'editar-proyecto',
     component: EditarProyectoComponent,
-  }
-  ,
+  },
   {
     path: 'eliminar-proyecto',
     component: EliminarProyectoComponent,
-  }
-  ,
+  },
   {
     path: 'listar-proyecto',
     component: ListarProyectoComponent,
@@ -51,13 +49,11 @@ const routes: Routes = [
   {
     path: 'editar-cliente',
     component: EditarClienteComponent,
-  }
-  ,
+  },
   {
     path: 'eliminar-cliente',
     component: EliminarClienteComponent,
-  }
-  ,
+  },
   {
     path: 'listar-cliente',
     component: ListarClienteComponent,
@@ -69,13 +65,11 @@ const routes: Routes = [
   {
     path: 'editar-bloque',
     component: EditarBloqueComponent,
-  }
-  ,
+  },
   {
     path: 'eliminar-bloque',
     component: EliminarBloqueComponent,
-  }
-  ,
+  },
   {
     path: 'listar-bloque',
     component: ListarBloqueComponent,
@@ -83,17 +77,16 @@ const routes: Routes = [
   {
     path: 'crear-ciudad',
     component: CrearCiudadComponent,
+    outlet: 'modal',
   },
   {
     path: 'editar-ciudad',
     component: EditarCiudadComponent,
-  }
-  ,
+  },
   {
     path: 'eliminar-ciudad',
     component: EliminarCiudadComponent,
-  }
-  ,
+  },
   {
     path: 'listar-ciudad',
     component: ListarCiudadComponent,
@@ -105,13 +98,11 @@ const routes: Routes = [
   {
     path: 'editar-inmueble',
     component: EditarInmuebleComponent,
-  }
-  ,
+  },
   {
     path: 'eliminar-inmueble',
     component: EliminarInmuebleComponent,
-  }
-  ,
+  },
   {
     path: 'listar-inmueble',
     component: ListarInmuebleComponent,
@@ -123,21 +114,19 @@ const routes: Routes = [
   {
     path: 'editar-pais',
     component: EditarPaisComponent,
-  }
-  ,
+  },
   {
     path: 'eliminar-pais',
     component: EliminarPaisComponent,
-  }
-  ,
+  },
   {
     path: 'listar-pais',
     component: ListarPaisComponent,
-  }
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ParametrizacionRoutingModule { }
+export class ParametrizacionRoutingModule {}
