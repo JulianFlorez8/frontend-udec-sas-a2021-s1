@@ -10,103 +10,195 @@ import { UsuarioModel } from 'src/app/models/usuario.model';
 import { SeguridadService } from '../seguridad/seguridad.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CiudadService {
-  entity:String ='ciudads';
-  cuenta: String= 'ciudads/count';
-  token:String='';
+  entity: String = 'ciudads';
+  cuenta: String = 'ciudads/count';
+  token: String = '';
 
   constructor(
     private http: HttpClient,
-    
-private servicioSeguridad: SeguridadService
-  ) { this.token= this.servicioSeguridad.getToken() }
-  creacionCiudad( model: CiudadModel): Observable <CiudadModel>{
-    return this.http.post<CiudadModel>( `${ServiceConfig.BASE_URL}${this.entity}`, model, {
-      headers: new HttpHeaders({
-        Authorization: `Bearer ${this.token}`
-      })
-    })
+
+    private servicioSeguridad: SeguridadService
+  ) {
+    this.token = this.servicioSeguridad.getToken();
   }
-  obtenerCantidadCiudades(): Observable<number>{
-    return this.http.get<number>(`${ServiceConfig.BASE_URL}${this.cuenta}`)
+  creacionCiudad(model: CiudadModel): Observable<CiudadModel> {
+    return this.http.post<CiudadModel>(
+      `${ServiceConfig.BASE_URL}${this.entity}`,
+      model,
+      {
+        headers: new HttpHeaders({
+          Authorization: `Bearer ${this.token}`,
+        }),
+      }
+    );
   }
-  actualizarCiudad(id: number,model: CiudadModel): Observable<CiudadModel>{//Revisar retorno
-    return this.http.put<CiudadModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}`, model, {
-      headers: new HttpHeaders({
-        Authorization: `Bearer ${this.token}`
-      })
-    })
+  obtenerCantidadCiudades(): Observable<number> {
+    return this.http.get<number>(`${ServiceConfig.BASE_URL}${this.cuenta}`);
   }
-  parcharCiudad(id: number,model: CiudadModel): Observable<CiudadModel>{//Revisar retorno
-    return this.http.patch<CiudadModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}`, model, {
-      headers: new HttpHeaders({})
-    })
+  actualizarCiudad(id: number, model: CiudadModel): Observable<CiudadModel> {
+    //Revisar retorno
+    return this.http.put<CiudadModel>(
+      `${ServiceConfig.BASE_URL}${this.entity}/${id}`,
+      model,
+      {
+        headers: new HttpHeaders({
+          Authorization: `Bearer ${this.token}`,
+        }),
+      }
+    );
   }
-  obtenerCiudad(id: number,model: CiudadModel): Observable<CiudadModel>{//Revisar retorno
-    return this.http.get<CiudadModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}`)
+  parcharCiudad(id: number, model: CiudadModel): Observable<CiudadModel> {
+    //Revisar retorno
+    return this.http.patch<CiudadModel>(
+      `${ServiceConfig.BASE_URL}${this.entity}/${id}`,
+      model,
+      {
+        headers: new HttpHeaders({}),
+      }
+    );
   }
-  eliminarCiudad(id: number){//Revisar retorno
+  obtenerCiudad(id: number, model: CiudadModel): Observable<CiudadModel> {
+    //Revisar retorno
+    return this.http.get<CiudadModel>(
+      `${ServiceConfig.BASE_URL}${this.entity}/${id}`
+    );
+  }
+  eliminarCiudad(id: number) {
+    //Revisar retorno
     return this.http.delete(`${ServiceConfig.BASE_URL}${this.entity}/${id}`);
   }
-  obtenerCiudades():Observable<CiudadModel[]>{//Sin filtro
-    return this.http.get<CiudadModel[]>(`${ServiceConfig.BASE_URL}${this.entity}`)    
+  obtenerCiudadesCompletas(): Observable<CiudadModel[]> {
+    //Sin filtro
+    return this.http.get<CiudadModel[]>(
+      `${ServiceConfig.BASE_URL}${this.entity}`
+    );
   }
-  parcharUsuarios(model: CiudadModel):Observable<CiudadModel>{//Sin filtro
-    return this.http.patch<CiudadModel>( `${ServiceConfig.BASE_URL}${this.entity}`, model, {
-      headers: new HttpHeaders({})
-    })
+  obtenerCiudades(page: number): Observable<CiudadModel[]> {
+    //Sin filtro
+    let recordsByPage = ServiceConfig.recordsByPage;
+    let skip = (page - 1) * recordsByPage;
+    return this.http.get<CiudadModel[]>(
+      `${ServiceConfig.BASE_URL}${this.entity}?filter={"skip":${skip}, "limit":${recordsByPage}}`
+    );
   }
-  obtenerClientesCiudad(id: number): Observable<ClienteModel[]>{
-    return this.http.get<ClienteModel[]>(`${ServiceConfig.BASE_URL}${this.entity}/${id}/clientes`);
+  parcharUsuarios(model: CiudadModel): Observable<CiudadModel> {
+    //Sin filtro
+    return this.http.patch<CiudadModel>(
+      `${ServiceConfig.BASE_URL}${this.entity}`,
+      model,
+      {
+        headers: new HttpHeaders({}),
+      }
+    );
   }
-  eliminarClientesCiudad(id: number){
-    return this.http.delete(`${ServiceConfig.BASE_URL}${this.entity}/${id}/clientes`);
+  obtenerClientesCiudad(id: number): Observable<ClienteModel[]> {
+    return this.http.get<ClienteModel[]>(
+      `${ServiceConfig.BASE_URL}${this.entity}/${id}/clientes`
+    );
   }
-  parcharClientesCiudad(id: number, model: ClienteModel):Observable<ClienteModel>{
-    return this.http.patch<ClienteModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}/clientes`, model, {
-      headers: new HttpHeaders({})
-    })
+  eliminarClientesCiudad(id: number) {
+    return this.http.delete(
+      `${ServiceConfig.BASE_URL}${this.entity}/${id}/clientes`
+    );
   }
-  crearClientesCiudad(id: number, model: ClienteModel):Observable<ClienteModel>{
-    return this.http.post<ClienteModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}/clientes`, model, {
-      headers: new HttpHeaders({})
-    })
+  parcharClientesCiudad(
+    id: number,
+    model: ClienteModel
+  ): Observable<ClienteModel> {
+    return this.http.patch<ClienteModel>(
+      `${ServiceConfig.BASE_URL}${this.entity}/${id}/clientes`,
+      model,
+      {
+        headers: new HttpHeaders({}),
+      }
+    );
   }
-  obtenerProyectoCiudad(id: number): Observable<ProyectoModel[]>{
-    return this.http.get<ProyectoModel[]>(`${ServiceConfig.BASE_URL}${this.entity}/${id}/proyectos`);
+  crearClientesCiudad(
+    id: number,
+    model: ClienteModel
+  ): Observable<ClienteModel> {
+    return this.http.post<ClienteModel>(
+      `${ServiceConfig.BASE_URL}${this.entity}/${id}/clientes`,
+      model,
+      {
+        headers: new HttpHeaders({}),
+      }
+    );
   }
-  eliminarProyectoCiudad(id: number){
-    return this.http.delete(`${ServiceConfig.BASE_URL}${this.entity}/${id}/proyectos`);
+  obtenerProyectoCiudad(id: number): Observable<ProyectoModel[]> {
+    return this.http.get<ProyectoModel[]>(
+      `${ServiceConfig.BASE_URL}${this.entity}/${id}/proyectos`
+    );
   }
-  parcharProyectosCiudad(id: number, model: ProyectoModel):Observable<ProyectoModel>{
-    return this.http.patch<ProyectoModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}/proyectos`, model, {
-      headers: new HttpHeaders({})
-    })
+  eliminarProyectoCiudad(id: number) {
+    return this.http.delete(
+      `${ServiceConfig.BASE_URL}${this.entity}/${id}/proyectos`
+    );
   }
-  crearProyectosCiudad(id: number, model: ProyectoModel):Observable<ProyectoModel>{
-    return this.http.post<ProyectoModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}/proyectos`, model, {
-      headers: new HttpHeaders({})
-    })
+  parcharProyectosCiudad(
+    id: number,
+    model: ProyectoModel
+  ): Observable<ProyectoModel> {
+    return this.http.patch<ProyectoModel>(
+      `${ServiceConfig.BASE_URL}${this.entity}/${id}/proyectos`,
+      model,
+      {
+        headers: new HttpHeaders({}),
+      }
+    );
   }
-  obtenerUsuariosCiudad(id: number): Observable<UsuarioModel[]>{
-    return this.http.get<UsuarioModel[]>(`${ServiceConfig.BASE_URL}${this.entity}/${id}/usuarios`);
+  crearProyectosCiudad(
+    id: number,
+    model: ProyectoModel
+  ): Observable<ProyectoModel> {
+    return this.http.post<ProyectoModel>(
+      `${ServiceConfig.BASE_URL}${this.entity}/${id}/proyectos`,
+      model,
+      {
+        headers: new HttpHeaders({}),
+      }
+    );
   }
-  eliminarUsuariosCiudad(id: number){
-    return this.http.delete(`${ServiceConfig.BASE_URL}${this.entity}/${id}/usuarios`);
+  obtenerUsuariosCiudad(id: number): Observable<UsuarioModel[]> {
+    return this.http.get<UsuarioModel[]>(
+      `${ServiceConfig.BASE_URL}${this.entity}/${id}/usuarios`
+    );
   }
-  parcharUsuariosCiudad(id: number, model: UsuarioModel):Observable<UsuarioModel>{
-    return this.http.patch<UsuarioModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}/usuarios`, model, {
-      headers: new HttpHeaders({})
-    })
+  eliminarUsuariosCiudad(id: number) {
+    return this.http.delete(
+      `${ServiceConfig.BASE_URL}${this.entity}/${id}/usuarios`
+    );
   }
-  crearUsuariosCiudad(id: number, model: UsuarioModel):Observable<UsuarioModel>{
-    return this.http.post<UsuarioModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}/usuarios`, model, {
-      headers: new HttpHeaders({})
-    })
+  parcharUsuariosCiudad(
+    id: number,
+    model: UsuarioModel
+  ): Observable<UsuarioModel> {
+    return this.http.patch<UsuarioModel>(
+      `${ServiceConfig.BASE_URL}${this.entity}/${id}/usuarios`,
+      model,
+      {
+        headers: new HttpHeaders({}),
+      }
+    );
   }
-  obtenerPaisesCiudad(id: number): Observable<PaisModel[]>{
-    return this.http.get<PaisModel[]>(`${ServiceConfig.BASE_URL}${this.entity}/${id}/pais`);
+  crearUsuariosCiudad(
+    id: number,
+    model: UsuarioModel
+  ): Observable<UsuarioModel> {
+    return this.http.post<UsuarioModel>(
+      `${ServiceConfig.BASE_URL}${this.entity}/${id}/usuarios`,
+      model,
+      {
+        headers: new HttpHeaders({}),
+      }
+    );
+  }
+  obtenerPaisesCiudad(id: number): Observable<PaisModel[]> {
+    return this.http.get<PaisModel[]>(
+      `${ServiceConfig.BASE_URL}${this.entity}/${id}/pais`
+    );
   }
 }

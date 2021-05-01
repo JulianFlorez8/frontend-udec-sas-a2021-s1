@@ -9,12 +9,13 @@ import { CiudadService } from '../../../../services/parametrizacion/ciudad.servi
 export class ListarCiudadComponent implements OnInit {
   constructor(private service: CiudadService) {}
   lista: CiudadModel[] = [];
+  page = 5;
   ngOnInit(): void {
     this.obtenerLista();
   }
 
   obtenerLista() {
-    this.service.obtenerCiudades().subscribe(
+    this.service.obtenerCiudades(this.page).subscribe(
       (datos) => {
         this.lista = datos;
         console.log(this.lista);

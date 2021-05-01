@@ -8,19 +8,18 @@ import { SeguridadService } from 'src/app/services/seguridad/seguridad.service';
 @Component({
   selector: 'app-eliminar-cliente',
   templateUrl: './eliminar-cliente.component.html',
-  styleUrls: ['./eliminar-cliente.component.css']
+  styleUrls: ['./eliminar-cliente.component.css'],
 })
 export class EliminarClienteComponent implements OnInit {
-
   suscripcion?: Subscription;
   fgValidator: FormGroup = this.fb.group({});
   clientes?: ClienteModel[];
   objeto: string | undefined = '';
   constructor(
-    private fb: FormBuilder, 
+    private fb: FormBuilder,
     private service: ClienteService,
     private serviceSeguridad: SeguridadService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.FormularioValidacion();
@@ -29,11 +28,10 @@ export class EliminarClienteComponent implements OnInit {
   FormularioValidacion() {
     this.fgValidator = this.fb.group({
       cliente: ['', [Validators.required]],
-      
     });
   }
 
-  eliminacionBloque() {
+  eliminacionCliente() {
     if (this.fgValidator.invalid) {
       alert('Formulario Invalido');
     } else {
@@ -43,46 +41,34 @@ export class EliminarClienteComponent implements OnInit {
   }
   //Obtenego datos del formulario y los paso al modelo de usuario
   getClienteData(): number {
-    
     return this.fgv.cliente.value;
   }
   get fgv() {
     return this.fgValidator.controls;
   }
-  llenarCliente(){
-    this.service.obtenerClientes().subscribe(clientees=>{
+  llenarCliente() {
+    this.service.obtenerClientes().subscribe((clientees) => {
       //console.log(paises);
-      this.clientes=clientees;
+      this.clientes = clientees;
       //console.log(this.paises[0].nombre);
-      const selectorProyecto=document.getElementById('cliente');
-      this.clientes?.forEach(
-        cliente=>{
-          const opcion= document.createElement('option');
-          let nombrecliente= cliente.Nombre+' '+ cliente.Apellido_1;
-          let codigocliente= cliente.Documento;
-          if(codigocliente)
-          {
-            opcion.value = codigocliente.toString();
-          opcion.text= nombrecliente;
-          }
-          
-          if(selectorProyecto)
-          {
-            selectorProyecto.appendChild(opcion);
-          }
+      const selectorProyecto = document.getElementById('cliente');
+      this.clientes?.forEach((cliente) => {
+        const opcion = document.createElement('option');
+        let nombrecliente = cliente.Nombre + ' ' + cliente.Apellido_1;
+        let codigocliente = cliente.Documento;
+        if (codigocliente) {
+          opcion.value = codigocliente.toString();
+          opcion.text = nombrecliente;
         }
-      )
-     
-    })
+
+        if (selectorProyecto) {
+          selectorProyecto.appendChild(opcion);
+        }
+      });
+    });
   }
-  
-  
 
-
-
-
-  eliminarCliente(idBCliente: number){
+  eliminarCliente(idBCliente: number) {
     this.service.eliminarCliente(idBCliente);
-    
   }
 }

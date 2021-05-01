@@ -9,19 +9,18 @@ import { SeguridadService } from 'src/app/services/seguridad/seguridad.service';
 @Component({
   selector: 'app-eliminar-ciudad',
   templateUrl: './eliminar-ciudad.component.html',
-  styleUrls: ['./eliminar-ciudad.component.css']
+  styleUrls: ['./eliminar-ciudad.component.css'],
 })
 export class EliminarCiudadComponent implements OnInit {
-
   suscripcion?: Subscription;
   fgValidator: FormGroup = this.fb.group({});
   ciudades?: CiudadModel[];
   objeto: string | undefined = '';
   constructor(
-    private fb: FormBuilder, 
+    private fb: FormBuilder,
     private service: CiudadService,
     private serviceSeguridad: SeguridadService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.FormularioValidacion();
@@ -30,7 +29,6 @@ export class EliminarCiudadComponent implements OnInit {
   FormularioValidacion() {
     this.fgValidator = this.fb.group({
       ciudad: ['', [Validators.required]],
-      
     });
   }
 
@@ -44,43 +42,34 @@ export class EliminarCiudadComponent implements OnInit {
   }
   //Obtenego datos del formulario y los paso al modelo de usuario
   getCiudadData(): number {
-    
     return parseInt(this.fgv.ciudad.value);
   }
   get fgv() {
     return this.fgValidator.controls;
   }
-  llenarCiudades(){
-    this.service.obtenerCiudades().subscribe(bloques=>{
+  llenarCiudades() {
+    this.service.obtenerCiudadesCompletas().subscribe((bloques) => {
       //console.log(paises);
-      this.ciudades=bloques;
+      this.ciudades = bloques;
       //console.log(this.paises[0].nombre);
-      const selectorProyecto=document.getElementById('ciudad');
-      this.ciudades?.forEach(
-        bloque=>{
-          const opcion= document.createElement('option');
-          let nombrebloque= bloque.nombre;
-          let codigobloque= bloque.codigo;
-          if(codigobloque)
-          {
-            opcion.value = codigobloque.toString();
-          opcion.text= nombrebloque;
-          }
-          
-          if(selectorProyecto)
-          {
-            selectorProyecto.appendChild(opcion);
-          }
+      const selectorProyecto = document.getElementById('ciudad');
+      this.ciudades?.forEach((bloque) => {
+        const opcion = document.createElement('option');
+        let nombrebloque = bloque.nombre;
+        let codigobloque = bloque.codigo;
+        if (codigobloque) {
+          opcion.value = codigobloque.toString();
+          opcion.text = nombrebloque;
         }
-      )
-     
-    })
+
+        if (selectorProyecto) {
+          selectorProyecto.appendChild(opcion);
+        }
+      });
+    });
   }
 
-
-
-  eliminarCiudad(idCiudad: number){
+  eliminarCiudad(idCiudad: number) {
     this.service.eliminarCiudad(idCiudad);
-    
   }
 }
