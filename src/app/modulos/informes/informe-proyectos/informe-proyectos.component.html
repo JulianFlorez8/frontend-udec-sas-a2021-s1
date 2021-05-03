@@ -1,1 +1,24 @@
 <p>informe-proyectos works!</p>
+BARRAS O TORTA
+select pais o ciudad 
+vendidos y no vendidos
+
+    <section class="container">
+        <div class="row">
+          <h2 class="center-align">INFORME PROYECTOS</h2>
+          <article class="col s6 offset-s3">
+            <form [formGroup]="fgValidator">
+             
+              <div class="input-field">
+                  <h4>Seleccione el pais:</h4>
+                
+                <label for="pais">Pais</label>
+                <select formControlName="pais" class="browser-default pl" id="pais">
+                  <option></option>
+                </select>
+              </div>
+              </form>
+          </article>
+        </div>
+      </section>
+      

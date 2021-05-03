@@ -33,7 +33,7 @@ export class EliminarClienteComponent implements OnInit {
     });
   }
 
-  eliminacionBloque() {
+  eliminacionCliente() {
     if (this.fgValidator.invalid) {
       alert('Formulario Invalido');
     } else {

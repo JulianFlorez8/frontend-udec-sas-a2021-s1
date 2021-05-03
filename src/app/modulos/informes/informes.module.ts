@@ -5,6 +5,8 @@ import { InformesRoutingModule } from './informes-routing.module';
 import { InformeVentasComponent } from './informe-ventas/informe-ventas.component';
 import { InformeProyectosComponent } from './informe-proyectos/informe-proyectos.component';
 import { InformePagosComponent } from './informe-pagos/informe-pagos.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -15,7 +17,10 @@ import { InformePagosComponent } from './informe-pagos/informe-pagos.component';
   ],
   imports: [
     CommonModule,
-    InformesRoutingModule
+    InformesRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ]
 })
 export class InformesModule { }

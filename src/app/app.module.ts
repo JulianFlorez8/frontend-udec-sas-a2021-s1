@@ -10,7 +10,6 @@ import { Error404Component } from './publico/errores/error404/error404.component
 import { HttpClientModule } from '@angular/common/http';
 import { NgxCaptchaModule } from 'ngx-captcha';
 import { ModalComponent } from './publico/paginaMaestra/modal/modal.component';
-import { CrearUsuarioComponent } from './modulos/usuario/crear-usuario/crear-usuario.component';
 @NgModule({
   declarations: [
     AppComponent,

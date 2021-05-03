@@ -1,1 +1,19 @@
-<p>informe-pagos works!</p>
+<p>informe-pagos works!</p>TORTA select con los clientes
+<section class="container">
+    <div class="row">
+      <h2 class="center-align">INFORME PAGOS</h2>
+      <article class="col s6 offset-s3">
+        <form [formGroup]="fgValidator">
+         
+          <div class="input-field">
+              <h4>Seleccione el cliente:</h4>
+            
+            <label for="cliente"></label>
+            <select formControlName="cliente" class="browser-default pl" id="cliente">
+              <option></option>
+            </select>
+          </div>
+          </form>
+      </article>
+    </div>
+  </section>
