@@ -1,29 +1,24 @@
 <!--<p>¿Seguro desea eliminar al bloque: {{ objeto }} ?</p>-->
 
 <!--<form [formGroup]="crearUsuarioValidator">-->
-    <section class="container">
-        <div class="row">
-          <h3 class="center-align">Eliminar Bloque</h3>
-          <article class="col s6 offset-s3">
-            <form [formGroup]="fgValidator">
-                <div class="input-field">
-                    <i class="material-icons prefix">perm_identity</i>
-                    <label for="bloque">Bloque</label>
-                    <select formControlName="bloque" class="browser-default pl" id="bloque">
-                      <option></option>
-                    </select>
-                  </div>
-              <p class="center-align">
-                <button
-                  class="waves-effect waves-light btn"
-                  type="submit"
-                  (click)="eliminacionBloque()"
-                >
-                  <i class="material-icons right"></i>Eliminar
-                </button>
-              </p>
-            </form>
-          </article>
-        </div>
-      </section>
-      
+  <section class="container">
+    <div class="row">
+      <h3 class="center-align">Eliminar Bloque</h3>
+      <article class="col s6 offset-s3">
+        
+          
+          <h4 ><p id="codigo"></p></h4>
+          <p class="center-align">
+            <button
+              class="waves-effect waves-light btn"
+              type="submit"
+              (click)="eliminarBloque()"
+            >
+              <i class="material-icons right"></i>Eliminar
+            </button>
+          </p>
+        
+      </article>
+    </div>
+  </section>
+  

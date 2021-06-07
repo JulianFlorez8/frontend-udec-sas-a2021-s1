@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { PaisModel } from 'src/app/models/parametrizacion/pais.model';
 import { PaisService } from 'src/app/services/parametrizacion/pais.service';
@@ -12,76 +13,28 @@ import { SeguridadService } from 'src/app/services/seguridad/seguridad.service';
 })
 export class EliminarPaisComponent implements OnInit {
 
-  suscripcion?: Subscription;
-  fgValidator: FormGroup = this.fb.group({});
-  paises?: PaisModel[];
-  objeto: string | undefined = '';
   constructor(
     private fb: FormBuilder, 
     private service: PaisService,
-    private serviceSeguridad: SeguridadService
-  ) { }
-
+    private serviceSeguridad: SeguridadService,
+    private router: Router,
+    private route: ActivatedRoute,
+    ) {
+      this.elementoID= this.route.snapshot.params["codigo"];
+    }
+    elementoID: string='';
   ngOnInit(): void {
-    this.FormularioValidacion();
-    this.llenarPaiss();
+    this.ponerValor();
   }
-  FormularioValidacion() {
-    this.fgValidator = this.fb.group({
-      pais: ['', [Validators.required]],
-      
-    });
-  }
-
-  eliminacionPais() {
-    if (this.fgValidator.invalid) {
-      alert('Formulario Invalido');
-    } else {
-      let pais = this.getPaisData();
-      this.eliminarPais(pais);
+  ponerValor(){
+    const selectorProyecto=document.getElementById('codigo');
+    if( selectorProyecto)
+    {
+      selectorProyecto.innerText="¿Seguro desea eliminar al pais  "+ this.elementoID+ " ?";
     }
   }
-  //Obtenego datos del formulario y los paso al modelo de usuario
-  getPaisData(): number {
-    
-    return this.fgv.pais.value;
-  }
-  get fgv() {
-    return this.fgValidator.controls;
-  }
-  llenarPaiss(){
-    this.service.obtenerPaises().subscribe(paises=>{
-      //console.log(paises);
-      this.paises=paises;
-      //console.log(this.paises[0].nombre);
-      const selectorProyecto=document.getElementById('pais');
-      this.paises?.forEach(
-        pais=>{
-          const opcion= document.createElement('option');
-          let nombrepais= pais.nombre;
-          let codigopais= pais.codigo;
-          if(codigopais)
-          {
-            opcion.value = codigopais.toString();
-          opcion.text= nombrepais;
-          }
-          
-          if(selectorProyecto)
-          {
-            selectorProyecto.appendChild(opcion);
-          }
-        }
-      )
-     
-    })
-  }
-  
-  eliminarPais(idPais: number){
-    this.service.eliminarPais(idPais);
+  eliminarPais(){
+    this.service.eliminarPais(parseInt(this.elementoID));
     
   }
-
-
-
-
 }

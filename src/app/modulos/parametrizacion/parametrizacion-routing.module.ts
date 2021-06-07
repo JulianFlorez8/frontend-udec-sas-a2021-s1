@@ -111,7 +111,7 @@ const routes: Routes = [
     outlet: 'modal',
   },
   {
-    path: 'eliminar-inmueble',
+    path: 'eliminar-inmueble/:codigo',
     component: EliminarInmuebleComponent,
     outlet: 'modal',
   },
