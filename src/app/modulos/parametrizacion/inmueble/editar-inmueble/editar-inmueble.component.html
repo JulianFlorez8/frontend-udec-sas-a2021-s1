@@ -5,22 +5,21 @@
           <h3 class="center-align">Edicion Inmueble</h3>
           <article class="col s6 offset-s3">
             <form [formGroup]="fgValidator">
-                <div class="input-field">
+                
+                  <div class="input-field">
                     <i class="material-icons prefix">perm_identity</i>
-                    <label for="inmueble">Inmueble</label>
-                    <select formControlName="inmueble" class="browser-default pl" id="inmueble">
-                      <option></option>
-                    </select>
+                    <label for="codigo"></label>
+                    <input formControlName="codigo" type="number" name="codigo" required />
                   </div>
               <div class="input-field">
                 <i class="material-icons prefix">perm_identity</i>
-                <label for="identificador">Identificador</label>
+                <label for="identificador"></label>
                 <input formControlName="identificador" type="text" name="identificador" required />
               </div>
       
               <div class="input-field">
                 <i class="material-icons prefix">person_pin</i>
-                <label for="valor">Valor:</label>
+                <label for="valor"></label>
                 <input
                   formControlName="valor"
                   type="number"
@@ -29,25 +28,21 @@
                 />
               </div>
               <div class="input-field">
-                <i class="material-icons prefix">perm_identity</i>
-                <label for="proyecto">Proyecto</label>
-                <select formControlName="proyecto" class="browser-default pl" id="proyecto">
-                  <option></option>
-                </select>
+                <i class="material-icons prefix">person_pin</i>
+                <label for="codigoBloque"></label>
+                <input
+                  formControlName="codigoBloque"
+                  type="number"
+                  name="codigoBloque"
+                  required
+                />
               </div>
-             
-              <div class="input-field">
-                <i class="material-icons prefix">perm_identity</i>
-                <label for="bloque">Bloque</label>
-                <select formControlName="bloque" class="browser-default pl" id="bloque">
-                  <option></option>
-                </select>
-              </div>
+              
               <p class="center-align">
                 <button
                   class="waves-effect waves-light btn"
                   type="submit"
-                  (click)="RegitrarInmueble()"
+                  (click)="ActualizarInmueble()"
                 >
                   <i class="material-icons right"></i>Actualizar
                 </button>

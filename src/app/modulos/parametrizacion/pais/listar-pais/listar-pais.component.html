@@ -35,10 +35,20 @@
         {{ x.nombre }}
       </td>
       <td>
-        <a class="edit" routerLink="../editar-ciudad/{{ x }}.Documento"
+        <a class="edit  modal-trigger"
+        data-target="modal1"
+        [routerLink]="[
+          '/parametrizacion',
+          { outlets: { modal: ['editar-pais'] } }
+        ]"
           ><i class="orange-text material-icons" title="Edit">&#xE254;</i></a
         >
-        <a class="delete" routerLink="../eliminar-ciudad/{{ x }}.Documento"
+        <a class="delete  modal-trigger"
+        data-target="modal1"
+        [routerLink]="[
+          '/parametrizacion',
+          { outlets: { modal: ['eliminar-pais'] } }
+        ]"
           ><i class="red-text material-icons" title="Delete">&#xE872;</i></a
         >
       </td>

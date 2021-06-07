@@ -41,11 +41,19 @@ export class InmuebleService {
       headers: new HttpHeaders({})
     })
   }
-  obtenerInmueble(id: number,model: InmuebleModel): Observable<InmuebleModel>{//Revisar retorno
-    return this.http.get<InmuebleModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}`)
+  obtenerInmueble(id: number): Observable<InmuebleModel>{//Revisar retorno
+    return this.http.get<InmuebleModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}`, {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.token}`
+      })
+    })
   }
   eliminarInmueble(id: number){//Revisar retorno
-    return this.http.delete(`${ServiceConfig.BASE_URL}${this.entity}/${id}`);
+    return this.http.delete(`${ServiceConfig.BASE_URL}${this.entity}/${id}`,{
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.token}`
+      })
+    })
   }
   obtenerInmuebles():Observable<InmuebleModel[]>{//Sin filtro
     return this.http.get<InmuebleModel[]>(`${ServiceConfig.BASE_URL}${this.entity}`)    

@@ -96,7 +96,7 @@ export class CrearInmuebleComponent implements OnInit {
           const list = e.target;
         
           let idProyecto=this.fgv.proyecto.value
-          console.log(idProyecto);
+          //console.log(idProyecto);
           this.llenarBloques(idProyecto);
     })
 

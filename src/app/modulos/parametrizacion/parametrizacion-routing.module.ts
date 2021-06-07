@@ -32,12 +32,14 @@ const routes: Routes = [
     outlet: 'modal',
   },
   {
-    path: 'editar-proyecto',
+    path: 'editar-proyecto/:id',
     component: EditarProyectoComponent,
+    outlet: 'modal',
   },
   {
-    path: 'eliminar-proyecto',
+    path: 'eliminar-proyecto/:id',
     component: EliminarProyectoComponent,
+    outlet: 'modal',
   },
   {
     path: 'listar-proyecto',
@@ -48,11 +50,11 @@ const routes: Routes = [
     component: CrearClienteComponent,
   },
   {
-    path: 'editar-cliente',
+    path: 'editar-cliente/:id',
     component: EditarClienteComponent,
   },
   {
-    path: 'eliminar-cliente',
+    path: 'eliminar-cliente/:id',
     component: EliminarClienteComponent,
   },
   {
@@ -65,12 +67,14 @@ const routes: Routes = [
     outlet: 'modal',
   },
   {
-    path: 'editar-bloque',
+    path: 'editar-bloque/:id',
     component: EditarBloqueComponent,
+    outlet: 'modal',
   },
   {
-    path: 'eliminar-bloque',
+    path: 'eliminar-bloque/:id',
     component: EliminarBloqueComponent,
+    outlet: 'modal',
   },
   {
     path: 'listar-bloque',
@@ -83,12 +87,14 @@ const routes: Routes = [
     outlet: 'modal',
   },
   {
-    path: 'editar-ciudad',
+    path: 'editar-ciudad/:id',
     component: EditarCiudadComponent,
+    outlet: 'modal',
   },
   {
-    path: 'eliminar-ciudad',
+    path: 'eliminar-ciudad/:id',
     component: EliminarCiudadComponent,
+    outlet: 'modal',
   },
   {
     path: 'listar-ciudad',
@@ -100,12 +106,14 @@ const routes: Routes = [
     outlet: 'modal',
   },
   {
-    path: 'editar-inmueble',
+    path: 'editar-inmueble/:codigo',
     component: EditarInmuebleComponent,
+    outlet: 'modal',
   },
   {
     path: 'eliminar-inmueble',
     component: EliminarInmuebleComponent,
+    outlet: 'modal',
   },
   {
     path: 'listar-inmueble',
@@ -117,12 +125,14 @@ const routes: Routes = [
     outlet: 'modal',
   },
   {
-    path: 'editar-pais',
+    path: 'editar-pais/:id',
     component: EditarPaisComponent,
+    outlet: 'modal',
   },
   {
-    path: 'eliminar-pais',
+    path: 'eliminar-pais/:id',
     component: EliminarPaisComponent,
+    outlet: 'modal',
   },
   {
     path: 'listar-pais',
