@@ -1,32 +1,32 @@
-
 <!--<form [formGroup]="crearUsuarioValidator">-->
-    <section class="container">
-        <div class="row">
-          <h3 class="center-align">Edicion Pais</h3>
-          <article class="col s6 offset-s3">
-            <form [formGroup]="fgValidator">
-                <div class="input-field">
-                  <i class="material-icons prefix">perm_identity</i>
-                  <label for="codigo"></label>
-                  <input formControlName="codigo" type="text" name="codigo" required />
-                  </div>
-              <div class="input-field">
-                <i class="material-icons prefix">perm_identity</i>
-                <label for="nombre"></label>
-                <input formControlName="nombre" type="text" name="nombre" required />
-              </div>
-
-              <p class="center-align">
-                <button
-                  class="waves-effect waves-light btn"
-                  type="submit"
-                  (click)="ActualizarPais()"
-                >
-                  <i class="material-icons right"></i>Actualizar
-                </button>
-              </p>
-            </form>
-          </article>
+<section class="container">
+  <div class="row">
+    <h3 class="center-align">Edicion Pais</h3>
+    <article class="col s6 offset-s3">
+      <form [formGroup]="fgValidator">
+        <label>Código</label>
+        <div class="input-field">
+          <i class="material-icons prefix">perm_identity</i>
+          <label for="codigo"></label>
+          <input formControlName="codigo" type="text" name="codigo" required />
         </div>
-      </section>
-      
+        <label>Nombre</label>
+        <div class="input-field">
+          <i class="material-icons prefix">perm_identity</i>
+          <label for="nombre"></label>
+          <input formControlName="nombre" type="text" name="nombre" required />
+        </div>
+
+        <p class="center-align">
+          <button
+            class="waves-effect waves-light btn"
+            type="submit"
+            (click)="ActualizarPais()"
+          >
+            <i class="material-icons right"></i>Actualizar
+          </button>
+        </p>
+      </form>
+    </article>
+  </div>
+</section>

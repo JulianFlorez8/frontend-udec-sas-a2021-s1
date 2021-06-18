@@ -1,91 +1,99 @@
 <!--<form [formGroup]="crearUsuarioValidator">-->
-    <section class="container">
-        <div class="row">
-          <h3 class="center-align">Actualizacion Usuarios</h3>
-          <article class="col s6 offset-s3">
-            <form [formGroup]="fgValidator">
-                
-                  <div class="input-field">
-                    <i class="material-icons prefix">perm_identity</i>
-                    <label for="Documento"></label>
-                    <input formControlName="Documento" type="text" name="Documento" required />
-                  </div>
-              <div class="input-field">
-                <i class="material-icons prefix">perm_identity</i>
-                <label for="nombre"></label>
-                <input formControlName="Nombre" type="text" name="nombre" required />
-              </div>
-      
-              <div class="input-field">
-                <i class="material-icons prefix">person_pin</i>
-                <label for="apellido"> </label>
-                <input
-                  formControlName="Apellido_1"
-                  type="text"
-                  name="apellido1"
-                  required
-                />
-              </div>
-              <div class="input-field">
-                <i class="material-icons prefix">person_pin</i>
-                <label for="apellido"> </label>
-                <input formControlName="Apellido_2" type="text" name="apellido2" />
-              </div>
-            
-              <div class="input-field">
-                <i class="material-icons prefix">email</i>
-                <label for="email"></label>
-                <input formControlName="Correo" type="email" name="correo" required />
-              </div>
-      
-              <div class="input-field">
-                <i class="material-icons prefix">person_pin</i>
-                <label for="celular"></label>
-                <input
-                  formControlName="Celular"
-                  type="number"
-                  name="celular"
-                  required
-                />
-              </div>
-              <div class="input-field">
-                <i class="material-icons prefix">person_pin</i>
-                <label for="Rol"> </label>
-                <input formControlName="Rol" type="text" name="Rol" />
-              </div>
-              <div class="input-field">
-                <i class="material-icons prefix">perm_identity</i>
-                <label for="usuario"></label>
-                <input
-                  formControlName="Usuario"
-                  type="text"
-                  name="usuario"
-                  required
-                />
-              </div>
-              <div class="input-field">
-                <i class="material-icons prefix">perm_identity</i>
-                <label for="Ciudad"></label>
-                <input
-                  formControlName="Ciudad"
-                  type="text"
-                  name="Ciudad"
-                  required
-                />
-              </div>
-              <p class="center-align">
-                <button
-                  class="waves-effect waves-light btn"
-                  type="submit"
-                  (click)="editarUsuario()"
-                  routerLink="[usuario/listar-usuario,{ outlets: { modal: null}]"
-                >
-                  <i class="material-icons right"></i>Actualizar
-                </button>
-                <a routerLink="[{ outlets: { modal: null } }]"></a>
-              </p>
-            </form>
-          </article>
+<section class="container">
+  <div class="row">
+    <h3 class="center-align">Actualizacion Usuarios</h3>
+    <article class="col s6 offset-s3">
+      <form [formGroup]="fgValidator">
+        <div class="test">
+          <label>Documento</label>
+          <div class="input-field">
+            <i class="material-icons prefix">perm_identity</i>
+            <label for="Documento"></label>
+            <input
+              formControlName="Documento"
+              type="text"
+              name="Documento"
+              required
+            />
+          </div>
         </div>
-      </section>
-      
+        <label>Nombre</label>
+        <div class="input-field">
+          <i class="material-icons prefix">perm_identity</i>
+          <input formControlName="Nombre" type="text" name="nombre" required />
+        </div>
+        <label>Apellido 1</label>
+        <div class="input-field">
+          <i class="material-icons prefix">person_pin</i>
+          <label for="apellido"> </label>
+          <input
+            formControlName="Apellido_1"
+            type="text"
+            name="apellido1"
+            required
+          />
+        </div>
+        <label>Apellido 2</label>
+        <div class="input-field">
+          <i class="material-icons prefix">person_pin</i>
+          <label for="apellido"> </label>
+          <input formControlName="Apellido_2" type="text" name="apellido2" />
+        </div>
+
+        <label>Correo</label>
+        <div class="input-field">
+          <i class="material-icons prefix">email</i>
+          <label for="email"></label>
+          <input formControlName="Correo" type="email" name="correo" required />
+        </div>
+
+        <label>Celular</label>
+        <div class="input-field">
+          <i class="material-icons prefix">person_pin</i>
+          <label for="celular"></label>
+          <input
+            formControlName="Celular"
+            type="number"
+            name="celular"
+            required
+          />
+        </div>
+
+        <label>Rol</label>
+        <div class="input-field">
+          <i class="material-icons prefix">person_pin</i>
+          <label for="Rol"> </label>
+          <input formControlName="Rol" type="text" name="Rol" />
+        </div>
+        <label>Usuario</label>
+        <div class="input-field">
+          <i class="material-icons prefix">perm_identity</i>
+          <label for="usuario"></label>
+          <input
+            formControlName="Usuario"
+            type="text"
+            name="usuario"
+            required
+          />
+        </div>
+        <label>Ciudad</label>
+        <div class="input-field">
+          <i class="material-icons prefix">perm_identity</i>
+          <label for="Ciudad"></label>
+          <input formControlName="Ciudad" type="text" name="Ciudad" required />
+        </div>
+        <p class="center-align">
+          <button
+            class="waves-effect waves-light btn"
+            type="submit"
+            (click)="editarUsuario()"
+            routerLink="[usuario/listar-usuario,{ outlets: { modal: null}]"
+          >
+            <i class="material-icons right"></i>Actualizar
+          </button>
+          <a routerLink="[{ outlets: { modal: null } }]"></a>
+        </p>
+      </form>
+    </article>
+  </div>
+</section>
