@@ -13,15 +13,18 @@ import { SeguridadService } from '../seguridad/seguridad.service';
 export class ClienteService {
   entity:String ='clientes';
   token:String='';
+  documentoUsuario:number=0
 
   cuenta: String= 'clientes/count';
   constructor(
     private http: HttpClient,
     private servicioSeguridad: SeguridadService
   ) {
-    this.token= this.servicioSeguridad.getToken() 
+    this.token= this.servicioSeguridad.getToken();
+    this.documentoUsuario= this.servicioSeguridad.getDocumento();
   }
   creacionCliente( model: ClienteModel): Observable <ClienteModel>{
+    model.documentoUsuario= this.documentoUsuario;
     return this.http.post<ClienteModel>( `${ServiceConfig.BASE_URL}${this.entity}`, model, {
       headers: new HttpHeaders({
         Authorization: `Bearer ${this.token}`

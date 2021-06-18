@@ -67,4 +67,15 @@ export class SeguridadService {
     }
     
   }
+  getDocumento(): number {
+    let actualSesion = this.getSesion();
+    if(actualSesion)
+    {
+      return JSON.parse(actualSesion).Documento;
+
+    }
+    else{
+      return 0;
+    }
+  }
 }

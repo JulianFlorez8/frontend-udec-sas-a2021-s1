@@ -22,7 +22,7 @@ export class UsuariosService {
   constructor(
     private http: HttpClient,
     private servicioSeguridad: SeguridadService
-  ) {this.token= this.servicioSeguridad.getToken()  }
+  ) {this.token= this.servicioSeguridad.getToken() }
   creacionUsuarios( model: UsuarioModel): Observable <UsuarioModel>{
     return this.http.post<UsuarioModel>( `${ServiceConfig.BASE_URL}${this.entity}`, model, {
       headers: new HttpHeaders({

@@ -49,7 +49,6 @@ export class CrearClienteComponent implements OnInit {
       telefono_ref_familiar: ['', [Validators.required]],
       nombre_ref_personal: ['', [Validators.required]],
       telefono_ref_personal: ['', [Validators.required]],
-      documento_usuario: ['', [Validators.required]],
       pais: ['',[Validators.required]],
       codigo_ciudad: ['', [Validators.required]],
       
@@ -89,7 +88,7 @@ export class CrearClienteComponent implements OnInit {
     model.Telefono_Ref_Familiar=this.fgv.telefono_ref_familiar.value;
     model.Nombre_Ref_Personal=this.fgv.nombre_ref_personal.value;
     model.Telefono_Ref_Personal=this.fgv.telefono_ref_personal.value;
-    model.documentoUsuario=this.fgv.documento_usuario.value;
+    model.documentoUsuario=0;//EN EL SERVICE SE LLENA
     model.codigoCiudad=this.fgv.codigo_ciudad.value;
     return model;
   }

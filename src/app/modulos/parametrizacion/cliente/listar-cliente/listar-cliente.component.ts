@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ClienteModel } from 'src/app/models/parametrizacion/cliente.model';
+import { ClienteService } from 'src/app/services/parametrizacion/cliente.service';
+import { SeguridadService } from 'src/app/services/seguridad/seguridad.service';
 
 @Component({
   selector: 'app-listar-cliente',
@@ -7,9 +11,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListarClienteComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private service: ClienteService,
+    private secService: SeguridadService
+  ) {}
+  lista: ClienteModel[] = [];
 
+  suscripcion?: Subscription;
+  rol: string | undefined = '';
   ngOnInit(): void {
+    this.obtenerLista();
+    this.suscripcion = this.secService.getDatosUsuario().subscribe((data) => {
+      this.rol = data.usuario?.Rol;
+    });
   }
 
+  obtenerLista() {
+    this.service.obtenerClientes().subscribe(
+      (datos) => {
+        this.lista = datos;
+        console.log(this.lista);
+      },
+      (error) => {
+        console.log('error');
+      }
+    );
+  }
+  imprimirUsuario(id: any) {
+    console.log(id);
+  }
 }

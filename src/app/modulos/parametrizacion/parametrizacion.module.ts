@@ -27,6 +27,12 @@ import { EditarClienteComponent } from './cliente/editar-cliente/editar-cliente.
 import { EliminarClienteComponent } from './cliente/eliminar-cliente/eliminar-cliente.component';
 import { ListarClienteComponent } from './cliente/listar-cliente/listar-cliente.component';
 import { CrearClienteComponent } from './cliente/crear-cliente/crear-cliente.component';
+import { SolicitudEstudioComponent } from './solicitud-estudio/solicitud-estudio.component';
+import { CrearSolicitudComponent } from './solicitud-estudio/crear-solicitud/crear-solicitud.component';
+import { ListarSolicitudComponent } from './solicitud-estudio/listar-solicitud/listar-solicitud.component';
+import { AprobacionSolicitudComponent } from './solicitud-estudio/aprobacion-solicitud/aprobacion-solicitud.component';
+import { SubirPagoComponent } from './pagos/subir-pago/subir-pago.component';
+import { ListarPagoComponent } from './pagos/listar-pago/listar-pago.component';
 
 
 @NgModule({
@@ -54,7 +60,13 @@ import { CrearClienteComponent } from './cliente/crear-cliente/crear-cliente.com
     EditarClienteComponent,
     EliminarClienteComponent,
     ListarClienteComponent,
-    CrearClienteComponent
+    CrearClienteComponent,
+    SolicitudEstudioComponent,
+    CrearSolicitudComponent,
+    ListarSolicitudComponent,
+    AprobacionSolicitudComponent,
+    SubirPagoComponent,
+    ListarPagoComponent
   ],
   imports: [
     CommonModule,

@@ -40,7 +40,7 @@ export class SolicitudService {
       headers: new HttpHeaders({})
     })
   }
-  obtenerSolicitud(id: number,model: SolicitudEstudioModel): Observable<SolicitudEstudioModel>{//Revisar retorno
+  obtenerSolicitud(id: number ): Observable<SolicitudEstudioModel>{//Revisar retorno
     return this.http.get<SolicitudEstudioModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}`)
   }
   eliminarSolicitud(id: number){//Revisar retorno
