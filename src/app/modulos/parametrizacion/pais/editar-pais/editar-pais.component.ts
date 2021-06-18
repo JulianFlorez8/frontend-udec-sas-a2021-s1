@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PaisModel } from 'src/app/models/parametrizacion/pais.model';
 import { PaisService } from 'src/app/services/parametrizacion/pais.service';
 
@@ -10,45 +11,52 @@ import { PaisService } from 'src/app/services/parametrizacion/pais.service';
 })
 export class EditarPaisComponent implements OnInit {
   fgValidator: FormGroup = this.fb.group({});
+  elementoID: number=0;
   constructor(
     private fb: FormBuilder, 
     private service: PaisService,
-    ) {}
+    private router: Router,
+    private route: ActivatedRoute,
+    ) {
+      this.elementoID= this.route.snapshot.params["codigo"];
+    }
     
 
   ngOnInit(): void {
     this.FormularioValidacion();
-    this.llenarPaises();
+    this.getPaisActual();
   }
   FormularioValidacion() {
     this.fgValidator = this.fb.group({
-      pais: ['', [Validators.required]],
+      codigo: ['', [Validators.required]],
       nombre: ['', [Validators.required]],
 
     });
   }
+  getPaisActual(){
+    this.service.obtenerPais(this.elementoID).subscribe(
+      data =>{
+        this.fgv.codigo.setValue(data.codigo);
+        this.fgv.nombre.setValue(data.nombre);
+       
+      },
+      error =>{
+        alert('No se encontro el elemento');
+       this.router.navigate(["/parametrizacion/listar-pais"]);
+      }
+    )
 
-  RegitrarPais() {
+  }
+  ActualizarPais() {
     if (this.fgValidator.invalid) {
       alert('Formulario Invalido');
     } else {
       let pais = this.getPaisData();
-      let codigo= this.fgv.pais.value;
-      if(!codigo)
-      {
-        codigo=0;
-      }
-      console.log(pais);
-      
-      this.service.actualizarPais(codigo,pais).subscribe((data) => {
-        console.log(data);
-        if (data) {
-          alert('Actualizacion Exitosa');
-        } else {
-          alert('Fallo el registro');
-        }
+      this.service.actualizarPais(this.elementoID,pais).subscribe((data) => {
+          alert('Actualizacion Exitosa');// LAS ACTUALIZACIONES NO RETORNAN NADA, ES DECIR LO QUE VIENE ES null
       });
     }
+  
   }
   //Obtenego datos del formulario y los paso al modelo de usuario
   getPaisData(): PaisModel {
@@ -62,31 +70,4 @@ export class EditarPaisComponent implements OnInit {
     return this.fgValidator.controls;
   }
   
-  llenarPaises(){
-    this.service.obtenerPaises().subscribe(paises=>{
-      //console.log(paises);
-
-      //console.log(this.paises[0].nombre);
-      const selectorPais=document.getElementById('pais');
-      paises?.forEach(
-        pais=>{
-          const opcion= document.createElement('option');
-          let nombrePais= pais.nombre;
-          let codigoPais= pais.codigo;
-          if (codigoPais)
-          {
-             opcion.value = codigoPais.toString();
-          opcion.text= nombrePais;
-
-          }
-        
-          if(selectorPais)
-          {
-            selectorPais.appendChild(opcion);
-          }
-        }
-      )
-     
-    })
-  }
 }

@@ -60,7 +60,7 @@ export class CiudadService {
       }
     );
   }
-  obtenerCiudad(id: number, model: CiudadModel): Observable<CiudadModel> {
+  obtenerCiudad(id: number): Observable<CiudadModel> {
     //Revisar retorno
     return this.http.get<CiudadModel>(
       `${ServiceConfig.BASE_URL}${this.entity}/${id}`

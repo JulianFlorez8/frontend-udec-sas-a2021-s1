@@ -12,50 +12,37 @@
           </form>
             <form [formGroup]="fgValidator">
                 <div class="input-field">
-                    <i class="material-icons prefix">perm_identity</i>
-                    <label for="proyecto">Proyecto</label>
-                    <select formControlName="proyecto" class="browser-default pl" id="proyecto">
-                      <option></option>
-                    </select>
+                  <i class="material-icons prefix">perm_identity</i>
+                  <label for="codigo"></label>
+                  <input formControlName="codigo" type="text" name="codigo" required />
                   </div>
               <div class="input-field">
                 <i class="material-icons prefix">perm_identity</i>
-                <label for="nombre">Nombre</label>
+                <label for="nombre"></label>
                 <input formControlName="nombre" type="text" name="nombre" required />
               </div>
               <div class="input-field">
                 <i class="material-icons prefix">perm_identity</i>
-                <label for="descripcion">Descripcion</label>
+                <label for="descripcion"></label>
                 <input formControlName="descripcion" type="text" name="descripcion" required />
               </div>
               <input type="hidden" formControlName="image"/>
               <div class="input-field">
                 <i class="material-icons prefix">perm_identity</i>
-                <label for="documentoUsuario"> Usuario</label>
-                <select formControlName="documentoUsuario" class="browser-default pl" id="documentoUsuario">
-                  <option></option>
-                </select>
+                <label for="documentoUsuario"></label>
+                <input formControlName="documentoUsuario" type="text" name="documentoUsuario" required />
               </div>
+             
               <div class="input-field">
                 <i class="material-icons prefix">perm_identity</i>
-                <label for="Pais">Pais</label>
-                <select   formControlName="pais" class="browser-default pl" id="pais">
-                  <option></option>
-      
-                </select>
-              </div>
-              <div class="input-field">
-                <i class="material-icons prefix">perm_identity</i>
-                <label for="ciudad">Ciudad</label>
-                <select formControlName="ciudad" class="browser-default pl" id="ciudad">
-                  <option></option>
-                </select>
+                <label for="codigoCiudad"></label>
+                <input formControlName="codigoCiudad" type="text" name="codigoCiudad" required />
               </div>
               <p class="center-align">
                 <button
                   class="waves-effect waves-light btn"
                   type="submit"
-                  (click)="RegitrarProyecto()"
+                  (click)="ActualizarProyecto()"
                 >
                   <i class="material-icons right"></i>Actualizar
                 </button>

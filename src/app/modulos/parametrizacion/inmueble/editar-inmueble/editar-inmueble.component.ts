@@ -16,9 +16,6 @@ import { ProyectoService } from 'src/app/services/parametrizacion/proyecto.servi
 export class EditarInmuebleComponent implements OnInit {
 
   fgValidator: FormGroup = this.fb.group({});
-  proyectos?: ProyectoModel[];
-  inmuebles?: InmuebleModel[];
-  bloques?: BloqueModel[];
   elementoID: string='';
   constructor(
     private fb: FormBuilder, 

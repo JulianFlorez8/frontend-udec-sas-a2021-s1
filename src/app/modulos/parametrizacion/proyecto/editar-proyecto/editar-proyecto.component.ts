@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CiudadModel } from 'src/app/models/parametrizacion/ciudad.model';
 import { PaisModel } from 'src/app/models/parametrizacion/pais.model';
 import { ProyectoModel } from 'src/app/models/parametrizacion/proyectos.model';
@@ -23,57 +24,74 @@ export class EditarProyectoComponent implements OnInit {
   usuarios?: UsuarioModel[];
   proyectos?: ProyectoModel[];
   ciudades?: CiudadModel[];
+  elementoID: number=0;
   constructor(
     private servicioSubida: ArchivosService,
     private fb: FormBuilder,
     private service: ProyectoService,
     private servicioCiudades: CiudadService,
     private servicioPaises: PaisService,
-    private servicioUsuarios: UsuariosService
-  ) { }
+    private servicioUsuarios: UsuariosService,
+    private router: Router,
+    private route: ActivatedRoute,
+    ) {
+      this.elementoID= this.route.snapshot.params["codigo"];
+    }
 
   ngOnInit(): void {
     this.construirFormularioCarga();
     this.FormularioValidacion();
-    this.llenarPaises();
-    this.llenarUsuarios();
-    this.llenarProyectos();
+    this.getProyectoActual();
+    
   }
   FormularioValidacion() {
     this.fgValidator = this.fb.group({
-      proyecto: ['', [Validators.required]],
+      codigo: ['', [Validators.required]],
       nombre: ['', [Validators.required]],
       descripcion: ['', [Validators.required]],
       image: ['', [Validators.required]],
       documentoUsuario: ['', [Validators.required]],
-      ciudad: ['', [Validators.required]],
-      pais: ['', [Validators.required]],
+      codigoCiudad: ['', [Validators.required]],
     });
   }
   get fgv() {
     return this.fgValidator.controls;
   }
-
+  getProyectoActual(){
+    this.service.obtenerProyecto(this.elementoID).subscribe(
+      data =>{
+        this.fgv.codigo.setValue(data.codigo);
+        this.fgv.nombre.setValue(data.nombre);
+        this.fgv.descripcion.setValue(data.descripcion);
+        this.fgv.image.setValue(data.imagen);
+        this.fgv.documentoUsuario.setValue(data.documentoUsuario);
+        this.fgv.codigoCiudad.setValue(data.codigoCiudad);
+      },
+      error =>{
+        alert('No se encontro el elemento');
+       this.router.navigate(["/parametrizacion/listar-proyecto"]);
+      }
+    )
+  }
   getProyectoData(): ProyectoModel {
     let model = new ProyectoModel();
-    model.codigo= parseInt(this.fgv.proyecto.value);
+    model.codigo= parseInt(this.fgv.codigo.value);
     model.nombre = this.fgv.nombre.value;
     model.descripcion = this.fgv.descripcion.value;
     model.imagen = this.fgv.image.value;
     model.documentoUsuario = parseInt(this.fgv.documentoUsuario.value);
-    model.codigoCiudad =parseInt(this.fgv.ciudad.value);
+    model.codigoCiudad =parseInt(this.fgv.codigoCiudad.value);
 
    
     return model;
   }
-  RegitrarProyecto() {
+  ActualizarProyecto() {
     if (this.fgValidator.invalid) {
       alert('Formulario Invalido');
     } else {
       let proyecto = this.getProyectoData();
-      if(proyecto.codigo)
-      {
-        this.service.actualizarProyecto(proyecto.codigo,proyecto).subscribe((data) => {
+     
+        this.service.actualizarProyecto(this.elementoID,proyecto).subscribe((data) => {
           console.log(data);
           if (data) {
             alert('Actualizacion Exitosa');
@@ -81,7 +99,7 @@ export class EditarProyectoComponent implements OnInit {
             alert('Fallo el registro');
           }
         });
-      }
+      
       
     }
   }

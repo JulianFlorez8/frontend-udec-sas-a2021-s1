@@ -15,12 +15,13 @@ import { ArchivosService } from '../../../../services/parametrizacion/archivos.s
   styleUrls: ['./crear-proyecto.component.css'],
 })
 export class CrearProyectoComponent implements OnInit {
-  uploadForm: FormGroup = this.fb.group({});
   fgValidator: FormGroup = this.fb.group({});
+  uploadForm: FormGroup = this.fb.group({});
   codigoPais?: string;
   paises?: PaisModel[];
   usuarios?: UsuarioModel[];
   ciudades?: CiudadModel[];
+  imagen?: String;
   constructor(
     private servicioSubida: ArchivosService,
     private fb: FormBuilder,
@@ -52,12 +53,11 @@ export class CrearProyectoComponent implements OnInit {
 
   getProyectoData(): ProyectoModel {
     let model = new ProyectoModel();
-    model.nombre = this.fgv.nombre.value;
-    model.descripcion = this.fgv.descripcion.value;
-    model.imagen = this.fgv.image.value;
+    model.nombre = this.fgv.nombre.value.toString();
+    model.descripcion = this.fgv.descripcion.value.toString();
+    model.imagen = this.fgv.image.value.toString();
     model.documentoUsuario = parseInt(this.fgv.documentoUsuario.value);
     model.codigoCiudad = parseInt(this.fgv.ciudad.value);
-
     return model;
   }
   RegitrarProyecto() {
@@ -65,6 +65,7 @@ export class CrearProyectoComponent implements OnInit {
       alert('Formulario Invalido');
     } else {
       let proyecto = this.getProyectoData();
+      console.log(proyecto);
       this.service.creacionProyecto(proyecto).subscribe((data) => {
         console.log(data);
         if (data) {
@@ -115,7 +116,7 @@ export class CrearProyectoComponent implements OnInit {
           let nombreUsuario = usuario.Nombre;
           let apellidoUsuario = usuario.Apellido_1;
           let NAUsuario = nombreUsuario + ' ' + apellidoUsuario;
-          let codigoUsuario = usuario.Usuario;
+          let codigoUsuario = usuario.Documento;
           opcion.value = codigoUsuario.toString();
           opcion.text = NAUsuario;
           if (selectorUsuarios) {

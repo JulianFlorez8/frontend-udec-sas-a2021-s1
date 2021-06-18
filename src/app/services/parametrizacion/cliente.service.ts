@@ -43,7 +43,7 @@ export class ClienteService {
       headers: new HttpHeaders({})
     })
   }
-  obtenerrCliente(id: number,model: ClienteModel): Observable<ClienteModel>{//Revisar retorno
+  obtenerrCliente(id: number): Observable<ClienteModel>{//Revisar retorno
     return this.http.get<ClienteModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}`)
   }
   eliminarCliente(id: number){//Revisar retorno

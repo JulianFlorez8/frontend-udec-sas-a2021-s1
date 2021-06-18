@@ -6,21 +6,19 @@
           <article class="col s6 offset-s3">
             <form [formGroup]="fgValidator">
                 <div class="input-field">
-                    <i class="material-icons prefix">perm_identity</i>
-                    <label for="bloque">Bloque</label>
-                    <select formControlName="bloque" class="browser-default pl" id="bloque">
-                      <option></option>
-                    </select>
+                  <i class="material-icons prefix">perm_identity</i>
+                  <label for="codigo"></label>
+                  <input formControlName="codigo" type="text" name="codigo" required />
                   </div>
               <div class="input-field">
                 <i class="material-icons prefix">perm_identity</i>
-                <label for="nombre">Nombre</label>
+                <label for="nombre"></label>
                 <input formControlName="nombre" type="text" name="nombre" required />
               </div>
       
               <div class="input-field">
                 <i class="material-icons prefix">person_pin</i>
-                <label for="descripcion">Descripcion:</label>
+                <label for="descripcion"></label>
                 <input
                   formControlName="descripcion"
                   type="text"
@@ -30,10 +28,8 @@
               </div>
               <div class="input-field">
                 <i class="material-icons prefix">perm_identity</i>
-                <label for="proyecto">Proyecto</label>
-                <select formControlName="proyecto" class="browser-default pl" id="proyecto">
-                  <option></option>
-                </select>
+                  <label for="proyecto"></label>
+                  <input formControlName="proyecto" type="text" name="proyecto" required />
               </div>
               <p class="center-align">
                 <button

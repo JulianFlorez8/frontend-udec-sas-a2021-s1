@@ -27,7 +27,7 @@
         </div>
         <div class="input-field">
           <i class="material-icons prefix">perm_identity</i>
-          <label for="nombre">Documento</label>
+          <label for="dcumento">Documento</label>
           <input
             formControlName="documento"
             type="number"
@@ -89,10 +89,10 @@
         </div>
         <p class="center-align">
           <button
-            class="waves-effect waves-light btn"
+            class="modal-close waves-effect waves-light btn"
             type="submit"
             (click)="RegitrarUsuario()"
-            routerLink="[usuario/listar-usuario,{ outlets: { modal: null}]"
+           
           >
             <i class="material-icons right"></i>Registrar
           </button>

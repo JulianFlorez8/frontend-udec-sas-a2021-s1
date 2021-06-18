@@ -11,12 +11,13 @@ const routes: Routes = [
     outlet: 'modal',
   },
   {
-    path: 'editar-usuario',
+    path: 'editar-usuario/:Documento',
     component: EditarUsuarioComponent,
   },
   {
-    path: 'eliminar-usuario',
+    path: 'eliminar-usuario/:Documento',
     component: EliminarUsuarioComponent,
+    outlet: 'modal',
   },
   {
     path: 'listar-usuario',

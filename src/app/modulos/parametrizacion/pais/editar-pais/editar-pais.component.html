@@ -6,15 +6,13 @@
           <article class="col s6 offset-s3">
             <form [formGroup]="fgValidator">
                 <div class="input-field">
-                    <i class="material-icons prefix">perm_identity</i>
-                    <label for="pais">Pais</label>
-                    <select formControlName="pais" class="browser-default pl" id="pais">
-                      <option></option>
-                    </select>
+                  <i class="material-icons prefix">perm_identity</i>
+                  <label for="codigo"></label>
+                  <input formControlName="codigo" type="text" name="codigo" required />
                   </div>
               <div class="input-field">
                 <i class="material-icons prefix">perm_identity</i>
-                <label for="nombre">Nombre</label>
+                <label for="nombre"></label>
                 <input formControlName="nombre" type="text" name="nombre" required />
               </div>
 
@@ -22,7 +20,7 @@
                 <button
                   class="waves-effect waves-light btn"
                   type="submit"
-                  (click)="RegitrarPais()"
+                  (click)="ActualizarPais()"
                 >
                   <i class="material-icons right"></i>Actualizar
                 </button>

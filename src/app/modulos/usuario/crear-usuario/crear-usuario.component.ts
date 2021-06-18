@@ -36,7 +36,6 @@ export class CrearUsuarioComponent implements OnInit {
   ngOnInit(): void {
     this.FormularioValidacion();
     this.llenarPaises();
-    this.llenarCiudades(154);
   }
   FormularioValidacion() {
     this.fgValidator = this.fb.group({
@@ -114,7 +113,6 @@ export class CrearUsuarioComponent implements OnInit {
       {
         selectorPais.addEventListener('change', e => { //me permite ver cuando estoy cambiando de opcion
           const list = e.target;
-        
           let idPais=this.fgv.pais.value
           console.log(idPais);
           this.llenarCiudades(idPais);

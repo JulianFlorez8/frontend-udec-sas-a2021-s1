@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CiudadModel } from 'src/app/models/parametrizacion/ciudad.model';
 import { PaisModel } from 'src/app/models/parametrizacion/pais.model';
 import { UsuarioModel } from 'src/app/models/usuario.model';
@@ -19,37 +20,61 @@ export class EditarUsuarioComponent implements OnInit {
   paises?: PaisModel[];
   ciudades?: CiudadModel[];
   usuarios?: UsuarioModel[];
+  elementoID: string='';
   constructor(
     private servicioSubida: ArchivosService,
     private fb: FormBuilder, 
     private service: UsuariosService,
     private servicioCiudades: CiudadService,
-    private servicioPaises: PaisService
-    ) {}
+    private servicioPaises: PaisService,
+    private router: Router,
+    private route: ActivatedRoute,
+    ) {
+      this.elementoID= this.route.snapshot.params["Documento"];
+    }
     
 
   ngOnInit(): void {
     this.FormularioValidacion();
-    this.llenarUsuarios();
-    this.llenarPaises();
+    this.obtenerUsuario();
     
   }
   FormularioValidacion() {
     this.fgValidator = this.fb.group({
-      usuarioA: ['', [Validators.required]],
-      nombre: ['', [Validators.required]],
-      apellido1: ['', [Validators.required]],
-      apellido2: ['', [Validators.required]],
-      correo: ['', [Validators.required, Validators.email]],
-      celular: ['', [Validators.required]],
-      rol: ['', [Validators.required]],
-      usuario: ['', [Validators.required]],
+      Documento: ['', [Validators.required]],
+      Nombre: ['', [Validators.required]],
+      Apellido_1: ['', [Validators.required]],
+      Apellido_2: ['', [Validators.required]],
+      Correo: ['', [Validators.required, Validators.email]],
+      Celular: ['', [Validators.required]],
+      Rol: ['', [Validators.required]],
+      Usuario: ['', [Validators.required]],
       pais:['',[Validators.required]],
-      ciudad: ['', [Validators.required]],
+      Ciudad: ['', [Validators.required]],
     });
   }
+  //Obtengo informacion del que estoy editando
+  obtenerUsuario(){
+    this.service.obtenerUsuario(parseInt(this.elementoID)).subscribe(
+      data =>{
+        this.fgv.Documento.setValue(data.Documento);
+        this.fgv.Nombre.setValue(data.Nombre);
+        this.fgv.Apellido_1.setValue(data.Apellido_1);
+        this.fgv.Apellido_2.setValue(data.Apellido_2);
+        this.fgv.Correo.setValue(data.Correo);
+        this.fgv.Celular.setValue(data.Celular);
+        this.fgv.Rol.setValue(data.Rol);
+        this.fgv.Usuario.setValue(data.Usuario);
+        this.fgv.Ciudad.setValue(data.Ciudad);
+        
+      },
+      error =>{
+        this.router.navigate(["/usuario/listar-usuario"]);
+      }
+    )
+  }
 
-  RegitrarUsuario() {
+  editarUsuario() {
     if (this.fgValidator.invalid) {
       alert('Formulario Invalido');
     } else {
@@ -72,7 +97,6 @@ export class EditarUsuarioComponent implements OnInit {
     model.Nombre = this.fgv.nombre.value;
     model.Apellido_1 = this.fgv.apellido1.value;
     model.Apellido_2 = this.fgv.apellido2.value;
- 
     model.Correo = this.fgv.correo.value;
     model.Celular = this.fgv.celular.value.toString();
     model.Rol = this.fgv.rol.value;
@@ -84,98 +108,5 @@ export class EditarUsuarioComponent implements OnInit {
   }
   get fgv() {
     return this.fgValidator.controls;
-  }
-  llenarPaises(){
-    this.servicioPaises.obtenerPaises().subscribe(paises=>{
-      //console.log(paises);
-      this.paises=paises;
-      //console.log(this.paises[0].nombre);
-      const selectorPais=document.getElementById('pais');
-      this.paises?.forEach(
-        pais=>{
-          const opcion= document.createElement('option');
-          let nombrePais= pais.nombre;
-          let codigoPais= pais.codigo;
-          if (codigoPais)
-          {
-             opcion.value = codigoPais.toString();
-          opcion.text= nombrePais;
-
-          }
-          if(selectorPais)
-          {
-            selectorPais.appendChild(opcion);
-          }
-        }
-      )
-      if(selectorPais)
-      {
-        selectorPais.addEventListener('change', e => { //me permite ver cuando estoy cambiando de opcion
-          const list = e.target;
-        
-          let idPais=this.fgv.pais.value
-          console.log(idPais);
-          this.llenarCiudades(idPais);
-    })
-
-      }
-    })
-  }
-  
-  llenarCiudades(idPais: number){//Entra como parametro el codigo del pais selecionado
-    const selectorCiudad=document.getElementById('ciudad');
-    //selectorCiudad.value=null;//RECETEAR EL SELECT
-
-    this.servicioPaises.obtenerCiudadesPais(idPais).subscribe(ciudades=>{
-      console.log(ciudades);
-      this.ciudades=ciudades;
-      console.log(this.ciudades[0].nombre);
-      
-      this.ciudades?.forEach(
-        ciudad=>{
-          const opcion= document.createElement('option');
-          let nombreCiudad= ciudad.nombre;
-          let codigoCiudad= ciudad.codigo;
-          if (codigoCiudad)
-          {
-            opcion.value = codigoCiudad.toString();
-            opcion.text= nombreCiudad;
-          }
-
-         
-          if(selectorCiudad)
-          {
-            selectorCiudad.appendChild(opcion);
-            
-          }
-          else{
-            console.log("Sin Ciudades");
-            
-          }
-        }
-      )
-    })
-  }
-  llenarUsuarios(){
-    this.service.obtenerUsuarios().subscribe(paises=>{
-      //console.log(paises);
-    
-      //console.log(this.paises[0].nombre);
-      const selectorPais=document.getElementById('usuarioA');
-      paises?.forEach(
-        pais=>{
-          const opcion= document.createElement('option');
-          let nombrePais= pais.Nombre;
-          let codigoPais= pais.Documento;
-          opcion.value = codigoPais.toString();
-          opcion.text= nombrePais;
-          if(selectorPais)
-          {
-            selectorPais.appendChild(opcion);
-          }
-        }
-      )
-     
-    })
   }
 }

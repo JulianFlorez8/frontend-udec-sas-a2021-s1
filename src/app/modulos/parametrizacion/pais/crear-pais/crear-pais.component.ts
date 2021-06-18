@@ -45,7 +45,6 @@ export class CrearPaisComponent implements OnInit {
   getPaisData(): PaisModel {
     let model = new PaisModel();
     model.nombre = this.fgv.nombre.value.toString();
-    
     return model;
   }
   get fgv() {

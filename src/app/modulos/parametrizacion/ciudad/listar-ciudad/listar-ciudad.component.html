@@ -39,12 +39,7 @@
         {{ x.codigoPais }}
       </td>
       <td>
-        <a class="edit  modal-trigger"
-        data-target="modal1"
-        [routerLink]="[
-          '/parametrizacion',
-          { outlets: { modal: ['editar-ciudad'] } }
-        ]"
+        <a class="edit" routerLink="../editar-ciudad/{{ x.codigo }}"
           ><i class="orange-text material-icons" title="Edit">&#xE254;</i></a
         >
         <a class="delete  modal-trigger"

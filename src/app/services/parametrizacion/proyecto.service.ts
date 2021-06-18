@@ -44,7 +44,7 @@ export class ProyectoService {
       headers: new HttpHeaders({})
     })
   }
-  obtenerProyecto(id: number,model: ProyectoModel): Observable<ProyectoModel>{//Revisar retorno
+  obtenerProyecto(id: number): Observable<ProyectoModel>{//Revisar retorno
     return this.http.get<ProyectoModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}`)
   }
   eliminarProyecto(id: number){//Revisar retorno

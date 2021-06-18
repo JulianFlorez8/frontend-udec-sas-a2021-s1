@@ -4,24 +4,23 @@
           <h3 class="center-align">Actualizacion Usuarios</h3>
           <article class="col s6 offset-s3">
             <form [formGroup]="fgValidator">
-                <div class="input-field">
+                
+                  <div class="input-field">
                     <i class="material-icons prefix">perm_identity</i>
-                    <label for="usuarioA">Usuario</label>
-                    <select formControlName="usuarioA" class="browser-default pl" id="usuarioA">
-                      <option></option>
-                    </select>
+                    <label for="Documento"></label>
+                    <input formControlName="Documento" type="text" name="Documento" required />
                   </div>
               <div class="input-field">
                 <i class="material-icons prefix">perm_identity</i>
-                <label for="nombre">Nombre</label>
-                <input formControlName="nombre" type="text" name="nombre" required />
+                <label for="nombre"></label>
+                <input formControlName="Nombre" type="text" name="nombre" required />
               </div>
       
               <div class="input-field">
                 <i class="material-icons prefix">person_pin</i>
-                <label for="apellido">Primer Apellido</label>
+                <label for="apellido"> </label>
                 <input
-                  formControlName="apellido1"
+                  formControlName="Apellido_1"
                   type="text"
                   name="apellido1"
                   required
@@ -29,39 +28,36 @@
               </div>
               <div class="input-field">
                 <i class="material-icons prefix">person_pin</i>
-                <label for="apellido">Segundo Apellido</label>
-                <input formControlName="apellido2" type="text" name="apellido2" />
+                <label for="apellido"> </label>
+                <input formControlName="Apellido_2" type="text" name="apellido2" />
               </div>
             
               <div class="input-field">
                 <i class="material-icons prefix">email</i>
-                <label for="email">Correo</label>
-                <input formControlName="correo" type="email" name="correo" required />
+                <label for="email"></label>
+                <input formControlName="Correo" type="email" name="correo" required />
               </div>
       
               <div class="input-field">
                 <i class="material-icons prefix">person_pin</i>
-                <label for="celular">Celular</label>
+                <label for="celular"></label>
                 <input
-                  formControlName="celular"
+                  formControlName="Celular"
                   type="number"
                   name="celular"
                   required
                 />
               </div>
               <div class="input-field">
-                <i class="material-icons prefix">perm_identity</i>
-                <label for="rol">Rol</label>
-                <select formControlName="rol" class="browser-default pl">
-                  <option value="Vendedor">Vendedor</option>
-                  <option value="Administrador">Administrador</option>
-                </select>
+                <i class="material-icons prefix">person_pin</i>
+                <label for="Rol"> </label>
+                <input formControlName="Rol" type="text" name="Rol" />
               </div>
               <div class="input-field">
                 <i class="material-icons prefix">perm_identity</i>
-                <label for="usuario">Usuario</label>
+                <label for="usuario"></label>
                 <input
-                  formControlName="usuario"
+                  formControlName="Usuario"
                   type="text"
                   name="usuario"
                   required
@@ -69,30 +65,22 @@
               </div>
               <div class="input-field">
                 <i class="material-icons prefix">perm_identity</i>
-                <label for="Pais">Pais</label>
-                <select formControlName="pais" class="browser-default pl" id="pais">
-                  <option></option>
-                </select>
-              </div>
-              <div class="input-field">
-                <i class="material-icons prefix">perm_identity</i>
-                <label for="ciudad">Ciudad</label>
-                <select
-                  formControlName="ciudad"
-                  class="browser-default pl"
-                  id="ciudad"
-                >
-                  <option></option>
-                </select>
+                <label for="Ciudad"></label>
+                <input
+                  formControlName="Ciudad"
+                  type="text"
+                  name="Ciudad"
+                  required
+                />
               </div>
               <p class="center-align">
                 <button
                   class="waves-effect waves-light btn"
                   type="submit"
-                  (click)="RegitrarUsuario()"
+                  (click)="editarUsuario()"
                   routerLink="[usuario/listar-usuario,{ outlets: { modal: null}]"
                 >
-                  <i class="material-icons right"></i>Registrar
+                  <i class="material-icons right"></i>Actualizar
                 </button>
                 <a routerLink="[{ outlets: { modal: null } }]"></a>
               </p>

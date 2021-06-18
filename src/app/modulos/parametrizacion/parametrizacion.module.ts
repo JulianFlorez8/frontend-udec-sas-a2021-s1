@@ -26,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EditarClienteComponent } from './cliente/editar-cliente/editar-cliente.component';
 import { EliminarClienteComponent } from './cliente/eliminar-cliente/eliminar-cliente.component';
 import { ListarClienteComponent } from './cliente/listar-cliente/listar-cliente.component';
+import { CrearClienteComponent } from './cliente/crear-cliente/crear-cliente.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { ListarClienteComponent } from './cliente/listar-cliente/listar-cliente.
     EditarInmuebleComponent,
     EditarClienteComponent,
     EliminarClienteComponent,
-    ListarClienteComponent
+    ListarClienteComponent,
+    CrearClienteComponent
   ],
   imports: [
     CommonModule,

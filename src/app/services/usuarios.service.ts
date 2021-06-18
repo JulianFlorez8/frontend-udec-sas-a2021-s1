@@ -55,7 +55,7 @@ export class UsuariosService {
       headers: new HttpHeaders({})
     })
   }
-  obtenerUsuario(id: number,model: UsuarioModel): Observable<UsuarioModel>{//Revisar retorno
+  obtenerUsuario(id: number): Observable<UsuarioModel>{//Revisar retorno
     return this.http.get<UsuarioModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}`)
   }
   eliminarUsuario(id: number){//Revisar retorno

@@ -1,1 +1,120 @@
-<p>editar-cliente works!</p>
+
+<section class="container">
+    <div class="row">
+    <h3 class="center-align">Edicion Clientes</h3>
+        <article class="col s6 offset-s3">
+            
+
+                
+            <form [formGroup]="fgValidator" >
+                <div class="input-field">
+                    <i class="material-icons prefix">perm_identity</i>
+                    <label for="documento">Documento</label>
+                    <input formControlName="documento" type="number" name="documento" required>
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">perm_identity</i>
+                    <label for="nombre">Nombre</label>
+                    <input formControlName="nombre" type="text" name="nombre" required>
+                </div>
+
+                <div class="input-field">
+                    <i class="material-icons prefix">person_pin</i>
+                    <label for="apellido1">Primer Apellido</label>
+                    <input formControlName="apellido1" type="text" name="apellido1" required>
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">person_pin</i>
+                    <label for="apellido2">Segundo Apellido</label>
+                    <input formControlName="apellido2" type="text" name="apellido2" >
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">person_pin</i>
+                    <label for="apellido">Fecha Nacimiento</label>
+                    <input formControlName="fecha_nacimiento" type="date" name="fecha_nacimiento" required>
+                </div>
+                
+                <input type="hidden" formControlName="image"/><!--ESTA COSA ES INVISIBLE ASI Q NO HAY NECESIDAD DE PONERLE CSS-->
+
+
+                <div class="input-field">
+                    <i class="material-icons prefix">person_pin</i>
+                    <label for="celular">Celular</label>
+                    <input formControlName="celular" type="number" name="celular" required>
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">email</i>
+                    <label for="correo">Correo</label>
+                    <input formControlName="correo" type="email" name="correo" required>
+                </div>
+
+                
+                <div class="input-field">
+                    <i class="material-icons prefix">perm_identity</i>
+                    <label for="direccion">Direccion</label>
+                    <input formControlName="direccion" type="text" name="direccion" >
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">person_pin</i>
+                    <label for="total_ingresos">Total Ingresos</label>
+                    <input formControlName="total_ingresos" type="number" name="total_ingresos" required>
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">perm_identity</i>
+                    <label for="datos_trabajo">Datos Trabajo:</label><!--NO SE Q VA ACA-->
+                    <input formControlName="datos_trabajo" type="text" name="datos_trabajo" required>
+                </div>
+
+                <div class="input-field">
+                    <i class="material-icons prefix">perm_identity</i>
+                    <label for="nombre_ref_personal">Nombre Referencia Personal</label>
+                    <input formControlName="nombre_ref_personal" type="text" name="nombre_ref_personal" required>
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">perm_identity</i>
+                    <label for="telefono_ref_personal">Numero Referencia Personal</label>
+                    <input formControlName="telefono_ref_personal" type="number" name="nombre_ref_personal" required>
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">perm_identity</i>
+                    <label for="nombre_ref_familiar">Nombre Referencia Familiar</label>
+                    <input formControlName="nombre_ref_familiar" type="text" name="nombre_ref_familiar" required>
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">perm_identity</i>
+                    <label for="numero_ref_familiar">Numero Referencia Personal</label>
+                    <input formControlName="telefono_ref_familiar" type="number" name="numero_ref_familiar" required>
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">perm_identity</i>
+                    <label for="documento_usuario">Documento usuario</label>
+                    <input formControlName="documento_usuario" type="number" name="documento_usuario" required>
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">perm_identity</i>
+                    <label for="Pais">Pais</label>
+                    <select formControlName="pais" class="browser-default pl" id="pais">
+                      <option></option>
+                    </select>
+                  </div>
+                  <div class="input-field">
+                    <i class="material-icons prefix">perm_identity</i>
+                    <label for="ciudad">Ciudad</label>
+                    <select
+                      formControlName="codigo_ciudad"
+                      class="browser-default pl"
+                      id="ciudad"
+                    >
+                      <option></option>
+                    </select>
+                  </div>
+                
+                <p class="center-align">
+                    <button class="waves-effect waves-light btn" type="submit" (click)="EditarUsuario()"><i class="material-icons right"></i>Actualizar</button>
+                </p>
+
+            </form>
+
+        </article>
+    </div>
+</section>

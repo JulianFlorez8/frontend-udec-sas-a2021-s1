@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { BloqueModel } from 'src/app/models/parametrizacion/bloque.model';
 import { ProyectoModel } from 'src/app/models/parametrizacion/proyectos.model';
@@ -13,44 +14,37 @@ import { SeguridadService } from 'src/app/services/seguridad/seguridad.service';
   styleUrls: ['./editar-bloque.component.css']
 })
 export class EditarBloqueComponent implements OnInit {
-
- 
-  suscripcion?: Subscription;
   fgValidator: FormGroup = this.fb.group({});
-  bloques?: BloqueModel[];
-  objeto: string | undefined = '';
-  proyectos?: ProyectoModel[];
+  elementoID: number=0;
   constructor(
     private fb: FormBuilder, 
     private service: BloqueService,
     private serviceSeguridad: SeguridadService,
-    private servicioProyectos: ProyectoService
-  ) { }
+    private servicioProyectos: ProyectoService, 
+    private router: Router,
+    private route: ActivatedRoute,
+    ) {
+      this.elementoID= this.route.snapshot.params["codigo"];
+    }
 
   ngOnInit(): void {
     this.FormularioValidacion();
-    this.llenarBloques();
-    this.llenarProyectos();
+    this.getBloqueActual();
   }
   FormularioValidacion() {
     this.fgValidator = this.fb.group({
-      bloque: ['', [Validators.required]],
+      codigo: ['', [Validators.required]],
       nombre: ['', [Validators.required]],
       descripcion: ['', [Validators.required]],
       proyecto: ['', [Validators.required]],
-      
     });
   }
-
   ActualizarBloque() {
     if (this.fgValidator.invalid) {
       alert('Formulario Invalido');
     } else {
       let bloque =  this.getBloqueData();
-      let idBloque= this.fgv.bloque.value;
-      console.log(bloque);
-      
-      this.service.actualizarBloque(idBloque,bloque).subscribe((data) => {
+      this.service.actualizarBloque(this.elementoID,bloque).subscribe((data) => {
         console.log(data);
         if (data) {
           alert('Cambio Exitoso');
@@ -60,10 +54,26 @@ export class EditarBloqueComponent implements OnInit {
       });
     }
   }
+  getBloqueActual(){
+    this.service.obtenerBloque(this.elementoID).subscribe(
+      data =>{
+        this.fgv.codigo.setValue(data.codigo);
+        this.fgv.nombre.setValue(data.nombre);
+        this.fgv.descripcion.setValue(data.descripcion);
+        this.fgv.proyecto.setValue(data.codigoProyecto);
+        
+      },
+      error =>{
+        alert('No se encontro el elemento');
+       this.router.navigate(["/parametrizacion/listar-bloque"]);
+     
+      }
+    )
+  }
   //Obtenego datos del formulario y los paso al modelo de usuario
   getBloqueData(): BloqueModel {
     let model = new BloqueModel();
-    model.codigo=parseInt(this.fgv.bloque.value);
+    model.codigo=parseInt(this.fgv.codigo.value);
     model.nombre = this.fgv.nombre.value;
     model.descripcion= this.fgv.descripcion.value;
     model.codigoProyecto=parseInt(this.fgv.proyecto.value);
@@ -73,58 +83,6 @@ export class EditarBloqueComponent implements OnInit {
   }
   get fgv() {
     return this.fgValidator.controls;
-  }
-  llenarBloques(){
-    this.service.obtenerBloques().subscribe(bloques=>{
-      //console.log(paises);
-      this.bloques=bloques;
-      //console.log(this.paises[0].nombre);
-      const selectorProyecto=document.getElementById('bloque');
-      this.bloques?.forEach(
-        bloque=>{
-          const opcion= document.createElement('option');
-          let nombrebloque= bloque.nombre;
-          let codigobloque= bloque.codigo;
-          if(codigobloque)
-          {
-            opcion.value = codigobloque.toString();
-          opcion.text= nombrebloque;
-          }
-          
-          if(selectorProyecto)
-          {
-            selectorProyecto.appendChild(opcion);
-          }
-        }
-      )
-     
-    })
-  }
-  llenarProyectos(){
-    this.servicioProyectos.obtenerProyectos().subscribe(proyectos=>{
-      //console.log(paises);
-      this.proyectos=proyectos;
-      //console.log(this.paises[0].nombre);
-      const selectorProyecto=document.getElementById('proyecto');
-      this.proyectos?.forEach(
-        proyectos=>{
-          const opcion= document.createElement('option');
-          let nombreProyectos= proyectos.nombre;
-          let codigoProyectos= proyectos.codigo;
-          if(codigoProyectos)
-          {
-            opcion.value = codigoProyectos.toString();
-          opcion.text= nombreProyectos;
-          }
-          
-          if(selectorProyecto)
-          {
-            selectorProyecto.appendChild(opcion);
-          }
-        }
-      )
-     
-    })
   }
   
 

@@ -32,12 +32,12 @@ const routes: Routes = [
     outlet: 'modal',
   },
   {
-    path: 'editar-proyecto/:id',
+    path: 'editar-proyecto/:codigo',
     component: EditarProyectoComponent,
-    outlet: 'modal',
+
   },
   {
-    path: 'eliminar-proyecto/:id',
+    path: 'eliminar-proyecto/:codigo',
     component: EliminarProyectoComponent,
     outlet: 'modal',
   },
@@ -67,12 +67,12 @@ const routes: Routes = [
     outlet: 'modal',
   },
   {
-    path: 'editar-bloque/:id',
+    path: 'editar-bloque/:codigo',
     component: EditarBloqueComponent,
-    outlet: 'modal',
+
   },
   {
-    path: 'eliminar-bloque/:id',
+    path: 'eliminar-bloque/:codigo',
     component: EliminarBloqueComponent,
     outlet: 'modal',
   },
@@ -87,12 +87,12 @@ const routes: Routes = [
     outlet: 'modal',
   },
   {
-    path: 'editar-ciudad/:id',
+    path: 'editar-ciudad/:codigo',
     component: EditarCiudadComponent,
-    outlet: 'modal',
+  
   },
   {
-    path: 'eliminar-ciudad/:id',
+    path: 'eliminar-ciudad/:codigo',
     component: EliminarCiudadComponent,
     outlet: 'modal',
   },
@@ -108,7 +108,7 @@ const routes: Routes = [
   {
     path: 'editar-inmueble/:codigo',
     component: EditarInmuebleComponent,
-    outlet: 'modal',
+
   },
   {
     path: 'eliminar-inmueble/:codigo',
@@ -125,12 +125,12 @@ const routes: Routes = [
     outlet: 'modal',
   },
   {
-    path: 'editar-pais/:id',
+    path: 'editar-pais/:codigo',
     component: EditarPaisComponent,
-    outlet: 'modal',
+ 
   },
   {
-    path: 'eliminar-pais/:id',
+    path: 'eliminar-pais/:codigo',
     component: EliminarPaisComponent,
     outlet: 'modal',
   },

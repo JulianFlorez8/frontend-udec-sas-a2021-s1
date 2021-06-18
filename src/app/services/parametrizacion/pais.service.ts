@@ -39,7 +39,7 @@ export class PaisService {
       headers: new HttpHeaders({})
     })
   }
-  obtenerPais(id: number,model: PaisModel): Observable<PaisModel>{//Revisar retorno
+  obtenerPais(id: number): Observable<PaisModel>{//Revisar retorno
     return this.http.get<PaisModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}`)
   }
   eliminarPais(id: number){//Revisar retorno
@@ -54,7 +54,7 @@ export class PaisService {
     })
   }
   obtenerCiudadesPais(id: number): Observable<CiudadModel[]>{
-    return this.http.get<CiudadModel[]>( `${ServiceConfig.BASE_URL}${this.entity}/${id}/ciudads`)
+    return this.http.get<CiudadModel[]>( `${ServiceConfig.BASE_URL}${this.entity}/${id}/ciudads`);
   }
   parcharCiudadesPais(id: number, model:CiudadModel): Observable<CiudadModel>
   {
