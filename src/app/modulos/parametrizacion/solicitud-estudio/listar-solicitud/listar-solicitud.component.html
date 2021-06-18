@@ -1,1 +1,69 @@
-<p>listar-solicitud works!</p>
+<div class="table-title">
+    <div class="row">
+      <div class="col-sm-6">
+        <h4>Administración Solicitudes</h4>
+      </div>
+      <div class="col-sm-6">
+        <button
+          class="waves-effect waves-light btn modal-trigger"
+          data-target="modal1"
+          [routerLink]="[
+            '/parametrizacion',
+            { outlets: { modal: ['crear-solicitud'] } }
+          ]"
+        >
+          <i class="material-icons">&#xE147;</i> <span>Crear Solicitud</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <table class="highlight responsive-table">
+    <thead class="white-text grey darken-2">
+      <tr>
+        <th>Codigo</th>
+        <th>Fecha Solicitud</th>
+        <th>Oferta Economica</th>
+        <th>Estado</th>
+        <th>Documento Cliente</th>
+        <th>Codigo Inmueble</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <tr *ngFor="let x of lista">
+        <td>
+          {{ x.codigo }}
+        </td>
+        <td>
+          {{ x.fechaSolicitud }}
+        </td>
+        <td>
+          {{ x.ofertaEconomica }}
+        </td>
+        <td>
+          {{ x.estado }}
+        </td>
+        <td>
+          {{ x.documentoCliente }}
+        </td>
+        <td>
+          {{ x.codigoInmueble }}
+        </td>
+        <td>
+          <a class="edit" routerLink="../aprobacion-solicitud/{{ x.codigo }}"
+            ><i class="orange-text material-icons" title="Edit">&#xE254;</i></a
+          >
+          <!--<a class="delete  modal-trigger"
+          data-target="modal1"
+          [routerLink]="[
+            '/parametrizacion',
+            { outlets: { modal: ['eliminar-proyecto'] } }
+          ]"
+            ><i class="red-text material-icons" title="Delete">&#xE872;</i></a
+          >-->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

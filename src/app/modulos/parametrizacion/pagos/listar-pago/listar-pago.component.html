@@ -1,1 +1,27 @@
-<p>listar-pago works!</p>
+<div class="table-title">
+    <div class="row">
+      <div class="col-sm-6">
+        <h4>Administración pagos</h4>
+      </div>
+    </div>
+  </div>
+  <table class="highlight responsive-table">
+    <thead class="white-text grey darken-2">
+      <tr>
+        <th>Codigo Solicitud</th>
+        <th>Recibo</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <tr *ngFor="let x of lista">
+        <td>
+          {{ x.codigoSolicitud }}
+        </td>
+        <td>
+          {{ x.recibo_consignacion }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

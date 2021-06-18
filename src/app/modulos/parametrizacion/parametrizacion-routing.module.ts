@@ -149,7 +149,7 @@ const routes: Routes = [
     component: CrearSolicitudComponent,
   },
   {
-    path: 'aprobacion-solicitud',
+    path: 'aprobacion-solicitud/:codigo',
     component: AprobacionSolicitudComponent,
   },
   {

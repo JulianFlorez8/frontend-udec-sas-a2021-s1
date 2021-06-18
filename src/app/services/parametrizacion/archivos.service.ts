@@ -8,15 +8,21 @@ import { CargaArchivoModel } from 'src/app/models/archivos/imagen.model';
   providedIn: 'root'
 })
 export class ArchivosService {
-  entity:String ='CargarImagen';
+  entityImagen:String ='CargarImagen';
+  entityArchivo: String='CargarComprobantePago';
 
   constructor(
     private http: HttpClient
   ) { }
   cargarImagen(clase: String, formData: FormData): Observable<CargaArchivoModel>{//Solo funciona si le entra "Proyecto o Cliente"
-    return this.http.post<CargaArchivoModel>( `${ServiceConfig.BASE_URL}${this.entity}${clase}`,formData, {
+    return this.http.post<CargaArchivoModel>( `${ServiceConfig.BASE_URL}${this.entityImagen}${clase}`,formData, {
       headers: new HttpHeaders({})
     })
 
   }
+  cargarRecibo(formData:FormData): Observable<CargaArchivoModel>{
+    return this.http.post<CargaArchivoModel>( `${ServiceConfig.BASE_URL}${this.entityArchivo}`,formData, {
+      headers: new HttpHeaders({})
+  })
+}
 }
