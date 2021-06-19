@@ -54,15 +54,16 @@
         <a class="edit" routerLink="../editar-proyecto/{{ x.codigo }}"
           ><i class="orange-text material-icons" title="Edit">&#xE254;</i></a
         >
-        <a class="delete  modal-trigger"
-        data-target="modal1"
-        [routerLink]="[
-          '/parametrizacion',
-          { outlets: { modal: ['eliminar-proyecto'] } }
-        ]"
+        <a
+          class="delete modal-trigger"
+          data-target="modal1"
+          [routerLink]="[
+            '/parametrizacion',
+            { outlets: { modal: ['eliminar-proyecto'] } }
+          ]"
           ><i class="red-text material-icons" title="Delete">&#xE872;</i></a
         >
-        <button type="button" class="btn btn-danger" (click)="RemoveRecordConfirmation(x.codigo)">aprobar</button>
+        <button type="button" class="btn btn-danger">aprobar</button>
       </td>
     </tr>
   </tbody>

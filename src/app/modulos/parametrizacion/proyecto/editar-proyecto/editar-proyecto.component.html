@@ -1,52 +1,76 @@
-
-    <section class="container">
-        <div class="row">
-          <h3 class="center-align">Editar Proyecto</h3>
-          <article class="col s6 offset-s3">
-            <form [formGroup]="uploadForm">
-    
-              <input formControlName="file" (change)="onFileSelect($event)" name="image" class="form-control" type="file">
-              <input type="button" value="Upload" (click)="cargarImagen()"/>
+<!--<form [formGroup]="crearUsuarioValidator">-->
+  <section class="container">
+    <div class="row">
+      <h3 class="center-align">Editar Proyecto</h3>
+      <article class="col s6 offset-s3">
+        <form [formGroup]="fgValidator">
+          <label>Código</label>
+          <div class="input-field">
+            <i class="material-icons prefix">perm_identity</i>
+            <label for="codigo"></label>
+            <input formControlName="codigo" type="text" name="codigo" required />
+          </div>
+          <label>Nombre</label>
+          <div class="input-field">
+            <i class="material-icons prefix">perm_identity</i>
+            <label for="nombre"></label>
+            <input formControlName="nombre" type="text" name="nombre" required />
+          </div>
+          <label>Descripción</label>
+          <div class="input-field">
+            <i class="material-icons prefix">perm_identity</i>
+            <label for="descripcion"></label>
+            <input
+              formControlName="descripcion"
+              type="text"
+              name="descripcion"
+              required
+            />
+          </div>
+          <label>Documento usuario</label>
+          <input type="hidden" formControlName="image" />
+          <div class="input-field">
+            <i class="material-icons prefix">perm_identity</i>
+            <label for="documentoUsuario"></label>
+            <input
+              formControlName="documentoUsuario"
+              type="text"
+              name="documentoUsuario"
+              required
+            />
+          </div>
+          <label>Codigo ciudad</label>
+          <div class="input-field">
+            <i class="material-icons prefix">perm_identity</i>
+            <label for="codigoCiudad"></label>
+            <input
+              formControlName="codigoCiudad"
+              type="text"
+              name="codigoCiudad"
+              required
+            />
+          </div>
+          <label>Imagen</label>
+          <form [formGroup]="uploadForm">
+            <input
+              formControlName="file"
+              (change)="onFileSelect($event)"
+              name="image"
+              class="form-control"
+              type="file"
+            />
+            <input type="button" value="Upload" (click)="cargarImagen()" />
           </form>
-            <form [formGroup]="fgValidator">
-                <div class="input-field">
-                  <i class="material-icons prefix">perm_identity</i>
-                  <label for="codigo"></label>
-                  <input formControlName="codigo" type="text" name="codigo" required />
-                  </div>
-              <div class="input-field">
-                <i class="material-icons prefix">perm_identity</i>
-                <label for="nombre"></label>
-                <input formControlName="nombre" type="text" name="nombre" required />
-              </div>
-              <div class="input-field">
-                <i class="material-icons prefix">perm_identity</i>
-                <label for="descripcion"></label>
-                <input formControlName="descripcion" type="text" name="descripcion" required />
-              </div>
-              <input type="hidden" formControlName="image"/>
-              <div class="input-field">
-                <i class="material-icons prefix">perm_identity</i>
-                <label for="documentoUsuario"></label>
-                <input formControlName="documentoUsuario" type="text" name="documentoUsuario" required />
-              </div>
-             
-              <div class="input-field">
-                <i class="material-icons prefix">perm_identity</i>
-                <label for="codigoCiudad"></label>
-                <input formControlName="codigoCiudad" type="text" name="codigoCiudad" required />
-              </div>
-              <p class="center-align">
-                <button
-                  class="waves-effect waves-light btn"
-                  type="submit"
-                  (click)="ActualizarProyecto()"
-                >
-                  <i class="material-icons right"></i>Actualizar
-                </button>
-              </p>
-            </form>
-          </article>
-        </div>
-      </section>
-      
+          <p class="center-align">
+            <button
+              class="waves-effect waves-light btn"
+              type="submit"
+              (click)="ActualizarProyecto()"
+            >
+              <i class="material-icons right"></i>Actualizar
+            </button>
+          </p>
+        </form>
+      </article>
+    </div>
+  </section>

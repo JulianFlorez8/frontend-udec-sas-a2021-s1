@@ -1,54 +1,60 @@
-
 <!--<form [formGroup]="crearUsuarioValidator">-->
-    <section class="container">
-        <div class="row">
-          <h3 class="center-align">Edicion Inmueble</h3>
-          <article class="col s6 offset-s3">
-            <form [formGroup]="fgValidator">
-                <!--<h5>codigo</h5>-->
-                  <div class="input-field">
-                    <i class="material-icons prefix">perm_identity</i>
-                    <label for="codigo"></label>
-                    <input formControlName="codigo" type="number" name="codigo" required />
-                  </div>
-              <div class="input-field">
-                <i class="material-icons prefix">perm_identity</i>
-                <label for="identificador"></label>
-                <input formControlName="identificador" type="text" name="identificador" required />
-              </div>
-      
-              <div class="input-field">
-                <i class="material-icons prefix">person_pin</i>
-                <label for="valor"></label>
-                <input
-                  formControlName="valor"
-                  type="number"
-                  name="valor"
-                  required
-                />
-              </div>
-              <div class="input-field">
-                <i class="material-icons prefix">person_pin</i>
-                <label for="codigoBloque"></label>
-                <input
-                  formControlName="codigoBloque"
-                  type="number"
-                  name="codigoBloque"
-                  required
-                />
-              </div>
-              
-              <p class="center-align">
-                <button
-                  class="waves-effect waves-light btn"
-                  type="submit"
-                  (click)="ActualizarInmueble()"
-                >
-                  <i class="material-icons right"></i>Actualizar
-                </button>
-              </p>
-            </form>
-          </article>
+<section class="container">
+  <div class="row">
+    <h3 class="center-align">Edicion Inmueble</h3>
+    <article class="col s6 offset-s3">
+      <form [formGroup]="fgValidator">
+        <!--<h5>codigo</h5>-->
+        <label>Código</label>
+        <div class="input-field">
+          <i class="material-icons prefix">perm_identity</i>
+          <label for="codigo"></label>
+          <input
+            formControlName="codigo"
+            type="number"
+            name="codigo"
+            required
+          />
         </div>
-      </section>
-      
+        <label>Identificador</label>
+        <div class="input-field">
+          <i class="material-icons prefix">perm_identity</i>
+          <label for="identificador"></label>
+          <input
+            formControlName="identificador"
+            type="text"
+            name="identificador"
+            required
+          />
+        </div>
+        <label>Valor</label>
+        <div class="input-field">
+          <i class="material-icons prefix">person_pin</i>
+          <label for="valor"></label>
+          <input formControlName="valor" type="number" name="valor" required />
+        </div>
+        <label>Código bloque</label>
+        <div class="input-field">
+          <i class="material-icons prefix">person_pin</i>
+          <label for="codigoBloque"></label>
+          <input
+            formControlName="codigoBloque"
+            type="number"
+            name="codigoBloque"
+            required
+          />
+        </div>
+
+        <p class="center-align">
+          <button
+            class="waves-effect waves-light btn"
+            type="submit"
+            (click)="ActualizarInmueble()"
+          >
+            <i class="material-icons right"></i>Actualizar
+          </button>
+        </p>
+      </form>
+    </article>
+  </div>
+</section>
