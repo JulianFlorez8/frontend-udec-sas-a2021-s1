@@ -40,8 +40,12 @@ export class SolicitudService {
       headers: new HttpHeaders({})
     })
   }
-  obtenerSolicitud(id: number ): Observable<SolicitudEstudioModel>{//Revisar retorno
-    return this.http.get<SolicitudEstudioModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}`)
+  obtenerSolicitud(id: number): Observable<SolicitudEstudioModel>{//Revisar retorno
+    return this.http.get<SolicitudEstudioModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}`,{
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.token}`
+      })
+    })
   }
   eliminarSolicitud(id: number){//Revisar retorno
     return this.http.delete(`${ServiceConfig.BASE_URL}${this.entity}/${id}`);

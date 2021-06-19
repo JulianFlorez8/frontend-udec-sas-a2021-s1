@@ -147,6 +147,7 @@ const routes: Routes = [
   {
     path: 'crear-solicitud',
     component: CrearSolicitudComponent,
+    outlet: 'modal',
   },
   {
     path: 'aprobacion-solicitud/:codigo',
