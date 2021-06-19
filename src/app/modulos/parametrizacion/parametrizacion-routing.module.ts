@@ -162,7 +162,7 @@ const routes: Routes = [
     component: ListarPagoComponent,
   },
   {
-    path: 'subir-pago:/codigo',
+    path: 'subir-pago/:codigo',
     component: SubirPagoComponent,
   },
 ];

@@ -46,6 +46,7 @@ export class AprobacionSolicitudComponent implements OnInit {
         solicitud.estado=nuevoEstado;
         this.service.actualizarSolicitud(this.elementoID,solicitud).subscribe((data) => {
             alert('Actualizacion Exitosa');// LAS ACTUALIZACIONES NO RETORNAN NADA, ES DECIR LO QUE VIENE ES null
+            this.router.navigate(["/inicio"]);
         });
       }
       

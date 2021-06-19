@@ -8,7 +8,11 @@
           <input type="button" value="Upload" (click)="cargarRecibo()"/>
       </form>
         <form [formGroup]="fgValidator">
-          
+          <div class="input-field">
+            <i class="material-icons prefix">perm_identity</i>
+            <label for="valor">Valor</label>
+            <input formControlName="valor" type="number" name="valor" required />
+          </div>
           <input type="hidden" formControlName="image"/>
           
           <p class="center-align">

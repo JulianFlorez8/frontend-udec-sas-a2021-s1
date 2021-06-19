@@ -32,6 +32,7 @@ export class SubirPagoComponent implements OnInit {
   }
   FormularioValidacion() {
     this.fgValidator = this.fb.group({
+      valor: ['', [Validators.required]],
       image: ['', [Validators.required]],
     });
   }
@@ -42,6 +43,7 @@ export class SubirPagoComponent implements OnInit {
   getProyectoData(): PagosModel {
     let model = new PagosModel();
     model.codigoSolicitud=parseInt(this.elementoID);//Duda si quitar o no
+    model.valor= parseInt(this.fgv.valor.value);
     model.recibo_consignacion = this.fgv.image.value.toString();
 
     return model;
@@ -50,12 +52,13 @@ export class SubirPagoComponent implements OnInit {
     if (this.fgValidator.invalid) {
       alert('Formulario Invalido');
     } else {
-      let proyecto = this.getProyectoData();
-      console.log(proyecto);
-      this.service.creacionPago(proyecto).subscribe((data) => {
+      let pago = this.getProyectoData();
+      console.log(pago);
+      this.service.creacionPago(pago).subscribe((data) => {
         console.log(data);
         if (data) {
           alert('Pago Exitoso');
+          this.router.navigate(["/inicio"]);
         } else {
           alert('Fallo el registro');
         }
