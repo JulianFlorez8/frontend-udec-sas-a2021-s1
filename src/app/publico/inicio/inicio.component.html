@@ -1,1 +1,33 @@
-<p>Bienvenido</p>
+<div class="row">
+  <div class="col s12 m6" *ngFor="let x of lista">
+    <div class="card large hoverable">
+      <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src="assets/proyectsImages/proy1.jpg" />
+      </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4"
+          >{{ x.nombre }}<i class="material-icons right">more_vert</i></span
+        >
+        <p>{{ x.descripcion.slice(0, 100) }}...</p>
+        <div class="card-action">
+          <button class="waves-effect waves-light btn activator">
+            Ver más
+          </button>
+        </div>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4"
+          >{{ x.nombre }}<i class="material-icons right">close</i></span
+        >
+
+        <p>Pais: {{ x.descripcion }}</p>
+
+        <p>Ciudad: {{ x.descripcion }}</p>
+
+        <p>Descripción: {{ x.descripcion }}</p>
+
+        <p>Inmuebles disponibles: {{ x.descripcion }}</p>
+      </div>
+    </div>
+  </div>
+</div>
