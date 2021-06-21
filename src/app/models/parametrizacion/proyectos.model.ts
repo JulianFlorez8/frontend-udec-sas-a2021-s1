@@ -4,7 +4,7 @@ export class ProyectoModel{
     nombre: string ='';
     descripcion: string ='';
     imagen: string='';
-    documentoUsuario: number=0;
+    DocumentoUsuario: number=0;
     codigoCiudad?: number=0;
     constructor(){}
 }

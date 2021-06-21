@@ -15,13 +15,17 @@ export class ProyectoService {
   token:String='';
   entity:String ='proyectos';
   cuenta: String= 'proyectos/count';
+  DocumentoUsuario:number=0;
   constructor(
     private http: HttpClient,
     private servicioSeguridad: SeguridadService
     
-  ) {this.token= this.servicioSeguridad.getToken() }
+  ) {this.token= this.servicioSeguridad.getToken();
+    this.DocumentoUsuario= this.servicioSeguridad.getDocumento(); }
+
   creacionProyecto( model: ProyectoModel): Observable <ProyectoModel>{
     console.log(this.token);
+    model.DocumentoUsuario=this.DocumentoUsuario;
     
     return this.http.post<ProyectoModel>( `${ServiceConfig.BASE_URL}${this.entity}`, model, {
       headers: new HttpHeaders({

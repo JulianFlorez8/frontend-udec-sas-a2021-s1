@@ -44,13 +44,12 @@ export class EditarClienteComponent implements OnInit {
         this.fgv.correo.setValue(data.Correo);
         this.fgv.direccion.setValue(data.Direccion);
         this.fgv.total_ingresos.setValue(data.Total_Ingresos);
-        if(data.Datos_Trabajo)
-        this.fgv.datos_trabajo.setValue(data.Datos_Trabajo[0]);
+        this.fgv.datos_trabajo.setValue(data.Datos_Trabajo);
         this.fgv.nombre_ref_familiar.setValue(data.Nombre_Ref_Familiar);
         this.fgv.telefono_ref_familiar.setValue(data.Telefono_Ref_Familiar);
         this.fgv.nombre_ref_personal.setValue(data.Nombre_Ref_Personal);
         this.fgv.telefono_ref_personal.setValue(data.Telefono_Ref_Personal);
-        this.fgv.documento_usuario.setValue(data.documentoUsuario);
+        this.fgv.documento_usuario.setValue(data.DocumentoUsuario);
         this.fgv.codigo_ciudad.setValue(data.codigoCiudad);
       },
       error =>{
@@ -77,7 +76,6 @@ export class EditarClienteComponent implements OnInit {
       nombre_ref_personal: ['', [Validators.required]],
       telefono_ref_personal: ['', [Validators.required]],
       documento_usuario: ['', [Validators.required]],
-      pais: ['',[Validators.required]],
       codigo_ciudad: ['', [Validators.required]],
       
     });
@@ -111,12 +109,12 @@ export class EditarClienteComponent implements OnInit {
     model.Correo = this.fgv.correo.value;
     model.Direccion= this.fgv.direccion.value;
     model.Total_Ingresos= this.fgv.total_ingresos.value;
-    model.Datos_Trabajo= [this.fgv.datos_trabajo.value,"",""];
+    model.Datos_Trabajo= this.fgv.datos_trabajo.value;
     model.Nombre_Ref_Familiar= this.fgv.nombre_ref_familiar.value;
     model.Telefono_Ref_Familiar=this.fgv.telefono_ref_familiar.value;
     model.Nombre_Ref_Personal=this.fgv.nombre_ref_personal.value;
     model.Telefono_Ref_Personal=this.fgv.telefono_ref_personal.value;
-    model.documentoUsuario=this.fgv.documento_usuario.value;
+    model.DocumentoUsuario=this.fgv.documento_usuario.value;
     model.codigoCiudad=this.fgv.codigo_ciudad.value;
     return model;
   }

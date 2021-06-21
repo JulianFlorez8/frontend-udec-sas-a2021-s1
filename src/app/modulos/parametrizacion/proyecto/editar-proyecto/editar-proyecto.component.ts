@@ -50,7 +50,7 @@ export class EditarProyectoComponent implements OnInit {
       nombre: ['', [Validators.required]],
       descripcion: ['', [Validators.required]],
       image: ['', [Validators.required]],
-      documentoUsuario: ['', [Validators.required]],
+      DocumentoUsuario: ['', [Validators.required]],
       codigoCiudad: ['', [Validators.required]],
     });
   }
@@ -64,7 +64,7 @@ export class EditarProyectoComponent implements OnInit {
         this.fgv.nombre.setValue(data.nombre);
         this.fgv.descripcion.setValue(data.descripcion);
         this.fgv.image.setValue(data.imagen);
-        this.fgv.documentoUsuario.setValue(data.documentoUsuario);
+        this.fgv.DocumentoUsuario.setValue(data.DocumentoUsuario);
         this.fgv.codigoCiudad.setValue(data.codigoCiudad);
       },
       error =>{
@@ -79,7 +79,7 @@ export class EditarProyectoComponent implements OnInit {
     model.nombre = this.fgv.nombre.value;
     model.descripcion = this.fgv.descripcion.value;
     model.imagen = this.fgv.image.value;
-    model.documentoUsuario = parseInt(this.fgv.documentoUsuario.value);
+    model.DocumentoUsuario = parseInt(this.fgv.DocumentoUsuario.value);
     model.codigoCiudad =parseInt(this.fgv.codigoCiudad.value);
 
    
@@ -141,7 +141,7 @@ export class EditarProyectoComponent implements OnInit {
   llenarUsuarios(){
     this.servicioUsuarios.obtenerUsuarios().subscribe(usuarios=>{
       this.usuarios=usuarios;
-      const selectorUsuarios=document.getElementById('documentoUsuario');
+      const selectorUsuarios=document.getElementById('DocumentoUsuario');
       this,usuarios.forEach(usuario => {
         const opcion= document.createElement('option');
         let nombreUsuario= usuario.Nombre;

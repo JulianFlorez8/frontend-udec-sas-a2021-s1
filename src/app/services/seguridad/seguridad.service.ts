@@ -71,7 +71,7 @@ export class SeguridadService {
     let actualSesion = this.getSesion();
     if(actualSesion)
     {
-      return JSON.parse(actualSesion).Documento;
+      return JSON.parse(actualSesion).usuario.Documento;
 
     }
     else{

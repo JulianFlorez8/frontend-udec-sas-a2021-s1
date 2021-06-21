@@ -9,12 +9,12 @@ export class ClienteModel{
     Correo: string='';
     Direccion: string='';
     Total_Ingresos: number=0;
-    Datos_Trabajo?: string[];
+    Datos_Trabajo?: string='';
     Nombre_Ref_Familiar: string='';
     Telefono_Ref_Familiar: string='';
     Nombre_Ref_Personal: string='';
     Telefono_Ref_Personal: string='';
-    documentoUsuario:number=0;
+    DocumentoUsuario: number=0;
     codigoCiudad: number=0;
     constructor(){}
 }

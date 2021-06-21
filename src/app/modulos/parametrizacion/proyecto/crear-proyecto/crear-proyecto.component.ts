@@ -35,14 +35,12 @@ export class CrearProyectoComponent implements OnInit {
     this.construirFormularioCarga();
     this.FormularioValidacion();
     this.llenarPaises();
-    this.llenarUsuarios();
   }
   FormularioValidacion() {
     this.fgValidator = this.fb.group({
       nombre: ['', [Validators.required]],
       descripcion: ['', [Validators.required]],
       image: ['', [Validators.required]],
-      documentoUsuario: ['', [Validators.required]],
       ciudad: ['', [Validators.required]],
       pais: ['', [Validators.required]],
     });
@@ -56,7 +54,7 @@ export class CrearProyectoComponent implements OnInit {
     model.nombre = this.fgv.nombre.value.toString();
     model.descripcion = this.fgv.descripcion.value.toString();
     model.imagen = this.fgv.image.value.toString();
-    model.documentoUsuario = parseInt(this.fgv.documentoUsuario.value);
+    model.DocumentoUsuario = 0;
     model.codigoCiudad = parseInt(this.fgv.ciudad.value);
     return model;
   }
@@ -106,25 +104,6 @@ export class CrearProyectoComponent implements OnInit {
     }
   }
 
-  llenarUsuarios() {
-    this.servicioUsuarios.obtenerUsuarios().subscribe((usuarios) => {
-      this.usuarios = usuarios;
-      const selectorUsuarios = document.getElementById('documentoUsuario');
-      this,
-        usuarios.forEach((usuario) => {
-          const opcion = document.createElement('option');
-          let nombreUsuario = usuario.Nombre;
-          let apellidoUsuario = usuario.Apellido_1;
-          let NAUsuario = nombreUsuario + ' ' + apellidoUsuario;
-          let codigoUsuario = usuario.Documento;
-          opcion.value = codigoUsuario.toString();
-          opcion.text = NAUsuario;
-          if (selectorUsuarios) {
-            selectorUsuarios.appendChild(opcion);
-          }
-        });
-    });
-  }
   llenarPaises() {
     this.servicioPaises.obtenerPaises().subscribe((paises) => {
       //console.log(paises);

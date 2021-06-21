@@ -56,11 +56,11 @@ const routes: Routes = [
     outlet: 'modal',
   },
   {
-    path: 'editar-cliente/:id',
+    path: 'editar-cliente/:codigo',
     component: EditarClienteComponent,
   },
   {
-    path: 'eliminar-cliente/:id',
+    path: 'eliminar-cliente/:codigo',
     component: EliminarClienteComponent,
   },
   {

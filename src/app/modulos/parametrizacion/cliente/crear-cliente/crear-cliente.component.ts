@@ -51,7 +51,7 @@ export class CrearClienteComponent implements OnInit {
       telefono_ref_personal: ['', [Validators.required]],
       pais: ['',[Validators.required]],
       codigo_ciudad: ['', [Validators.required]],
-      
+      DocumentoUsuario: ['', [Validators.required]],
     });
   }
 
@@ -60,6 +60,9 @@ export class CrearClienteComponent implements OnInit {
       alert('Formulario Invalido');
     } else {
       let cliente = this.getUsuarioData();
+      cliente.DocumentoUsuario=10;
+      console.log(cliente.DocumentoUsuario);
+      console.log(cliente);
       this.service.creacionCliente(cliente).subscribe((data) => {
         console.log(data);
         if (data) {
@@ -72,6 +75,7 @@ export class CrearClienteComponent implements OnInit {
   }
   //Obtenego datos del formulario y los paso al modelo de usuario
   getUsuarioData(): ClienteModel {
+    
     let model = new ClienteModel();
     model.Documento= this.fgv.documento.value;
     model.Nombre = this.fgv.nombre.value;
@@ -83,13 +87,14 @@ export class CrearClienteComponent implements OnInit {
     model.Correo = this.fgv.correo.value;
     model.Direccion= this.fgv.direccion.value;
     model.Total_Ingresos= this.fgv.total_ingresos.value;
-    model.Datos_Trabajo= [this.fgv.datos_trabajo.value,"",""];
+    model.DocumentoUsuario=parseInt(this.fgv.DocumentoUsuario.value);
+    model.Datos_Trabajo= this.fgv.datos_trabajo.value;
     model.Nombre_Ref_Familiar= this.fgv.nombre_ref_familiar.value;
-    model.Telefono_Ref_Familiar=this.fgv.telefono_ref_familiar.value;
+    model.Telefono_Ref_Familiar=this.fgv.telefono_ref_familiar.value.toString();
     model.Nombre_Ref_Personal=this.fgv.nombre_ref_personal.value;
-    model.Telefono_Ref_Personal=this.fgv.telefono_ref_personal.value;
-    model.documentoUsuario=0;//EN EL SERVICE SE LLENA
-    model.codigoCiudad=this.fgv.codigo_ciudad.value;
+    model.Telefono_Ref_Personal=this.fgv.telefono_ref_personal.value.toString();
+    model.codigoCiudad=parseInt(this.fgv.codigo_ciudad.value);
+    
     return model;
   }
   get fgv() {
@@ -124,6 +129,7 @@ export class CrearClienteComponent implements OnInit {
     }
   }
   llenarPaises(){
+    this.fgv.DocumentoUsuario.setValue(1);
     this.servicioPaises.obtenerPaises().subscribe(paises=>{
       //console.log(paises);
       this.paises=paises;
