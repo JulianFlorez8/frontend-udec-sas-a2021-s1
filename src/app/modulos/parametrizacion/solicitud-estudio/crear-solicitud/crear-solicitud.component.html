@@ -1,1 +1,31 @@
-<p>crear-solicitud works!</p>
+
+    <section class="container">
+        <div class="row">
+          <h3 class="center-align">Crear Solicitud de estudio</h3>
+          <article class="col s6 offset-s3">
+            <form [formGroup]="fgValidator">
+              <div class="input-field">
+                <i class="material-icons prefix">perm_identity</i>
+                <label for="documento">Documento Cliente</label>
+                <input formControlName="documento" type="number" name="documento" required />
+              </div>
+              <div class="input-field">
+                <i class="material-icons prefix">perm_identity</i>
+                <label for="oferta">Oferta Economica</label>
+                <input formControlName="oferta" type="number" name="oferta" required />
+              </div>
+
+              <p class="center-align">
+                <button
+                  class="waves-effect waves-light btn"
+                  type="submit"
+                  (click)="CrearSolicitud()"
+                >
+                  <i class="material-icons right"></i>Registrar
+                </button>
+              </p>
+            </form>
+          </article>
+        </div>
+      </section>
+      

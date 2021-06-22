@@ -17,6 +17,9 @@ export class ListarCiudadComponent implements OnInit {
   obtenerLista() {
     this.service.obtenerCiudades(this.page).subscribe(
       (datos) => {
+        datos.forEach(dato=>{
+//          dato.codigoPais=;
+        })
         this.lista = datos;
         console.log(this.lista);
       },

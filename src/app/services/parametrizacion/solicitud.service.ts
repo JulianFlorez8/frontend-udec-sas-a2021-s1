@@ -25,8 +25,11 @@ export class SolicitudService {
       })
     })
   }
-  obtenerCantidadSolicitudes(): Observable<number>{
-    return this.http.get<number>(`${ServiceConfig.BASE_URL}${this.cuenta}`)
+  obtenerSolicitudesInmueble(id: number): Observable<number>{
+    return this.http.get<number>(`${ServiceConfig.BASE_URL}${this.entity}/${id}/inmueble`)
+  }
+  obtenerCantidadSolicitudes(): Observable<SolicitudEstudioModel[]>{
+    return this.http.get<SolicitudEstudioModel[]>(`${ServiceConfig.BASE_URL}${this.cuenta}`)
   }
   actualizarSolicitud(id: number,model: SolicitudEstudioModel): Observable<SolicitudEstudioModel>{//Revisar retorno
     return this.http.put<SolicitudEstudioModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}`, model, {
@@ -53,6 +56,11 @@ export class SolicitudService {
   obtenerSolicitudes():Observable<SolicitudEstudioModel[]>{//Sin filtro
     return this.http.get<SolicitudEstudioModel[]>(`${ServiceConfig.BASE_URL}${this.entity}`)    
   }
+  obtenerSolicitudesEnEstudio():Observable<SolicitudEstudioModel[]>{//Sin filtro
+    return this.http.get<SolicitudEstudioModel[]>(`${ServiceConfig.BASE_URL}solicitudes-en-estudio`)    
+  }
+
+
   parcharSolicitudes(model: SolicitudEstudioModel):Observable<SolicitudEstudioModel>{//Sin filtro
     return this.http.patch<SolicitudEstudioModel>( `${ServiceConfig.BASE_URL}${this.entity}`, model, {
       headers: new HttpHeaders({})

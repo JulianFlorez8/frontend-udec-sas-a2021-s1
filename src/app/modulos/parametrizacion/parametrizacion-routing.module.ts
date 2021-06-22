@@ -145,9 +145,9 @@ const routes: Routes = [
     component: ListarPaisComponent,
   },
   {
-    path: 'crear-solicitud',
+    path: 'crear-solicitud/:codigo',//llega el codigo del inmueble
     component: CrearSolicitudComponent,
-    outlet: 'modal',
+    //outlet: 'modal',
   },
   {
     path: 'aprobacion-solicitud/:codigo',

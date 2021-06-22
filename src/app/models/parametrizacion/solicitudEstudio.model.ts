@@ -1,6 +1,6 @@
 import{PaisModel} from './pais.model'
 export class SolicitudEstudioModel{
-    codigo?: number =0;
+    codigo?: number;
     fechaSolicitud?: string ='';
     ofertaEconomica?: number=0;
     estado?: string='';

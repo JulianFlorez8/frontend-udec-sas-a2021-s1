@@ -16,7 +16,7 @@ export class ListarSolicitudComponent implements OnInit {
   }
 
   obtenerLista() {
-    this.service.obtenerSolicitudes().subscribe(
+    this.service.obtenerSolicitudesEnEstudio().subscribe(//SOLO SE ENLISTAN AQUELLOS QUE ESTEN EN ESTUDIO
       (datos) => {
         this.lista = datos;
         console.log(this.lista);
