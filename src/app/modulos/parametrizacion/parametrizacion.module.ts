@@ -23,15 +23,15 @@ import { ListarInmuebleComponent } from './inmueble/listar-inmueble/listar-inmue
 import { EditarInmuebleComponent } from './inmueble/editar-inmueble/editar-inmueble.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { EditarClienteComponent } from './cliente/editar-cliente/editar-cliente.component';
-import { EliminarClienteComponent } from './cliente/eliminar-cliente/eliminar-cliente.component';
-import { ListarClienteComponent } from './cliente/listar-cliente/listar-cliente.component';
-import { CrearClienteComponent } from './cliente/crear-cliente/crear-cliente.component';
-import { CrearSolicitudComponent } from './solicitud-estudio/crear-solicitud/crear-solicitud.component';
-import { ListarSolicitudComponent } from './solicitud-estudio/listar-solicitud/listar-solicitud.component';
-import { AprobacionSolicitudComponent } from './solicitud-estudio/aprobacion-solicitud/aprobacion-solicitud.component';
-import { SubirPagoComponent } from './pagos/subir-pago/subir-pago.component';
-import { ListarPagoComponent } from './pagos/listar-pago/listar-pago.component';
+import { EditarClienteComponent } from '../ventas/cliente/editar-cliente/editar-cliente.component';
+import { EliminarClienteComponent } from '../ventas/cliente/eliminar-cliente/eliminar-cliente.component';
+import { ListarClienteComponent } from '../ventas/cliente/listar-cliente/listar-cliente.component';
+import { CrearClienteComponent } from '../ventas/cliente/crear-cliente/crear-cliente.component';
+import { CrearSolicitudComponent } from '../ventas/solicitud-estudio/crear-solicitud/crear-solicitud.component';
+import { ListarSolicitudComponent } from '../ventas/solicitud-estudio/listar-solicitud/listar-solicitud.component';
+import { AprobacionSolicitudComponent } from '../ventas/solicitud-estudio/aprobacion-solicitud/aprobacion-solicitud.component';
+import { SubirPagoComponent } from '../ventas/pagos/subir-pago/subir-pago.component';
+import { ListarPagoComponent } from '../ventas/pagos/listar-pago/listar-pago.component';
 
 
 @NgModule({
