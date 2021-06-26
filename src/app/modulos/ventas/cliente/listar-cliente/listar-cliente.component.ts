@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ClienteModel } from 'src/app/models/parametrizacion/cliente.model';
-import { ClienteService } from 'src/app/services/parametrizacion/cliente.service';
+import { ClienteModel } from 'src/app/models/ventas/cliente.model';
+import { ClienteService } from 'src/app/services/ventas/cliente.service';
 import { SeguridadService } from 'src/app/services/seguridad/seguridad.service';
 
 @Component({

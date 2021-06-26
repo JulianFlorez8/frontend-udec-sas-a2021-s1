@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PagosModel } from 'src/app/models/parametrizacion/pagos.model';
-import { PagoService } from 'src/app/services/parametrizacion/pago.service';
+import { PagosModel } from 'src/app/models/ventas/pagos.model';
+import { PagoService } from 'src/app/services/ventas/pago.service';
 
 @Component({
   selector: 'app-listar-pago',

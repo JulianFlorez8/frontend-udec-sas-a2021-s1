@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CiudadModel } from 'src/app/models/parametrizacion/ciudad.model';
-import { ClienteModel } from 'src/app/models/parametrizacion/cliente.model';
+import { ClienteModel } from 'src/app/models/ventas/cliente.model';
 import { PaisModel } from 'src/app/models/parametrizacion/pais.model';
 import { ArchivosService } from 'src/app/services/parametrizacion/archivos.service';
 import { CiudadService } from 'src/app/services/parametrizacion/ciudad.service';
-import { ClienteService } from 'src/app/services/parametrizacion/cliente.service';
+import { ClienteService } from 'src/app/services/ventas/cliente.service';
 import { PaisService } from 'src/app/services/parametrizacion/pais.service';
 
 @Component({
@@ -24,7 +25,8 @@ export class CrearClienteComponent implements OnInit {
     private fb: FormBuilder, 
     private service: ClienteService,
     private servicioCiudades: CiudadService,
-    private servicioPaises: PaisService
+    private servicioPaises: PaisService,
+    private router: Router,
     ) {}
 
   ngOnInit(): void {
@@ -67,6 +69,7 @@ export class CrearClienteComponent implements OnInit {
         console.log(data);
         if (data) {
           alert('Registro Exitoso');
+          this.router.navigate(["/ventas/listar-cliente"]);
         } else {
           alert('Fallo el registro');
         }

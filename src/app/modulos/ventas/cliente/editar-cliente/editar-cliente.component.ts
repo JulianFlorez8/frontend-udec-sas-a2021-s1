@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ClienteModel } from 'src/app/models/parametrizacion/cliente.model';
+import { ClienteModel } from 'src/app/models/ventas/cliente.model';
 import { ArchivosService } from 'src/app/services/parametrizacion/archivos.service';
 import { CiudadService } from 'src/app/services/parametrizacion/ciudad.service';
-import { ClienteService } from 'src/app/services/parametrizacion/cliente.service';
+import { ClienteService } from 'src/app/services/ventas/cliente.service';
 
 @Component({
   selector: 'app-editar-cliente',
@@ -54,7 +54,7 @@ export class EditarClienteComponent implements OnInit {
       },
       error =>{
         alert('No se encontro el elemento');
-       this.router.navigate(["/parametrizacion/listar-cliente"]);
+       this.router.navigate(["/ventas/listar-cliente"]);
       }
     )
   }

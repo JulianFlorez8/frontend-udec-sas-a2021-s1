@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PagosModel } from 'src/app/models/parametrizacion/pagos.model';
+import { PagosModel } from 'src/app/models/ventas/pagos.model';
 import { ArchivosService } from 'src/app/services/parametrizacion/archivos.service';
-import { PagoService } from 'src/app/services/parametrizacion/pago.service';
+import { PagoService } from 'src/app/services/ventas/pago.service';
 
 @Component({
   selector: 'app-subir-pago',

@@ -1,4 +1,4 @@
-import{PaisModel} from './pais.model'
+
 export class SolicitudEstudioModel{
     codigo?: number;
     fechaSolicitud?: string ='';

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ClienteModel } from 'src/app/models/parametrizacion/cliente.model';
+import { ClienteModel } from 'src/app/models/ventas/cliente.model';
 import { CiudadService } from 'src/app/services/parametrizacion/ciudad.service';
-import { ClienteService } from 'src/app/services/parametrizacion/cliente.service';
+import { ClienteService } from 'src/app/services/ventas/cliente.service';
 import { PaisService } from 'src/app/services/parametrizacion/pais.service';
 
 @Component({

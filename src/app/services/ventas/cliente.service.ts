@@ -5,7 +5,7 @@ import { CiudadModel } from 'src/app/models/parametrizacion/ciudad.model';
 import { InmuebleModel } from 'src/app/models/parametrizacion/inmueble.model';
 import { UsuarioModel } from 'src/app/models/usuario.model';
 import{ ServiceConfig} from '../../config/service.config';
-import{ClienteModel} from '../../models/parametrizacion/cliente.model';
+import{ClienteModel} from '../../models/ventas/cliente.model';
 import { SeguridadService } from '../seguridad/seguridad.service';
 @Injectable({
   providedIn: 'root'

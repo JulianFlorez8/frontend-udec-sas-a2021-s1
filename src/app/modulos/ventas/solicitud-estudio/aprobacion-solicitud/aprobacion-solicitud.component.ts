@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SolicitudEstudioModel } from 'src/app/models/parametrizacion/solicitudEstudio.model';
-import { SolicitudService } from 'src/app/services/parametrizacion/solicitud.service';
+import { SolicitudEstudioModel } from 'src/app/models/ventas/solicitudEstudio.model';
+import { SolicitudService } from 'src/app/services/ventas/solicitud.service';
 
 @Component({
   selector: 'app-aprobacion-solicitud',
@@ -33,7 +33,7 @@ export class AprobacionSolicitudComponent implements OnInit {
       },
       error =>{
         alert('No se encontro el elemento');
-       this.router.navigate(["/parametrizacion/listar-solicitud"]);
+       this.router.navigate(["/ventas/listar-solicitud"]);
       }
     )
 

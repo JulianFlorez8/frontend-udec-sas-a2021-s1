@@ -6,7 +6,7 @@ import{ ServiceConfig} from '../config/service.config';
 import { CambioContrasenaModel } from '../models/seguridad/cambio-contrasena';
 import { ResetearContrasenaModel } from '../models/seguridad/resetear-contrasena';
 import { CiudadModel } from '../models/parametrizacion/ciudad.model';
-import { ClienteModel } from '../models/parametrizacion/cliente.model';
+import { ClienteModel } from '../models/ventas/cliente.model';
 import { ProyectoModel } from '../models/parametrizacion/proyectos.model';
 import { SeguridadService } from './seguridad/seguridad.service';
 @Injectable({

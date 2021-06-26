@@ -2,8 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ServiceConfig } from 'src/app/config/service.config';
-import { PagosModel } from 'src/app/models/parametrizacion/pagos.model';
-import { SolicitudEstudioModel } from 'src/app/models/parametrizacion/solicitudEstudio.model';
+import { PagosModel } from 'src/app/models/ventas/pagos.model';
+import { SolicitudEstudioModel } from 'src/app/models/ventas/solicitudEstudio.model';
 
 @Injectable({
   providedIn: 'root'

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ServiceConfig } from 'src/app/config/service.config';
 import { CiudadModel } from 'src/app/models/parametrizacion/ciudad.model';
-import { ClienteModel } from 'src/app/models/parametrizacion/cliente.model';
+import { ClienteModel } from 'src/app/models/ventas/cliente.model';
 import { PaisModel } from 'src/app/models/parametrizacion/pais.model';
 import { ProyectoModel } from 'src/app/models/parametrizacion/proyectos.model';
 import { UsuarioModel } from 'src/app/models/usuario.model';
