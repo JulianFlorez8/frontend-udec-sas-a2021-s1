@@ -3,71 +3,77 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PaisModel } from 'src/app/models/parametrizacion/pais.model';
 import { CiudadService } from 'src/app/services/parametrizacion/ciudad.service';
 import { PaisService } from 'src/app/services/parametrizacion/pais.service';
-
+import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
+import { Label } from 'ng2-charts'
 @Component({
   selector: 'app-informe-proyectos',
   templateUrl: './informe-proyectos.component.html',
   styleUrls: ['./informe-proyectos.component.css']
 })
 export class InformeProyectosComponent implements OnInit {
-  fgValidator: FormGroup = this.fb.group({});
-  paises?: PaisModel[];
-  constructor(
-    
-    private fb: FormBuilder, 
-    private service: CiudadService,
-    private servicioPaises: PaisService,
-    ) {}
-  ngOnInit(): void {
-    this.llenarPaises();
-    this.FormularioValidacion();
-  }
-  get fgv() {
-    return this.fgValidator.controls;
-  }
-  FormularioValidacion() {
-    this.fgValidator = this.fb.group({
-      pais: ['', [Validators.required]]
-    });
-  }
-  
-  llenarPaises(){
-    const selectorPais=document.getElementById('pais');
-    this.servicioPaises.obtenerPaises().subscribe(paises=>{
-      this.paises=paises;
-      this.paises?.forEach(
-        pais=>{
-          const opcion= document.createElement('option');
-          let nombrePais= pais.nombre;
-          let codigoPais= pais.codigo;
-          if (codigoPais)
-          {
-             opcion.value = codigoPais.toString();
-          opcion.text= nombrePais;
+  public barChartOptions: ChartOptions = {
+    responsive: true,
+    // We use these empty structures as placeholders for dynamic theming.
+    scales: { xAxes: [{}], yAxes: [{}] },
+  };
+  public barChartLabels: Label[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+  public barChartType: ChartType = 'bar';
+  public barChartLegend = true;
 
-          }
-          if(selectorPais)
-          {
-            selectorPais.appendChild(opcion);
-          }
-        }
-      )
-     
-    })
-    if (selectorPais)
-    {
-      selectorPais.addEventListener('change', e => { //me permite ver cuando estoy cambiando de opcion
-        const list = e.target;
-        
-        
-        let idPais=this.fgv.pais.value
-        //console.log(idPais);
-        this.generarGrafica(idPais);
-  })
-    }
+  public barChartData: ChartDataSets[] = [
+    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Inmuebles vendidos' },
+    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Inmuebles sin Vender' }
+  ];
+
+  constructor() { }
+
+  ngOnInit(): void {
   }
-  generarGrafica(idPais: number){
-    console.log(idPais);
-    
+
+  // events
+  public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
+    console.log(event, active);
+  }
+
+  public chartHovered({ event, active }: { event: MouseEvent, active: {}[] }): void {
+    console.log(event, active);
+  }
+
+  public randomize(): void {
+    switch ( this.barChartType ) {
+      case 'bar':
+          this.barChartType = 'line';
+          break;
+      case 'line':
+          this.barChartType = 'pie';
+          break;
+      case 'pie':
+          this.barChartType = 'horizontalBar';
+          break;
+      case 'horizontalBar':
+          this.barChartType = 'radar';
+          break;
+      case 'radar':
+          this.barChartType = 'doughnut';
+          break;
+      case 'doughnut':
+          this.barChartType = 'polarArea';
+          break;
+      case 'polarArea':
+          this.barChartType = 'bar';
+          break;
+      default: 
+          // 
+          break;
+      
+   }
+   //console.log(this.barChartType)
+    //if(this.barChartType === 'bar')
+    //{this.barChartType = 'line';}
+    //if(this.barChartType === 'line')
+    //this.barChartType = 'pie';
+    //if(this.barChartType === 'pie')
+    //this.barChartType = 'bar';
+    //this.barChartType = this.barChartType === 'bar' ? 'line' : 'bar';
   }
 }

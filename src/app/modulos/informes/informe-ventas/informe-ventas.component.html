@@ -1,6 +1,17 @@
 <p>informe-ventas works!</p>
 BARRAS O TORTA, POR estado
-
-<div id="divChart">
-    <canvas id="myChart"></canvas>
-</div>
+<div>
+    <div>
+      <div style="display: block">
+        <canvas baseChart
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins"
+          [legend]="barChartLegend"
+          [chartType]="barChartType">
+        </canvas>
+      </div>
+      <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button>
+    </div>
+  </div>

@@ -1,19 +1,36 @@
-<p>informe-pagos works!</p>TORTA select con los clientes
 <section class="container">
-    <div class="row">
-      <h2 class="center-align">INFORME PAGOS</h2>
-      <article class="col s6 offset-s3">
-        <form [formGroup]="fgValidator">
+  <div class="row">
+    <h2 class="center-align">INFORME PAGO POR CLIENTE</h2>
+    <h5>{{inmueble}}</h5>
+    <form [formGroup]="fgValidator">
+    <div>
+      <select formControlName="inmuebles" class="browser-default pl" id="inmuebles" >
+      
+          <option *ngFor="let x of inmuebles" value="{{x.codigo}}">{{x.identificador}}</option>
+   
+        
+      </select>
+    </div>
+      <div style="display: block;">
+        <canvas baseChart 
+          [data]="pieChartData" 
+          [labels]="pieChartLabels" 
+          [chartType]="pieChartType"
+          [options]="pieChartOptions"
+          [plugins]="pieChartPlugins"
+          [legend]="pieChartLegend">
+        </canvas>
+      </div>
+      
          
-          <div class="input-field">
-              <h4>Seleccione el cliente:</h4>
-            
-            <label for="cliente"></label>
-            <select formControlName="cliente" class="browser-default pl" id="cliente">
-              <option></option>
-            </select>
-          </div>
-          </form>
-      </article>
+        <div class="input-field">
+            <h4>Seleccione el cliente:</h4>
+          
+          <label for="cliente"></label>
+          <select formControlName="cliente" class="browser-default pl" id="cliente">
+            <option></option>
+          </select>
+        </div>
+        </form>
     </div>
   </section>

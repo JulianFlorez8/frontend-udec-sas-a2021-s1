@@ -7,18 +7,20 @@ vendidos y no vendidos
         <div class="row">
           <h2 class="center-align">INFORME PROYECTOS</h2>
           <article class="col s6 offset-s3">
-            <form [formGroup]="fgValidator">
-             
-              <div class="input-field">
-                  <h4>Seleccione el pais:</h4>
-                
-                <label for="pais">Pais</label>
-                <select formControlName="pais" class="browser-default pl" id="pais">
-                  <option></option>
-                </select>
-              </div>
-              </form>
+            
           </article>
+          <div>
+            <div>
+              <div>
+                <div style="display: block">
+                  <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+                    [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)"
+                    ></canvas>
+                </div>
+                <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       

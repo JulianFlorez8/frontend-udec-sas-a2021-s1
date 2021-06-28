@@ -28,6 +28,9 @@ export class SolicitudService {
   obtenerSolicitudesInmueble(id: number): Observable<number>{
     return this.http.get<number>(`${ServiceConfig.BASE_URL}${this.entity}/${id}/inmueble`)
   }
+  obtenerSolicitudesCliente(id: number): Observable<SolicitudEstudioModel[]>{
+    return this.http.get<SolicitudEstudioModel[]>(`${ServiceConfig.BASE_URL}${this.entity}/${id}/cliente`)
+  }
   obtenerCantidadSolicitudes(): Observable<SolicitudEstudioModel[]>{
     return this.http.get<SolicitudEstudioModel[]>(`${ServiceConfig.BASE_URL}${this.cuenta}`)
   }
@@ -67,7 +70,11 @@ export class SolicitudService {
     })
   }
   obtenerPagosSolicitud(id: number): Observable<PagosModel[]>{
-    return this.http.get<PagosModel[]>( `${ServiceConfig.BASE_URL}${this.entity}/${id}/pagos`)
+    return this.http.get<PagosModel[]>( `${ServiceConfig.BASE_URL}${this.entity}/${id}/pagos`,{
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.token}`
+      })
+    })
   }
   parcharPagosSolicitud(id: number, model:PagosModel): Observable<PagosModel>
   {

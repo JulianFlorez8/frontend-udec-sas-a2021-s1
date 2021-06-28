@@ -7,6 +7,7 @@ import { InformeProyectosComponent } from './informe-proyectos/informe-proyectos
 import { InformePagosComponent } from './informe-pagos/informe-pagos.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ChartsModule
   ]
 })
 export class InformesModule { }
