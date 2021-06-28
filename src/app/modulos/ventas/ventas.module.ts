@@ -32,7 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
     VentasRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ]
 })
 export class VentasModule { }

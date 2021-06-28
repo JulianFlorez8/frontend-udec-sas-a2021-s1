@@ -6,5 +6,8 @@ export class ProyectoModel{
     imagen: string='';
     DocumentoUsuario: number=0;
     codigoCiudad?: number=0;
+    ciudad?:string;
+    pais?:string;
+    inmueblesDisponibles?:number;
     constructor(){}
 }

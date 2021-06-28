@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ServiceConfig } from 'src/app/config/service.config';
 import { BloqueModel } from 'src/app/models/parametrizacion/bloque.model';
+import { InmuebleModel } from 'src/app/models/parametrizacion/inmueble.model';
 import { ProyectoModel } from 'src/app/models/parametrizacion/proyectos.model';
 import { SeguridadService } from '../seguridad/seguridad.service';
 
@@ -24,6 +25,13 @@ export class BloqueService {
     return this.http.post<BloqueModel>( `${ServiceConfig.BASE_URL}${this.entity}`, model, {
       headers: new HttpHeaders({
         Authorization: `Bearer ${this.token}`
+      })
+    })
+  }
+  obtenerBloqueInmueble(id:number):Observable<InmuebleModel[]>{
+    return this.http.get<InmuebleModel[]>( `${ServiceConfig.BASE_URL}${this.entity}/${id}/inmuebles`,{
+      headers: new HttpHeaders({
+
       })
     })
   }
