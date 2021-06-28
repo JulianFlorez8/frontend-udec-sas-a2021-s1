@@ -4,5 +4,6 @@ export class BloqueModel{
     nombre: string ='';
     descripcion?: string='';
     codigoProyecto?: number=0;
+    proyecto?: string;
     constructor(){}
 }

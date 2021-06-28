@@ -9,7 +9,7 @@ export class UsuarioModel{
         Rol: string='';
         Usuario: string='';
         Contrasena: string='';
-        Ciudad: string='';
+        Ciudad?: string;
         codigoCiudad?: number;
         constructor(){}
 }

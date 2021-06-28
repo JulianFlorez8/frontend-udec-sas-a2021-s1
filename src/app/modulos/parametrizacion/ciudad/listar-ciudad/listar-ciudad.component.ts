@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CiudadModel } from 'src/app/models/parametrizacion/ciudad.model';
+import { PaisService } from 'src/app/services/parametrizacion/pais.service';
 import { CiudadService } from '../../../../services/parametrizacion/ciudad.service';
 @Component({
   selector: 'app-listar-ciudad',
@@ -7,7 +8,8 @@ import { CiudadService } from '../../../../services/parametrizacion/ciudad.servi
   styleUrls: ['./listar-ciudad.component.css'],
 })
 export class ListarCiudadComponent implements OnInit {
-  constructor(private service: CiudadService) {}
+  constructor(private service: CiudadService,
+    private servicioPais:PaisService) {}
   lista: CiudadModel[] = [];
   page = 5;
   ngOnInit(): void {
@@ -18,7 +20,13 @@ export class ListarCiudadComponent implements OnInit {
     this.service.obtenerCiudades(this.page).subscribe(
       (datos) => {
         datos.forEach(dato=>{
-//          dato.codigoPais=;
+          this.servicioPais.obtenerPais(dato.codigoPais).subscribe((pais)=>{
+            dato.pais=pais.nombre;
+          },
+          (error)=>{
+            dato.pais='';
+          })
+          
         })
         this.lista = datos;
         console.log(this.lista);

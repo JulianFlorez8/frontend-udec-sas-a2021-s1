@@ -3,5 +3,6 @@ export class CiudadModel{
     codigo?: number =0;
     nombre: string ='';
     codigoPais: number=0;
+    pais?: string;
     constructor(){}
 }

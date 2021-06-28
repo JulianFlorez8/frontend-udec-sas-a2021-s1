@@ -17,6 +17,12 @@ export class ListarBloqueComponent implements OnInit {
   obtenerLista() {
     this.service.obtenerBloques().subscribe(
       (datos) => {
+        datos.forEach((dato)=>{
+          if(dato.codigoProyecto)
+          this.service.obtenerProyectoBloque(dato.codigoProyecto).subscribe((proyect)=>{
+            dato.proyecto=proyect.nombre;
+          })
+        })
         this.lista = datos;
         console.log(this.lista);
       },

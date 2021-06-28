@@ -5,6 +5,7 @@ export class ProyectoModel{
     descripcion: string ='';
     imagen: string='';
     DocumentoUsuario: number=0;
+    usuario?: string;
     codigoCiudad?: number=0;
     ciudad?:string;
     pais?:string;

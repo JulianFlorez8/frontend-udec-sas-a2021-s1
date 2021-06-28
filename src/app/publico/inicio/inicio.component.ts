@@ -49,7 +49,6 @@ export class InicioComponent implements OnInit {
             });
           });
           this.servicioDescarga.descargarArchivo(1,dato.imagen).subscribe((imagen)=>{
-            console.log(imagen);
             dato.imagen=imagen.ruta;
           })
           this.lista.push(dato);

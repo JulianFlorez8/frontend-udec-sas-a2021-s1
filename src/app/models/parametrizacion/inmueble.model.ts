@@ -4,5 +4,6 @@ export class InmuebleModel{
     identificador: string='';
     valor: number =0;
     codigoBloque?: number=0;
+    bloque?: string;
     constructor(){}
 }

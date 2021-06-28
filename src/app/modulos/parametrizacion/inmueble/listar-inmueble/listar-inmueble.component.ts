@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InmuebleModel } from 'src/app/models/parametrizacion/inmueble.model';
+import { BloqueService } from 'src/app/services/parametrizacion/bloque.service';
 import { InmuebleService } from '../../../../services/parametrizacion/inmueble.service';
 
 @Component({
@@ -8,7 +9,8 @@ import { InmuebleService } from '../../../../services/parametrizacion/inmueble.s
   styleUrls: ['./listar-inmueble.component.css'],
 })
 export class ListarInmuebleComponent implements OnInit {
-  constructor(private service: InmuebleService) {}
+  constructor(private service: InmuebleService,
+    private servicioBloque: BloqueService) {}
   lista: InmuebleModel[] = [];
   ngOnInit(): void {
     this.obtenerLista();
@@ -17,6 +19,10 @@ export class ListarInmuebleComponent implements OnInit {
   obtenerLista() {
     this.service.obtenerInmuebles().subscribe(
       (datos) => {
+        datos.forEach(dato=>{
+          if(dato.codigoBloque)
+          this.servicioBloque.obtenerBloque(dato.codigoBloque).subscribe((bloq=>{dato.bloque=bloq.nombre}))
+        })
         this.lista = datos;
         console.log(this.lista);
       },

@@ -196,8 +196,8 @@ export class CiudadService {
       }
     );
   }
-  obtenerPaisesCiudad(id: number): Observable<PaisModel[]> {
-    return this.http.get<PaisModel[]>(
+  obtenerPaisesCiudad(id: number): Observable<PaisModel> {
+    return this.http.get<PaisModel>(
       `${ServiceConfig.BASE_URL}${this.entity}/${id}/pais`
     );
   }

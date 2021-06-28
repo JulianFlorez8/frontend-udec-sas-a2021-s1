@@ -6,5 +6,6 @@ export class SolicitudEstudioModel{
     estado?: string='';
     documentoCliente?: number=0;
     codigoInmueble?: number=0;
+    inmueble?: string;
     constructor(){}
 }

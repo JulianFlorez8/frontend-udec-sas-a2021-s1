@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { ClienteModel } from 'src/app/models/ventas/cliente.model';
 import { ClienteService } from 'src/app/services/ventas/cliente.service';
 import { SeguridadService } from 'src/app/services/seguridad/seguridad.service';
+import { CiudadService } from 'src/app/services/parametrizacion/ciudad.service';
 
 @Component({
   selector: 'app-listar-cliente',
@@ -13,7 +14,8 @@ export class ListarClienteComponent implements OnInit {
 
   constructor(
     private service: ClienteService,
-    private secService: SeguridadService
+    private secService: SeguridadService,
+    private servicioCiudad: CiudadService
   ) {}
   lista: ClienteModel[] = [];
 
@@ -29,6 +31,10 @@ export class ListarClienteComponent implements OnInit {
   obtenerLista() {
     this.service.obtenerClientes().subscribe(
       (datos) => {
+        datos.forEach((dato)=>{
+          if(dato.codigoCiudad)
+          this.servicioCiudad.obtenerCiudad(dato.codigoCiudad).subscribe((city)=>{dato.ciudad=city.nombre})
+        })
         this.lista = datos;
         console.log(this.lista);
       },

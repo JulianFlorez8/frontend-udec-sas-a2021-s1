@@ -25,7 +25,8 @@
       <th>Descripción</th>
       <th>Imagen</th>
       <th>Documento usuario</th>
-      <th>Codigo ciudad</th>
+      <th>Usuario</th>
+      <th>Ciudad</th>
       <th>Acciones</th>
     </tr>
   </thead>
@@ -45,10 +46,13 @@
         {{ x.imagen }}
       </td>
       <td>
+        {{ x.usuario }}
+      </td>
+      <td>
         {{ x.DocumentoUsuario }}
       </td>
       <td>
-        {{ x.codigoCiudad }}
+        {{ x.ciudad }}
       </td>
       <td>
         <a class="edit" routerLink="../editar-proyecto/{{ x.codigo }}"

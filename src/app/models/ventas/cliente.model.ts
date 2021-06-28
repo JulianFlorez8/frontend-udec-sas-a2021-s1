@@ -16,5 +16,6 @@ export class ClienteModel{
     Telefono_Ref_Personal: string='';
     DocumentoUsuario: number=0;
     codigoCiudad: number=0;
+    ciudad?: string;
     constructor(){}
 }

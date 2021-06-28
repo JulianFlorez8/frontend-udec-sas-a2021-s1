@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SolicitudEstudioModel } from 'src/app/models/ventas/solicitudEstudio.model';
+import { InmuebleService } from 'src/app/services/parametrizacion/inmueble.service';
 import { SolicitudService } from 'src/app/services/ventas/solicitud.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { SolicitudService } from 'src/app/services/ventas/solicitud.service';
 })
 export class ListarSolicitudComponent implements OnInit {
 
-  constructor(private service: SolicitudService) {}
+  constructor(private service: SolicitudService,
+    private servicioImueble: InmuebleService) {}
   lista: SolicitudEstudioModel[] = [];
   ngOnInit(): void {
     this.obtenerLista();
@@ -18,6 +20,10 @@ export class ListarSolicitudComponent implements OnInit {
   obtenerLista() {
     this.service.obtenerSolicitudesEnEstudio().subscribe(//SOLO SE ENLISTAN AQUELLOS QUE ESTEN EN ESTUDIO
       (datos) => {
+        datos.forEach(dato=>{
+          if(dato.codigoInmueble)
+          this.servicioImueble.obtenerInmueble(dato.codigoInmueble).subscribe((inm)=>{dato.inmueble=inm.identificador})
+        })
         this.lista = datos;
         console.log(this.lista);
       },
