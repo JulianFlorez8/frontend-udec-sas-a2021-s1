@@ -1,4 +1,4 @@
 export class CargaArchivoModel{
-    filename: String=''
+    filename: String='';
     constructor(){}
 }
