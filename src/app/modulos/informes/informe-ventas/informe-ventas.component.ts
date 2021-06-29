@@ -2,37 +2,57 @@ import { Component, OnInit } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import { Label } from 'ng2-charts';
+import { SolicitudService } from 'src/app/services/ventas/solicitud.service';
 @Component({
   selector: 'app-informe-ventas',
   templateUrl: './informe-ventas.component.html',
   styleUrls: ['./informe-ventas.component.css']
 })
 export class InformeVentasComponent implements OnInit {
+  aceptadas: number=0;
+  rechazadas: number=0;
+  enEstudio: number=0;
+  torta: boolean=false;
   public barChartOptions: ChartOptions = {
     responsive: true,
     // We use these empty structures as placeholders for dynamic theming.
     scales: { xAxes: [{}], yAxes: [{}] },
-    plugins: {
-      datalabels: {
-        anchor: 'end',
-        align: 'end',
-      }
-    }
   };
-  public barChartLabels: Label[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+  public barChartLabels: Label[] = ['Inmuebles'];
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
-  public barChartPlugins =[];
-
+ 
   public barChartData: ChartDataSets[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'En estudio' },
-    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Aceptadas' },
-    { data: [11, 23, 34, 56, 78, 98, 80], label: 'Rechazadas' }
+    { data: [this.aceptadas], label: 'Aceptadas' },
+    { data: [this.enEstudio], label: 'En Estudio' },
+    { data: [this.rechazadas], label: 'Rechazadas' }
+  ];
+  //ZONA TORTA
+  public pieChartOptions: ChartOptions = {
+    responsive: true,
+    legend: {
+      position: 'top',
+    },
+    plugins: {
+    }
+  };
+  public pieChartLabels: Label[] = [['Aceptadas'], ['En', 'Estudio'], 'Rechazadas'];
+  public pieChartData: number[] = [this.aceptadas, this.enEstudio, this.rechazadas];
+  public pieChartType: ChartType = 'pie';
+  public pieChartLegend = true;
+  public pieChartPlugins = [pluginDataLabels];
+  public pieChartColors = [
+    {
+      backgroundColor: ['rgba(255,0,0,0.3)', 'rgba(0,255,0,0.3)', 'rgba(0,0,255,0.3)'],
+    },
   ];
 
-  constructor() { }
+  constructor(
+    private servicio: SolicitudService
+  ) { }
 
   ngOnInit(): void {
+    this.obtenerDatos();
   }
 
   // events
@@ -45,14 +65,53 @@ export class InformeVentasComponent implements OnInit {
   }
 
   public randomize(): void {
-    // Only Change 3 values
-    this.barChartData[0].data = [
-      Math.round(Math.random() * 100),
-      59,
-      80,
-      (Math.random() * 100),
-      56,
-      (Math.random() * 100),
-      40 ];
+    switch ( this.torta ) {
+      case true:
+        
+          this.torta=false;
+          
+          break;
+      case false:
+          
+        this.torta=true;
+          break;
+      default: 
+          // 
+          break;
+      
+   }
+  }
+  obtenerDatos(){
+    this.servicio.obtenerSolicitudes().subscribe((solicitudes)=>{
+      this.aceptadas=0;
+      this.rechazadas=0;
+      this.enEstudio=0;
+      solicitudes.forEach(solicitud=>{
+        switch ( solicitud.estado ) {
+          case 'Aceptada':
+              this.aceptadas++;
+              break;
+          case 'Rechazada':
+              this.rechazadas++;
+              break;
+          case 'En Estudio':
+              this.enEstudio++;
+              break;
+          default: 
+              // 
+              break;
+          
+       }
+      });
+      console.log(solicitudes);
+      //console.log(this.aceptadas+' '+this.rechazadas+' '+this.enEstudio)
+      this.barChartData= [
+        { data: [this.aceptadas], label: 'Aceptadas' },
+        { data: [this.enEstudio], label: 'En Estudio' },
+        { data: [this.rechazadas], label: 'Rechazadas' }
+      ];
+      this.pieChartData=[this.aceptadas, this.enEstudio, this.rechazadas]
+    })
+    
   }
 }
