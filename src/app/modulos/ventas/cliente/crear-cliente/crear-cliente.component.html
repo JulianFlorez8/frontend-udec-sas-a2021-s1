@@ -94,10 +94,10 @@
                    <!-- <i class="material-icons prefix">perm_identity</i>-->
                     <label for="Pais">Pais</label>
                     <select formControlName="pais" class="browser-default pl" id="pais">
-                      <option></option>
+                        <option *ngFor="let x of paises" value="{{x.codigo}}">{{x.nombre}}</option>
                     </select>
                   </div>
-                  <div class="input-field">
+                  <div class="input-field" *ngIf="ciudades">
                   <!--  <i class="material-icons prefix">perm_identity</i>-->
                     <label for="ciudad">Ciudad</label>
                     <select
@@ -105,7 +105,7 @@
                       class="browser-default pl"
                       id="ciudad"
                     >
-                      <option></option>
+                    <option *ngFor="let x of ciudades" value="{{x.codigo}}">{{x.nombre}}</option>
                     </select>
                   </div>
                 

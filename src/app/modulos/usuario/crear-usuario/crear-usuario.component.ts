@@ -87,74 +87,27 @@ export class CrearUsuarioComponent implements OnInit {
     return this.fgValidator.controls;
   }
   llenarPaises(){
-    this.servicioPaises.obtenerPaises().subscribe(paises=>{
-      //console.log(paises);
-      this.paises=paises;
-      //console.log(this.paises[0].nombre);
+      this.servicioPaises.obtenerPaises().subscribe((paises)=>{
+        this.paises=paises
+      });
+      
       const selectorPais=document.getElementById('pais');
-      this.paises?.forEach(
-        pais=>{
-          const opcion= document.createElement('option');
-          let nombrePais= pais.nombre;
-          let codigoPais= pais.codigo;
-          if (codigoPais)
-          {
-             opcion.value = codigoPais.toString();
-          opcion.text= nombrePais;
-
-          }
-          if(selectorPais)
-          {
-            selectorPais.appendChild(opcion);
-          }
-        }
-      )
-      if(selectorPais)
+      if (selectorPais)
       {
         selectorPais.addEventListener('change', e => { //me permite ver cuando estoy cambiando de opcion
           const list = e.target;
-          let idPais=this.fgv.pais.value
-          console.log(idPais);
+          let idPais=this.fgv.pais.value;
+          this.ciudades=[];
+          //this.busquedaPais(idPais);//NO USAR ACTUALMENTE, DEMASIADO PESADA LA BUSQUEDA
           this.llenarCiudades(idPais);
     })
-
       }
-    })
-  }
-  
-  llenarCiudades(idPais: number){//Entra como parametro el codigo del pais selecionado
-    const selectorCiudad=document.getElementById('ciudad');
-    //selectorCiudad.value=null;//RECETEAR EL SELECT
-
-    this.servicioPaises.obtenerCiudadesPais(idPais).subscribe(ciudades=>{
-      console.log(ciudades);
-      this.ciudades=ciudades;
-      console.log(this.ciudades[0].nombre);
-      
-      this.ciudades?.forEach(
-        ciudad=>{
-          const opcion= document.createElement('option');
-          let nombreCiudad= ciudad.nombre;
-          let codigoCiudad= ciudad.codigo;
-          if (codigoCiudad)
-          {
-            opcion.value = codigoCiudad.toString();
-            opcion.text= nombreCiudad;
-          }
-
-         
-          if(selectorCiudad)
-          {
-            selectorCiudad.appendChild(opcion);
-            
-          }
-          else{
-            console.log("Sin Ciudades");
-            
-          }
-        }
-      )
-    })
+    }
+    llenarCiudades(id:number){
+      this.servicioPaises.obtenerCiudadesPais(id).subscribe(ciudades=>{
+        this.ciudades=ciudades;
+        
+    });
   }
 
 }
