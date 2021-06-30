@@ -1,82 +1,81 @@
-<div class="table-title">
-    <div class="row">
-      <div class="col-sm-6">
-        <h4>Administración Clientes</h4>
-      </div>
-      <div class="col-sm-6">
-        <button
-          [routerLink]="['/ventas', { outlets: { modal: ['crear-cliente'] } }]"
-          class="waves-effect waves-light btn modal-trigger"
-          data-target="modal1"
-          *ngIf="rol == 'Vendedor'"
-        >
-          <i class="material-icons">&#xE147;</i> <span>Crear Cliente</span>
-        </button>
-      </div>
+<div class="table-title center-align">
+  <div class="row">
+    <div class="col-sm-6">
+      <h4 class="grey-text text-lighten-4">Administración Clientes</h4>
+    </div>
+    <div class="col-sm-6">
+      <button
+        [routerLink]="['/ventas', { outlets: { modal: ['crear-cliente'] } }]"
+        class="waves-effect waves-light btn modal-trigger"
+        data-target="modal1"
+        *ngIf="rol == 'Vendedor'"
+      >
+        <i class="material-icons left">&#xE147;</i> <span>Crear Cliente</span>
+      </button>
     </div>
   </div>
-  <table class="highlight responsive-table">
-    <thead class="white-text grey darken-2">
-      <tr>
-        <th>Documento</th>
-        <th>Nombre</th>
-        <th>Apellido 1</th>
-        <th>Apellido 2</th>
-        <th>Fecha Nacimiento</th>
-        <th>Celular</th>
-        <th>Correo</th>
-        <th>Direccion</th>
-        <th>Total Ingresos</th>
-        <th>Usuario</th>
-        <th>Ciudad</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-  
-    <tbody>
-      <tr *ngFor="let x of lista">
-        <td>
-          {{ x.Documento }}
-        </td>
-        <td>
-            {{ x.Nombre }}
-          </td>
-        <td>
-          {{ x.Apellido_1 }}
-        </td>
-        <td>
-          {{ x.Apellido_2 }}
-        </td>
-        <td>
-          {{ x.Fecha_Nacimiento }}
-        </td>
-        <td>
-          {{ x.Celular }}
-        </td>
-        <td>
-          {{ x.Correo }}
-        </td>
-        <td>
-          {{ x.Direccion }}
-        </td>
-        <td>
-          {{ x.Total_Ingresos }}
-        </td>
-        <td>
-          {{ x.DocumentoUsuario }}
-        </td>
-        <td>
-          {{ x.ciudad }}
-        </td>
-        <td>
-          <a class="edit" routerLink="../editar-cliente/{{ x.Documento }}"
-            ><i class="orange-text material-icons" title="Edit">&#xE254;</i></a
-          >
-          <a class="delete" routerLink="../eliminar-cliente/{{ x.Documento }}"
-            ><i class="red-text material-icons" title="Delete">&#xE872;</i></a
-          >
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  
+</div>
+<table class="highlight responsive-table">
+  <thead class="white-text">
+    <tr>
+      <th class="center-align">Documento</th>
+      <th class="center-align">Nombre</th>
+      <th class="center-align">Apellido 1</th>
+      <th class="center-align">Apellido 2</th>
+      <th class="center-align">Fecha Nacimiento</th>
+      <th class="center-align">Celular</th>
+      <th class="center-align">Correo</th>
+      <th class="center-align">Direccion</th>
+      <th class="center-align">Total Ingresos</th>
+      <th class="center-align">Usuario</th>
+      <th class="center-align">Ciudad</th>
+      <th class="center-align">Acciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let x of lista">
+      <td class="center-align">
+        {{ x.Documento }}
+      </td>
+      <td class="center-align">
+        {{ x.Nombre }}
+      </td>
+      <td class="center-align">
+        {{ x.Apellido_1 }}
+      </td>
+      <td class="center-align">
+        {{ x.Apellido_2 }}
+      </td>
+      <td class="center-align">
+        {{ x.Fecha_Nacimiento }}
+      </td>
+      <td class="center-align">
+        {{ x.Celular }}
+      </td>
+      <td class="center-align">
+        {{ x.Correo }}
+      </td>
+      <td class="center-align">
+        {{ x.Direccion }}
+      </td>
+      <td class="center-align">
+        {{ x.Total_Ingresos }}
+      </td>
+      <td class="center-align">
+        {{ x.DocumentoUsuario }}
+      </td>
+      <td class="center-align">
+        {{ x.ciudad }}
+      </td>
+      <td class="center-align">
+        <a class="edit" routerLink="../editar-cliente/{{ x.Documento }}"
+          ><i class="orange-text material-icons" title="Edit">&#xE254;</i></a
+        >
+        <a class="delete" routerLink="../eliminar-cliente/{{ x.Documento }}"
+          ><i class="red-text material-icons" title="Delete">&#xE872;</i></a
+        >
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,1 +1,26 @@
+footer {
+  background: #f22821; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #f22821,
+    #e94057,
+    #8a2387
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #f22821,
+    #e94057,
+    #8a2387
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+  box-shadow: 0 -8px 50px 0 rgba(31, 38, 135, 0.37);
+  font-size: 15px;
+  font-weight: 500;
+}
+.row {
+  padding-top: 20px;
+  margin-bottom: 10px;
+}
+.footer-copyright {
+  padding-bottom: 10px;
+}

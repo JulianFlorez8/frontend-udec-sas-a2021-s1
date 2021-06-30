@@ -1,31 +1,37 @@
 <section class="container">
-    <div class="row">
-      <h3 class="center-align">Anexe el recibo de pago</h3>
-      <article class="col s6 offset-s3">
-        <form [formGroup]="uploadForm">
-
-          <input formControlName="file" (change)="onFileSelect($event)" name="image" class="form-control" type="file">
-          <input type="button" value="Upload" (click)="cargarRecibo()"/>
+  <div class="row">
+    <h3 class="center-align grey-text text-lighten-4">
+      Anexe el recibo de pago
+    </h3>
+    <article class="col s6 offset-s3">
+      <form [formGroup]="uploadForm">
+        <input
+          formControlName="file"
+          (change)="onFileSelect($event)"
+          name="image"
+          class="form-control"
+          type="file"
+        />
+        <input type="button" value="Upload" (click)="cargarRecibo()" />
       </form>
-        <form [formGroup]="fgValidator">
-          <div class="input-field">
-            <i class="material-icons prefix">perm_identity</i>
-            <label for="valor">Valor</label>
-            <input formControlName="valor" type="number" name="valor" required />
-          </div>
-          <input type="hidden" formControlName="image"/>
-          
-          <p class="center-align">
-            <button
-              class="waves-effect waves-light btn"
-              type="submit"
-              (click)="RegitrarPago()"
-            >
-              <i class="material-icons right"></i>Registrar pago
-            </button>
-          </p>
-        </form>
-      </article>
-    </div>
-  </section>
-  
+      <form [formGroup]="fgValidator">
+        <div class="input-field">
+          <i class="material-icons prefix">perm_identity</i>
+          <label for="valor">Valor</label>
+          <input formControlName="valor" type="number" name="valor" required />
+        </div>
+        <input type="hidden" formControlName="image" />
+
+        <p class="center-align">
+          <button
+            class="waves-effect waves-light btn"
+            type="submit"
+            (click)="RegitrarPago()"
+          >
+            <i class="material-icons right"></i>Registrar pago
+          </button>
+        </p>
+      </form>
+    </article>
+  </div>
+</section>

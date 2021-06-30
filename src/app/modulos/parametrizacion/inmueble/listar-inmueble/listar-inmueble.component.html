@@ -1,7 +1,7 @@
-<div class="table-title">
+<div class="table-title center-align">
   <div class="row">
     <div class="col-sm-6">
-      <h4>Administración inmuebles</h4>
+      <h4 class="grey-text text-lighten-4">Administración inmuebles</h4>
     </div>
     <div class="col-sm-6">
       <button
@@ -12,46 +12,47 @@
           { outlets: { modal: ['crear-inmueble'] } }
         ]"
       >
-        <i class="material-icons">&#xE147;</i> <span>Crear Inmueble</span>
+        <i class="material-icons left">&#xE147;</i> <span>Crear Inmueble</span>
       </button>
     </div>
   </div>
 </div>
 <table class="highlight responsive-table">
-  <thead class="white-text grey darken-2">
+  <thead class="white-text">
     <tr>
-      <th>Codigo</th>
-      <th>Identificador</th>
-      <th>Valor</th>
-      <th>Bloque</th>
-      <th>Acciones</th>
+      <th class="center-align">Codigo</th>
+      <th class="center-align">Identificador</th>
+      <th class="center-align">Valor</th>
+      <th class="center-align">Bloque</th>
+      <th class="center-align">Acciones</th>
     </tr>
   </thead>
 
   <tbody>
     <tr *ngFor="let x of lista">
-      <td>
+      <td class="center-align">
         {{ x.codigo }}
       </td>
-      <td>
+      <td class="center-align">
         {{ x.identificador }}
       </td>
-      <td>
+      <td class="center-align">
         {{ x.valor }}
       </td>
-      <td>
+      <td class="center-align">
         {{ x.bloque }}
       </td>
-      <td>
+      <td class="center-align">
         <a class="edit" routerLink="../editar-inmueble/{{ x.codigo }}"
-        ><i class="orange-text material-icons" title="Edit">&#xE254;</i></a
-      >
-        <a class="delete  modal-trigger"
-        data-target="modal1"
-        [routerLink]="[
-          '/parametrizacion',
-          { outlets: { modal: ['eliminar-inmueble/{{ x.codigo }}'] } }
-        ]"
+          ><i class="orange-text material-icons" title="Edit">&#xE254;</i></a
+        >
+        <a
+          class="delete modal-trigger"
+          data-target="modal1"
+          [routerLink]="[
+            '/parametrizacion',
+            { outlets: { modal: ['eliminar-inmueble/{{ x.codigo }}'] } }
+          ]"
           ><i class="red-text material-icons" title="Delete">&#xE872;</i></a
         >
       </td>

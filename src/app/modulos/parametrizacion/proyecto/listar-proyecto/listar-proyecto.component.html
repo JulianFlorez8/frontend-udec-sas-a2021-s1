@@ -1,7 +1,7 @@
-<div class="table-title">
+<div class="table-title center-align">
   <div class="row">
     <div class="col-sm-6">
-      <h4>Administración proyectos</h4>
+      <h4 class="grey-text text-lighten-4">Administración proyectos</h4>
     </div>
     <div class="col-sm-6">
       <button
@@ -12,54 +12,54 @@
           { outlets: { modal: ['crear-proyecto'] } }
         ]"
       >
-        <i class="material-icons">&#xE147;</i> <span>Crear Poyecto</span>
+        <i class="material-icons left">&#xE147;</i> <span>Crear Proyecto</span>
       </button>
     </div>
   </div>
 </div>
 <table class="highlight responsive-table">
-  <thead class="white-text grey darken-2">
+  <thead class="white-text">
     <tr>
-      <th>Codigo</th>
-      <th>Nombre</th>
-      <th>Descripción</th>
-      <th>Imagen</th>
-      <th>Documento usuario</th>
-      <th>Usuario</th>
-      <th>Ciudad</th>
-      <th>Acciones</th>
+      <th class="center-align">Codigo</th>
+      <th class="center-align">Nombre</th>
+      <th class="center-align">Descripción</th>
+      <th class="center-align">Imagen</th>
+      <th class="center-align">Documento usuario</th>
+      <th class="center-align">Usuario</th>
+      <th class="center-align">Ciudad</th>
+      <th class="center-align">Acciones</th>
     </tr>
   </thead>
 
   <tbody>
     <tr *ngFor="let x of lista">
-      <td>
+      <td class="center-align">
         {{ x.codigo }}
       </td>
-      <td>
+      <td class="center-align">
         {{ x.nombre }}
       </td>
-      <td>
+      <td class="justify">
         {{ x.descripcion }}
       </td>
-      <td>
+      <td class="center-align">
         {{ x.imagen }}
       </td>
-      <td>
+      <td class="center-align">
         {{ x.usuario }}
       </td>
-      <td>
+      <td class="center-align">
         {{ x.DocumentoUsuario }}
       </td>
-      <td>
+      <td class="center-align">
         {{ x.ciudad }}
       </td>
-      <td>
-        <a class="edit" routerLink="../editar-proyecto/{{ x.codigo }}"
+      <td class="row">
+        <a class="edit col s1" routerLink="../editar-proyecto/{{ x.codigo }}"
           ><i class="orange-text material-icons" title="Edit">&#xE254;</i></a
         >
         <a
-          class="delete modal-trigger"
+          class="delete modal-trigger col s1"
           data-target="modal1"
           [routerLink]="[
             '/parametrizacion',
@@ -67,7 +67,15 @@
           ]"
           ><i class="red-text material-icons" title="Delete">&#xE872;</i></a
         >
-        <button type="button" class="btn btn-danger">aprobar</button>
+        <a class="check col s1" routerLink="../editar-proyecto/{{ x.codigo }}"
+          ><i class="light-green-text material-icons" title="Check"
+            >&#xe5ca;</i
+          ></a
+        >
+        <a class="col s1"></a>
+        <a class="col s1"></a>
+        <a class="col s1"></a>
+        <a class="col s1"></a>
       </td>
     </tr>
   </tbody>

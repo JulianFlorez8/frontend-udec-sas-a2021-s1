@@ -1,7 +1,52 @@
-p{
-    width: 204.1px; height: 89.7px;
-    background-image:url("../../../recursosVizuales/icono.png");
-    background-size: 100% 100%;
-    position: relative;
-    top: -38px;
-  }
+img {
+  height: 64px;
+}
+nav {
+  background: #f22821; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #f22821,
+    #e94057,
+    #8a2387
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #f22821,
+    #e94057,
+    #8a2387
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  opacity: 0.8;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.nav-wrapper {
+  background-color: rgba(0, 0, 0, 0.103);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.sidenav {
+  background-color: #ec4a44d8;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.dropdown-content {
+  background-color: #ec4a44d8;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.dropdown-content li:hover,
+.dropdown-content li.active {
+  background-color: rgba(136, 80, 92, 0.11);
+}
+
+span {
+  color: white;
+}
+
+.sidenav li > a {
+  color: white;
+}

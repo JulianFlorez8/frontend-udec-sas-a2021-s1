@@ -4,7 +4,7 @@
       <div class="row"></div>
       <div class="row">
         <div class="input-field col s12">
-          <i class="material-icons prefix">mail_outline</i>
+          <i class="material-icons prefix white-text">mail_outline</i>
           <input
             formControlName="Usuario"
             class="Usuario"
@@ -17,9 +17,7 @@
           <div
             class="mensajeValidacion"
             *ngIf="
-            fgv.Usuario.errors &&
-              (fgv.Usuario.dirty ||
-              fgv.Usuario.touched)
+              fgv.Usuario.errors && (fgv.Usuario.dirty || fgv.Usuario.touched)
             "
           >
             <strong>Este campo es requerido</strong>
@@ -28,13 +26,13 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <i class="material-icons prefix">lock_outline</i>
+          <i class="material-icons prefix white-text">lock_outline</i>
           <input formControlName="contrasena" id="contrasena" type="password" />
           <label for="contrasena">Contraseña</label>
           <div
             class="mensajeValidacion"
             *ngIf="
-            fgv.contrasena.errors &&
+              fgv.contrasena.errors &&
               (fgv.contrasena.dirty || fgv.contrasena.touched)
             "
           >
@@ -43,27 +41,29 @@
         </div>
       </div>
       <div class="row">
-        <div class="input-field col s12">
-          <ngx-recaptcha2 formControlName="recaptcha" #captchaElem [siteKey]="siteKey" >
-
+        <div class="input-field col captcha">
+          <ngx-recaptcha2
+            formControlName="recaptcha"
+            #captchaElem
+            [siteKey]="siteKey"
+          >
           </ngx-recaptcha2>
-          </div>
         </div>
-      
+      </div>
+
       <div class="row">
         <div class="input-field col s12">
-          
-          <a class="btn waves-effect waves-light col s12" (click)='IniciarSesion()'
+          <a
+            class="btn waves-effect waves-light col s12"
+            (click)="IniciarSesion()"
             >Iniciar sesión</a
           >
         </div>
       </div>
       <div class="row">
+        <div class="input-field col s6 m6 l6"></div>
         <div class="input-field col s6 m6 l6">
-          
-        </div>
-        <div class="input-field col s6 m6 l6">
-          <p class="margin right-align medium-small">
+          <p class="margin right-align medium-small white-text">
             <a routerLink="../resetear-contrasena">¿Olvido su contraseña?</a>
           </p>
         </div>
