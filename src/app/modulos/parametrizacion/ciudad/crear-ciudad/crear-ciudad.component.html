@@ -15,7 +15,7 @@
                 <i class="material-icons prefix">perm_identity</i>
                 <label for="pais">Pais</label>
                 <select formControlName="codigoPais" class="browser-default pl" id="pais">
-                  <option></option>
+                  <option *ngFor="let x of paises" value="{{x.codigo}}">{{x.nombre}}</option>
                 </select>
               </div>
               <p class="center-align">

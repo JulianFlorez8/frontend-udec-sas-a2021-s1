@@ -70,21 +70,21 @@
           />
         </div>
         <div class="input-field">
-          <i class="material-icons prefix">perm_identity</i>
+          
           <label for="Pais">Pais</label>
           <select formControlName="pais" class="browser-default pl" id="pais">
-            <option></option>
+            <option *ngFor="let x of paises" value="{{x.codigo}}">{{x.nombre}}</option>
           </select>
         </div>
-        <div class="input-field">
-          <i class="material-icons prefix">perm_identity</i>
+        <div class="input-field" *ngIf="ciudades">
+          
           <label for="ciudad">Ciudad</label>
           <select
             formControlName="ciudad"
             class="browser-default pl"
             id="ciudad"
           >
-            <option></option>
+          <option *ngFor="let x of ciudades" value="{{x.codigo}}">{{x.nombre}}</option>
           </select>
         </div>
         <p class="center-align">

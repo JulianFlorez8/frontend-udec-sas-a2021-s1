@@ -25,14 +25,17 @@ export class SolicitudService {
       })
     })
   }
-  obtenerSolicitudesInmueble(id: number): Observable<number>{
-    return this.http.get<number>(`${ServiceConfig.BASE_URL}${this.entity}/${id}/inmueble`)
+  obtenerSolicitudesInmueble(id: number): Observable<SolicitudEstudioModel[]>{
+    return this.http.get<SolicitudEstudioModel[]>(`${ServiceConfig.BASE_URL}${this.entity}/${id}/inmueble`)
+  }
+  obtenerSolicitudesTotalesInmueble(id: number): Observable<SolicitudEstudioModel[]>{
+    return this.http.get<SolicitudEstudioModel[]>(`${ServiceConfig.BASE_URL}solicitudes/${id}/inmueble`)
   }
   obtenerSolicitudesCliente(id: number): Observable<SolicitudEstudioModel[]>{
     return this.http.get<SolicitudEstudioModel[]>(`${ServiceConfig.BASE_URL}${this.entity}/${id}/cliente`)
   }
-  obtenerCantidadSolicitudes(): Observable<SolicitudEstudioModel[]>{
-    return this.http.get<SolicitudEstudioModel[]>(`${ServiceConfig.BASE_URL}${this.cuenta}`)
+  obtenerCantidadSolicitudes(): Observable<number>{
+    return this.http.get<number>(`${ServiceConfig.BASE_URL}${this.cuenta}`)
   }
   actualizarSolicitud(id: number,model: SolicitudEstudioModel): Observable<SolicitudEstudioModel>{//Revisar retorno
     return this.http.put<SolicitudEstudioModel>( `${ServiceConfig.BASE_URL}${this.entity}/${id}`, model, {

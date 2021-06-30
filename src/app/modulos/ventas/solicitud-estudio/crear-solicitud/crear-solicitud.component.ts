@@ -66,7 +66,7 @@ export class CrearSolicitudComponent implements OnInit {
       if(solicitud.codigoInmueble)
       this.service.obtenerSolicitudesInmueble(solicitud.codigoInmueble).subscribe((data)=>{
 //        console.log(data);
-        if(data==0)
+        if(data.length==0)
         {
           this.service.creacionSolicitud(solicitud).subscribe((data) => {
             console.log(data);

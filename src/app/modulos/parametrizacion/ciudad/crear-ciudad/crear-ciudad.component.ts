@@ -60,30 +60,11 @@ export class CrearCiudadComponent implements OnInit {
   }
   
   llenarPaises(){
-    this.servicioPaises.obtenerPaises().subscribe(paises=>{
-      //console.log(paises);
-      this.paises=paises;
-      //console.log(this.paises[0].nombre);
-      const selectorPais=document.getElementById('pais');
-      this.paises?.forEach(
-        pais=>{
-          const opcion= document.createElement('option');
-          let nombrePais= pais.nombre;
-          let codigoPais= pais.codigo;
-          if (codigoPais)
-          {
-             opcion.value = codigoPais.toString();
-          opcion.text= nombrePais;
-
-          }
-          if(selectorPais)
-          {
-            selectorPais.appendChild(opcion);
-          }
-        }
-      )
-     
-    })
+    
+      this.servicioPaises.obtenerPaises().subscribe((paises)=>{
+        this.paises=paises
+      });
+  
   }
   }
   

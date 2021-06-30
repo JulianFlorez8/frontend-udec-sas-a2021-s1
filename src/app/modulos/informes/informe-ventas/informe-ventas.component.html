@@ -1,17 +1,34 @@
-<p>informe-ventas works!</p>
-BARRAS O TORTA, POR estado
-<div>
-    <div>
-      <div style="display: block">
-        <canvas baseChart
-          [datasets]="barChartData"
-          [labels]="barChartLabels"
-          [options]="barChartOptions"
-          [plugins]="barChartPlugins"
-          [legend]="barChartLegend"
-          [chartType]="barChartType">
-        </canvas>
-      </div>
-      <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button>
+
+    <section class="container">
+      <div class="row">
+        <h2 class="center-align">INFORME VENTAS</h2>
+        <article class="col s6 offset-s3">
+          
+        </article>
+        <div>
+    <div class="chart" *ngIf="torta">
+      <canvas baseChart
+        [data]="pieChartData"
+        [labels]="pieChartLabels"
+        [chartType]="pieChartType"
+        [options]="pieChartOptions"
+        [colors]="pieChartColors"
+        [legend]="pieChartLegend">
+      </canvas>
     </div>
   </div>
+        <div>
+          <div>
+            <div>
+              <div style="display: block" *ngIf="!torta">
+                <canvas baseChart [datasets]="barChartData"[labels]="barChartLabels" [options]="barChartOptions"
+                  [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)"
+                  ></canvas>
+              </div>
+              <button mat-button mat-raised-button color="primary" (click)="randomize()">Siguiente</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
