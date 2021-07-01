@@ -29,3 +29,8 @@ table th:last-child {
 table.highlight > tbody > tr:hover {
   background-color: rgba(240, 76, 112, 0.562);
 }
+
+select {
+  background: rgba(0, 0, 0, 0.233);
+  color: white;
+}

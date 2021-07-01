@@ -1,35 +1,44 @@
 <section class="container">
   <div class="row">
-    <h2 class="center-align">INFORME PAGO POR CLIENTE</h2>
+    <h4 class="center-align grey-text text-lighten-4">
+      Informe de pago por cliente
+    </h4>
     <form [formGroup]="fgValidator">
-    <div>
-      <select formControlName="inmuebles" class="browser-default pl" id="inmuebles" >
-      
-          <option *ngFor="let x of inmuebles" value="{{x.codigo}}">{{x.identificador}}</option>
-   
-        
-      </select>
-    </div>
-      <div style="display: block;">
-        <canvas baseChart 
-          [data]="pieChartData" 
-          [labels]="pieChartLabels" 
+      <div class="custom-select">
+        <div class="input-field">
+          <h5 class="grey-text text-lighten-4">Seleccione el cliente:</h5>
+
+          <label for="cliente"></label>
+          <select
+            formControlName="cliente"
+            class="browser-default pl"
+            id="cliente"
+          ></select>
+        </div>
+        <h5 class="grey-text text-lighten-4">Seleccione el inmueble:</h5>
+        <select
+          formControlName="inmuebles"
+          class="browser-default pl"
+          id="inmuebles"
+        >
+          <option *ngFor="let x of inmuebles" value="{{ x.codigo }}">
+            {{ x.identificador }}
+          </option>
+        </select>
+      </div>
+      <div style="display: block">
+        <canvas
+          baseChart
+          [data]="pieChartData"
+          [labels]="pieChartLabels"
           [chartType]="pieChartType"
           [options]="pieChartOptions"
           [plugins]="pieChartPlugins"
-          [legend]="pieChartLegend">
+          [legend]="pieChartLegend"
+          [colors]="chartColors"
+        >
         </canvas>
       </div>
-      
-         
-        <div class="input-field">
-            <h4>Seleccione el cliente:</h4>
-          
-          <label for="cliente"></label>
-          <select formControlName="cliente" class="browser-default pl" id="cliente">
-            <option></option>
-          </select>
-        </div>
-        </form>
-    </div>
-  </section>
+    </form>
+  </div>
+</section>

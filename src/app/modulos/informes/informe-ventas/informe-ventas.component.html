@@ -1,34 +1,39 @@
-
-    <section class="container">
-      <div class="row">
-        <h2 class="center-align">INFORME VENTAS</h2>
-        <article class="col s6 offset-s3">
-          
-        </article>
-        <div>
-    <div class="chart" *ngIf="torta">
-      <canvas baseChart
-        [data]="pieChartData"
-        [labels]="pieChartLabels"
-        [chartType]="pieChartType"
-        [options]="pieChartOptions"
-        [colors]="pieChartColors"
-        [legend]="pieChartLegend">
-      </canvas>
+<section class="container">
+  <div class="row">
+    <h4 class="center-align grey-text text-lighten-4">Informe de ventas</h4>
+    <article class="col s6 offset-s3"></article>
+    <div>
+      <div class="chart" *ngIf="torta">
+        <canvas
+          baseChart
+          [data]="pieChartData"
+          [labels]="pieChartLabels"
+          [chartType]="pieChartType"
+          [options]="pieChartOptions"
+          [legend]="pieChartLegend"
+          [colors]="chartColors"
+        >
+        </canvas>
+      </div>
     </div>
-  </div>
+    <div>
+      <div>
         <div>
-          <div>
-            <div>
-              <div style="display: block" *ngIf="!torta">
-                <canvas baseChart [datasets]="barChartData"[labels]="barChartLabels" [options]="barChartOptions"
-                  [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)"
-                  ></canvas>
-              </div>
-              <button mat-button mat-raised-button color="primary" (click)="randomize()">Siguiente</button>
-            </div>
+          <div style="display: block" *ngIf="!torta">
+            <canvas
+              baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [legend]="barChartLegend"
+              [chartType]="barChartType"
+              (chartHover)="chartHovered($event)"
+              [colors]="chartColors"
+            ></canvas>
           </div>
+          <button class="btn" (click)="randomize()">Siguiente</button>
         </div>
       </div>
-    </section>
-    
+    </div>
+  </div>
+</section>

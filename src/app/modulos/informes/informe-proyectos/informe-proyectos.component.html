@@ -1,39 +1,48 @@
-
-    <section class="container">
-        <div class="row">
-          <h2 class="center-align">INFORME PROYECTOS</h2>
-          <article class="col s6 offset-s3">
-            <form [formGroup]="fgValidator">
-              <div >
-                <select formControlName="pais" class="browser-default pl" id="pais" >
-                
-                    <option *ngFor="let x of paises" value="{{x.codigo}}">{{x.nombre}}</option>
-             
-                  
-                </select>
-              </div>
-              <div >
-                <select formControlName="ciudad" class="browser-default pl" id="ciudad" >
-                
-                    <option *ngFor="let x of ciudades" value="{{x.codigo}}">{{x.nombre}}</option>
-             
-                  
-                </select>
-              </div>
-              </form>
-          </article>
-          <div>
-            <div>
-              <div>
-                <div style="display: block">
-                  <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
-                    [legend]="barChartLegend" [chartType]="barChartType" (chartHover)="chartHovered($event)"
-                    ></canvas>
-                </div>
-                <button mat-button mat-raised-button color="primary" (click)="randomize()">Siguiente</button>
-              </div>
-            </div>
-          </div>
+<section class="container">
+  <div class="row">
+    <h4 class="center-align grey-text text-lighten-4">Informe de proyectos</h4>
+    <article class="col s6 offset-s3">
+      <form [formGroup]="fgValidator">
+        <div>
+          <h5 class="grey-text text-lighten-4">Seleccione el país:</h5>
+          <select formControlName="pais" class="browser-default pl" id="pais">
+            <option *ngFor="let x of paises" value="{{ x.codigo }}">
+              {{ x.nombre }}
+            </option>
+          </select>
         </div>
-      </section>
-      
+        <div>
+          <h5 class="grey-text text-lighten-4">Seleccione la ciudad:</h5>
+          <select
+            formControlName="ciudad"
+            class="browser-default pl"
+            id="ciudad"
+          >
+            <option *ngFor="let x of ciudades" value="{{ x.codigo }}">
+              {{ x.nombre }}
+            </option>
+          </select>
+        </div>
+      </form>
+    </article>
+    <div>
+      <div>
+        <div>
+          <div style="display: block">
+            <canvas
+              baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [legend]="barChartLegend"
+              [chartType]="barChartType"
+              (chartHover)="chartHovered($event)"
+              [colors]="chartColors"
+            ></canvas>
+          </div>
+          <button class="btn" (click)="randomize()">Siguiente</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
