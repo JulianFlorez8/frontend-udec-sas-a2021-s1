@@ -4,12 +4,12 @@ export class ClienteModel{
     Apellido_1: string='';
     Apellido_2?: string;
     Fecha_Nacimiento: string='';
-    Foto?: string='';
+    Foto?: string;
     Celular: number=0;
     Correo: string='';
     Direccion: string='';
     Total_Ingresos: number=0;
-    Datos_Trabajo?: string='';
+    Datos_Trabajo?: string;
     Nombre_Ref_Familiar: string='';
     Telefono_Ref_Familiar: string='';
     Nombre_Ref_Personal: string='';

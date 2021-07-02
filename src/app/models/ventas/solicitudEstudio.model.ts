@@ -1,11 +1,11 @@
 
 export class SolicitudEstudioModel{
     codigo?: number;
-    fechaSolicitud?: string ='';
+    fechaSolicitud?: string ;
     ofertaEconomica?: number=0;
-    estado?: string='';
-    documentoCliente?: number=0;
-    codigoInmueble?: number=0;
+    estado?: string;
+    documentoCliente?: number;
+    codigoInmueble?: number;
     inmueble?: string;
     constructor(){}
 }

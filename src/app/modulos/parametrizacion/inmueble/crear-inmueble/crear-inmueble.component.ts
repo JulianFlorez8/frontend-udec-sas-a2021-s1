@@ -73,23 +73,7 @@ export class CrearInmuebleComponent implements OnInit {
       this.proyectos=proyectos;
       //console.log(this.paises[0].nombre);
       const selectorProyecto=document.getElementById('proyecto');
-      this.proyectos?.forEach(
-        proyectos=>{
-          const opcion= document.createElement('option');
-          let nombreProyectos= proyectos.nombre;
-          let codigoProyectos= proyectos.codigo;
-          if(codigoProyectos)
-          {
-            opcion.value = codigoProyectos.toString();
-          opcion.text= nombreProyectos;
-          }
-          
-          if(selectorProyecto)
-          {
-            selectorProyecto.appendChild(opcion);
-          }
-        }
-      )
+      
       if(selectorProyecto)
       {
         selectorProyecto.addEventListener('change', e => { //me permite ver cuando estoy cambiando de opcion
@@ -106,29 +90,9 @@ export class CrearInmuebleComponent implements OnInit {
   }
   
   llenarBloques(idProyecto: number){
+    this.bloques=[];
     this.servicioProyectos.obtenerBloquesProyecto(idProyecto).subscribe(bloques=>{
-      console.log(bloques);
       this.bloques=bloques;
-      //console.log(this.paises[0].nombre);
-      const selectorBloque=document.getElementById('bloque');
-      this.bloques?.forEach(
-        bloque=>{
-          const opcion= document.createElement('option');
-          let nombreBloque= bloque.nombre;
-          let codigoBloque= bloque.codigo;
-          if (codigoBloque)
-          {
-            opcion.value = codigoBloque.toString();
-            opcion.text= nombreBloque;
-          }
-          
-          if(selectorBloque)
-          {
-            selectorBloque.appendChild(opcion);
-          }
-        }
-      )
-     
     })
   }
   }

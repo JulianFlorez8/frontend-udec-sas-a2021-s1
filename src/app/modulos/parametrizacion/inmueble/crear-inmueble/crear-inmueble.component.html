@@ -22,18 +22,17 @@
                 />
               </div>
               <div class="input-field">
-                <i class="material-icons prefix">perm_identity</i>
+                
                 <label for="proyecto">Proyecto</label>
                 <select formControlName="proyecto" class="browser-default pl" id="proyecto">
-                  <option></option>
+                  <option *ngFor="let x of proyectos" value="{{x.codigo}}">{{x.nombre}}</option>
                 </select>
               </div>
              
-              <div class="input-field">
-                <i class="material-icons prefix">perm_identity</i>
+              <div class="input-field" *ngIf="bloques">
                 <label for="bloque">Bloque</label>
                 <select formControlName="bloque" class="browser-default pl" id="bloque">
-                  <option></option>
+                  <option *ngFor="let x of bloques" value="{{x.codigo}}">{{x.nombre}}</option>
                 </select>
               </div>
               <p class="center-align">

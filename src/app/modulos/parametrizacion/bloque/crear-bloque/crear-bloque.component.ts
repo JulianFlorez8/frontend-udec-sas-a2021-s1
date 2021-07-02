@@ -37,15 +37,16 @@ export class CrearBloqueComponent implements OnInit {
 
   RegitrarBloque() {
     if (this.fgValidator.invalid) {
-      alert('Formulario Invalido');
+        alert('Formulario Invalido');
     } else {
       let bloque = this.getBloqueData();
+      console.log(bloque);
       this.service.creacionBloque(bloque).subscribe((data) => {
         console.log(data);
         if (data) {
-          alert('Registro Exitoso');
+            alert('Registro Exitoso');
         } else {
-          alert('Fallo el registro');
+            alert('Fallo el registro');
         }
       });
     }
@@ -55,7 +56,7 @@ export class CrearBloqueComponent implements OnInit {
     let model = new BloqueModel();
     model.nombre = this.fgv.nombre.value;
     model.descripcion= this.fgv.descripcion.value;
-    model.codigoProyecto= this.fgv.proyecto.value;
+    model.codigoProyecto= parseInt(this.fgv.proyecto.value);
     return model;
   }
   get fgv() {

@@ -1,4 +1,4 @@
 export class ListarModel{
-    codigo?: number =0;
+    codigo?: number ;
     constructor(){}
 }

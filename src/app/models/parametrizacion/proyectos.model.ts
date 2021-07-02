@@ -1,12 +1,12 @@
 import{CiudadModel} from './ciudad.model'
 export class ProyectoModel{
-    codigo?: number =0;
+    codigo?: number ;
     nombre: string ='';
     descripcion: string ='';
     imagen: string='';
     DocumentoUsuario: number=0;
     usuario?: string;
-    codigoCiudad?: number=0;
+    codigoCiudad?: number;
     ciudad?:string;
     pais?:string;
     inmueblesDisponibles?:number;
