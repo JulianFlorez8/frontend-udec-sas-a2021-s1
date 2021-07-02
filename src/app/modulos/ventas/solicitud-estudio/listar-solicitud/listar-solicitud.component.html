@@ -1,9 +1,15 @@
-<div class="table-title">
-    <div class="row">
-      <div class="col-sm-6">
-        <h4>Administración Solicitudes</h4>
-      </div>
-   <!--   <div class="col-sm-6">
+<div class="table-title center-align">
+  <div class="row">
+    <div class="col-sm-6">
+      <h4 class="grey-text text-lighten-4">Administración Solicitudes</h4>
+    </div>
+    <select name="" id="">
+      <option value="">hola</option>
+    </select>
+    <button class="waves-effect waves-light btn modal-trigger">
+      Crear solicitud
+    </button>
+    <!--   <div class="col-sm-6">
         <button
           class="waves-effect waves-light btn modal-trigger"
           data-target="modal1"
@@ -15,46 +21,46 @@
           <i class="material-icons">&#xE147;</i> <span>Crear Solicitud</span>
         </button>
       </div>-->
-    </div>
   </div>
-  <table class="highlight responsive-table">
-    <thead class="white-text grey darken-2">
-      <tr>
-        <th>Codigo</th>
-        <th>Fecha Solicitud</th>
-        <th>Oferta Economica</th>
-        <th>Estado</th>
-        <th>Documento Cliente</th>
-        <th>Inmueble</th>
-        <th>Aceptar/Rechazar</th>
-      </tr>
-    </thead>
-  
-    <tbody>
-      <tr *ngFor="let x of lista">
-        <td>
-          {{ x.codigo }}
-        </td>
-        <td>
-          {{ x.fechaSolicitud }}
-        </td>
-        <td>
-          {{ x.ofertaEconomica }}
-        </td>
-        <td>
-          {{ x.estado }}
-        </td>
-        <td>
-          {{ x.documentoCliente }}
-        </td>
-        <td>
-          {{ x.inmueble }}
-        </td>
-        <td>
-          <a class="edit" routerLink="../aprobacion-solicitud/{{ x.codigo }}"
-            ><i class="orange-text material-icons" title="Edit">&#xE254;</i></a
-          >
-          <!--<a class="delete  modal-trigger"
+</div>
+<table class="highlight responsive-table">
+  <thead class="white-text">
+    <tr>
+      <th class="center-align">Codigo</th>
+      <th class="center-align">Fecha Solicitud</th>
+      <th class="center-align">Oferta Economica</th>
+      <th class="center-align">Estado</th>
+      <th class="center-align">Documento Cliente</th>
+      <th class="center-align">Inmueble</th>
+      <th class="center-align">Aceptar/Rechazar</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let x of lista">
+      <td class="center-align">
+        {{ x.codigo }}
+      </td>
+      <td class="center-align">
+        {{ x.fechaSolicitud }}
+      </td>
+      <td class="center-align">
+        {{ x.ofertaEconomica }}
+      </td>
+      <td class="center-align">
+        {{ x.estado }}
+      </td>
+      <td class="center-align">
+        {{ x.documentoCliente }}
+      </td>
+      <td class="center-align">
+        {{ x.inmueble }}
+      </td>
+      <td class="center-align">
+        <a class="edit" routerLink="../aprobacion-solicitud/{{ x.codigo }}"
+          ><i class="orange-text material-icons" title="Edit">&#xE254;</i></a
+        >
+        <!--<a class="delete  modal-trigger"
           data-target="modal1"
           [routerLink]="[
             '/parametrizacion',
@@ -62,8 +68,7 @@
           ]"
             ><i class="red-text material-icons" title="Delete">&#xE872;</i></a
           >-->
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  
+      </td>
+    </tr>
+  </tbody>
+</table>

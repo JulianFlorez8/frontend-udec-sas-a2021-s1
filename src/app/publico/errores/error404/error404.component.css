@@ -1,8 +1,21 @@
 h1 {
-  color: red;
-  
+  font-size: 250px;
+  color: rgb(255, 166, 251);
 }
-p{
-  background-image:url("../../../recursosVizuales/error.gif");
-  width: 278px; height: 278px;
+
+.donnut {
+  width: 300px;
+  position: relative;
+  left: 0px;
+}
+
+h5 {
+}
+
+.boom {
+  position: relative;
+  left: -200px;
+}
+
+.monkey {
 }

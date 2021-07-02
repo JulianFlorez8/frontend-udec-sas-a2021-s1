@@ -1,27 +1,34 @@
-<div class="table-title">
-    <div class="row">
-      <div class="col-sm-6">
-        <h4>Administración pagos</h4>
-      </div>
+<div class="table-title center-align">
+  <div class="row">
+    <div class="col-sm-6">
+      <h4 class="grey-text text-lighten-4">Administración pagos</h4>
     </div>
   </div>
-  <table class="highlight responsive-table">
-    <thead class="white-text grey darken-2">
-      <tr>
-        <th>Codigo Solicitud</th>
-        <th>Recibo</th>
-      </tr>
-    </thead>
-  
-    <tbody>
-      <tr *ngFor="let x of lista">
-        <td>
-          {{ x.codigoSolicitud }}
-        </td>
-        <td>
-          {{ x.recibo_consignacion }}
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  
+</div>
+<table class="highlight responsive-table">
+  <thead class="white-text">
+    <tr>
+      <th class="center-align">Codigo Solicitud</th>
+      <th class="center-align">Recibo</th>
+      <th class="center-align">Subir pago</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let x of lista">
+      <td class="center-align">
+        {{ x.codigoSolicitud }}
+      </td>
+      <td class="center-align">
+        {{ x.recibo_consignacion }}
+      </td>
+      <td class="center-align">
+        <a class="edit" routerLink="../subir-pago/{{ x.codigoSolicitud }}"
+          ><i class="orange-text material-icons" title="Upload"
+            >file_upload</i
+          ></a
+        >
+      </td>
+    </tr>
+  </tbody>
+</table>

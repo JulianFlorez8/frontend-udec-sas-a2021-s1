@@ -1,22 +1,33 @@
 <div class="row">
-  <div class="col s12 m6" *ngFor="let x of lista">
+  <div class="col s12 m6" *ngFor="let x of lista; let i = index">
     <div class="card large hoverable">
       <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="x.imagen" />
+        <img
+          class="activator"
+          src="assets/proyectsImages/proy1.jpg"
+          (click)="btnClick(i)"
+        />
       </div>
-      <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4"
+      <div class="card-content" id="{{ 'card' + i }}">
+        <span
+          class="card-title activator grey-text text-lighten-4"
+          (click)="btnClick(i)"
           >{{ x.nombre }}<i class="material-icons right">more_vert</i></span
         >
-        <p>{{ x.descripcion.slice(0, 100) }}...</p>
+        <p class="grey-text text-lighten-3">
+          {{ x.descripcion.slice(0, 100) }}...
+        </p>
         <div class="card-action">
-          <button class="waves-effect waves-light btn activator">
+          <button
+            class="waves-effect waves-light btn activator"
+            (click)="btnClick(i)"
+          >
             Ver más
           </button>
         </div>
       </div>
       <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4"
+        <span class="card-title grey-text text-lighten-4" (click)="btnClick(i)"
           >{{ x.nombre }}<i class="material-icons right">close</i></span
         >
 

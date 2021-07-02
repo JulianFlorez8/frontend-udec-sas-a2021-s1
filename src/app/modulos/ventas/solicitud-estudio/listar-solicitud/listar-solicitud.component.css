@@ -1,0 +1,36 @@
+table {
+  background-color: rgba(0, 0, 0, 0.233);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  font-size: 15px;
+  font-weight: 500;
+  color: white;
+}
+
+thead {
+  background-color: rgba(0, 0, 0, 0.123);
+  background-clip: initial;
+}
+
+table th:first-child {
+  border-radius: 20px 0 0 0;
+}
+table th:last-child {
+  border-radius: 0 20px 0 0;
+}
+
+.btn {
+  width: 20%;
+  border-radius: 20px;
+  background-color: rgba(240, 76, 112, 0.562);
+}
+
+table.highlight > tbody > tr:hover {
+  background-color: rgba(240, 76, 112, 0.562);
+}
+
+select {
+  background: rgba(0, 0, 0, 0.233);
+  color: white;
+}

@@ -1,75 +1,53 @@
+<section class="container">
+  <div class="row">
+    <h3 class="center-align grey-text text-lighten-4">
+      Aceptar/Rechazar Solicitud
+    </h3>
+    <article class="col s6 offset-s3">
+      <table class="highlight responsive-table">
+        <thead class="white-text">
+          <tr>
+            <th>Codigo</th>
+            <th>Fecha Solicitud</th>
+            <th>Oferta Economica</th>
+            <th>Estado</th>
+            <th>Documento Cliente</th>
+            <th>Codigo Inmueble</th>
+          </tr>
+        </thead>
 
-    <section class="container">
-        <div class="row">
-          <h3 class="center-align">Aceptar/Rechazar Solicitud</h3>
-          <article class="col s6 offset-s3">
-            <table class="highlight responsive-table">
-                <thead class="white-text grey darken-2">
-                  <tr>
-                    <th>Codigo</th>
-                    <th>Fecha Solicitud</th>
-                    <th>Oferta Economica</th>
-                    <th>Estado</th>
-                    <th>Documento Cliente</th>
-                    <th>Codigo Inmueble</th>
-                    <th>Acciones</th>
-                  </tr>
-                </thead>
-              
-                <tbody>
-                  <tr >
-                    <td>
-                      {{ x.codigo }}
-                    </td>
-                    <td>
-                      {{ x.fechaSolicitud }}
-                    </td>
-                    <td>
-                      {{ x.ofertaEconomica }}
-                    </td>
-                    <td>
-                      {{ x.estado }}
-                    </td>
-                    <td>
-                      {{ x.documentoCliente }}
-                    </td>
-                    <td>
-                      {{ x.codigoInmueble }}
-                    </td>
-                    <td>
-                      <a class="edit" routerLink="../aprobacion-solicitud/{{ x.codigo }}"
-                        ><i class="orange-text material-icons" title="Edit">&#xE254;</i></a
-                      >
-                      <!--<a class="delete  modal-trigger"
-                      data-target="modal1"
-                      [routerLink]="[
-                        '/parametrizacion',
-                        { outlets: { modal: ['eliminar-proyecto'] } }
-                      ]"
-                        ><i class="red-text material-icons" title="Delete">&#xE872;</i></a
-                      >-->
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              
-              <p class="center-align">
-                <button
-                  class="waves-effect waves-light btn"
-                 
-                  (click)="Aceptar()"
-                >
-                  <i class="material-icons right"></i>Aceptar
-                </button>
-                <button
-                  class="waves-effect waves-light btn"
-                  
-                  (click)="Rechazar()"
-                >
-                  <i class="material-icons right"></i>Rechazar
-                </button>
-              </p>
-          </article>
-        </div>
-      </section>
-      
+        <tbody>
+          <tr>
+            <td>
+              {{ x.codigo }}
+            </td>
+            <td>
+              {{ x.fechaSolicitud }}
+            </td>
+            <td>
+              {{ x.ofertaEconomica }}
+            </td>
+            <td>
+              {{ x.estado }}
+            </td>
+            <td>
+              {{ x.documentoCliente }}
+            </td>
+            <td>
+              {{ x.codigoInmueble }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="row">
+        <button class="waves-effect waves-light btn" (click)="Aceptar()">
+          <span>Aceptar</span>
+        </button>
+        <button class="waves-effect waves-light btn" (click)="Rechazar()">
+          <span>Rechazar</span>
+        </button>
+      </div>
+    </article>
+  </div>
+</section>

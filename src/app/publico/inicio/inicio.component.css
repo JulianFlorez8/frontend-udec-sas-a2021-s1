@@ -1,3 +1,28 @@
 .btn {
   width: 100%;
+  border-radius: 20px;
+  background-color: rgba(240, 76, 112, 0.562);
+}
+.card {
+  background-color: rgba(0, 0, 0, 0.103);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.card-reveal {
+  background-color: rgba(0, 0, 0, 0.233);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  font-size: 15px;
+  font-weight: 500;
+  color: white;
+}
+
+.card-image {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }

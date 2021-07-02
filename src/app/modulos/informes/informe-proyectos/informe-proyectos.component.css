@@ -1,0 +1,9 @@
+select {
+  background: rgba(0, 0, 0, 0.233);
+  color: white;
+}
+.btn {
+  width: 100%;
+  border-radius: 20px;
+  background-color: rgba(240, 76, 112, 0.562);
+}

@@ -1,8 +1,32 @@
 .container {
   display: flex;
-  min-height: 66.3vh;
+  min-height: 100vh;
   flex-direction: column;
+}
+.back {
+  background: #f22821; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #f22821,
+    #e94057,
+    #8a2387
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #f22821,
+    #e94057,
+    #8a2387
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 main {
   flex: 1 0 auto;
+}
+.modal {
+  background-color: rgba(0, 0, 0, 0.233);
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  font-size: 15px;
+  font-weight: 500;
+  color: white;
 }

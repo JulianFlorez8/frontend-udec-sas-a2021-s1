@@ -1,6 +1,11 @@
 <nav>
-  <div class="nav-wrapper grey darken-3">
-    <a routerLink="/" class="brand-logo"><p></p></a>
+  <div class="nav-wrapper">
+    <a routerLink="/" class="brand-logo"
+      ><img
+        class="responsive-img"
+        id="logo"
+        src="assets/proyectsImages/icono.png"
+    /></a>
     <a href="#" data-target="mobile-demo" class="sidenav-trigger"
       ><i class="material-icons">menu</i></a
     >
@@ -26,26 +31,31 @@
 <ul id="menu-side" class="sidenav">
   <li>
     <a routerLink="inicio" class="sidenav-close">
-      <i class="material-icons">home</i>Inicio
+      <i class="material-icons white-text">home</i><span>Inicio</span>
     </a>
   </li>
   <li>
     <a routerLink="usuario/listar-usuario" class="sidenav-close">
-      <i class="material-icons">security</i>
+      <i class="material-icons white-text">security</i>
       <span>Seguridad</span>
     </a>
   </li>
   <li *ngIf="rol == 'Administrador'">
     <a class="dropdown-trigger" data-target="dropdown1">
-      <i class="material-icons">edit</i>
+      <i class="material-icons white-text">edit</i>
       <span>Parametrización ></span>
     </a>
   </li>
   <li *ngIf="rol == 'Vendedor'">
-    <a routerLink="#!"><i class="material-icons">payment</i>Ventas</a>
+    <a class="dropdown-trigger" data-target="dropdown3"
+      ><i class="material-icons white-text">payment</i><span>Ventas</span></a
+    >
   </li>
   <li>
-    <a routerLink="#!"><i class="material-icons">description</i>Informes</a>
+    <a class="dropdown-trigger" data-target="dropdown2"
+      ><i class="material-icons white-text">description</i
+      ><span>Informes ></span></a
+    >
   </li>
 </ul>
 
@@ -72,6 +82,38 @@
     <a routerLink="parametrizacion/listar-inmueble" class="sidenav-close"
       >Inmueble</a
     >
+  </li>
+</ul>
+
+<ul id="dropdown2" class="dropdown-content">
+  <li>
+    <a routerLink="informes/informe-pagos" class="sidenav-close"
+      >Informes pagos</a
+    >
+  </li>
+  <li>
+    <a routerLink="informes/informe-proyectos" class="sidenav-close"
+      >Informes proyectos</a
+    >
+  </li>
+  <li>
+    <a routerLink="informes/informe-ventas" class="sidenav-close"
+      >Informes ventas</a
+    >
+  </li>
+</ul>
+
+<ul id="dropdown3" class="dropdown-content">
+  <li>
+    <a routerLink="ventas/listar-cliente" class="sidenav-close">Clientes</a>
+  </li>
+  <li>
+    <a routerLink="ventas/listar-solicitud" class="sidenav-close"
+      >Solicitudes</a
+    >
+  </li>
+  <li>
+    <a routerLink="ventas/listar-pago" class="sidenav-close">Pagos</a>
   </li>
 </ul>
 
