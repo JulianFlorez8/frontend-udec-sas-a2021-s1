@@ -1,1 +1,42 @@
-<p>resetear-contrasena works!</p>
+<section class="container">
+    <div class="row">
+      <h3 class="center-align">Recuperar Contraseña</h3>
+      <article class="col s6 offset-s3">
+        <form [formGroup]="fgValidator">
+            <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons prefix white-text">mail_outline</i>
+                  <input
+                    formControlName="Usuario"
+                    class="Usuario"
+                    id="Usuario"
+                    type="text"
+                  />
+                  <label for="Usuario" data-error="wrong" data-success="right"
+                    >Usuario</label
+                  >
+                  <div
+                    class="mensajeValidacion"
+                    *ngIf="
+                      fgv.Usuario.errors && (fgv.Usuario.dirty || fgv.Usuario.touched)
+                    "
+                  >
+                    <strong>Este campo es requerido</strong>
+                  </div>
+                </div>
+              </div>
+         
+          
+          <p class="center-align">
+            <button
+              class="waves-effect waves-light btn"
+              type="submit"
+              (click)="RegitrarCiudad()"
+            >
+              <i class="material-icons right"></i>Recuperar Contraseña
+            </button>
+          </p>
+        </form>
+      </article>
+    </div>
+  </section>

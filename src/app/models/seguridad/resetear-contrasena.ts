@@ -1,3 +1,3 @@
 export class ResetearContrasenaModel {
-  usuario: string = '';
+  Usuario: string = '';
 }
