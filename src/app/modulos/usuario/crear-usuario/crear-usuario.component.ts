@@ -41,7 +41,7 @@ export class CrearUsuarioComponent implements OnInit {
     this.fgValidator = this.fb.group({
       nombre: ['', [Validators.required]],
       apellido1: ['', [Validators.required]],
-      apellido2: ['', [Validators.required]],
+      apellido2: ['', []],
       documento: ['', [Validators.required]],
       correo: ['', [Validators.required, Validators.email]],
       celular: ['', [Validators.required]],

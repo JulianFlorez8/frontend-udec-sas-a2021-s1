@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ProyectoModel } from 'src/app/models/parametrizacion/proyectos.model';
 import { BloqueService } from 'src/app/services/parametrizacion/bloque.service';
 import { CiudadService } from 'src/app/services/parametrizacion/ciudad.service';
 import { DescargaArchivosService } from 'src/app/services/parametrizacion/descarga-archivos.service';
 import { PaisService } from 'src/app/services/parametrizacion/pais.service';
 import { ProyectoService } from 'src/app/services/parametrizacion/proyecto.service';
+import { SeguridadService } from 'src/app/services/seguridad/seguridad.service';
 
 @Component({
   selector: 'app-inicio',
@@ -12,15 +14,21 @@ import { ProyectoService } from 'src/app/services/parametrizacion/proyecto.servi
   styleUrls: ['./inicio.component.css'],
 })
 export class InicioComponent implements OnInit {
+  logeado: Boolean = false;
+  suscripcion?: Subscription;
   constructor(
     private service: ProyectoService,
     private servicioCiudad: CiudadService,
     private servicioPais: PaisService,
     private servicioBloque: BloqueService,
-    private servicioDescarga: DescargaArchivosService
+    private servicioDescarga: DescargaArchivosService,
+    private servicioSeguridad:SeguridadService
   ) {}
   lista: ProyectoModel[] = [];
   ngOnInit(): void {
+    this.suscripcion = this.servicioSeguridad.getDatosUsuario().subscribe((data) => {
+      this.logeado = data.logeado;
+    });
     this.obtenerLista();
   }
 
@@ -61,7 +69,7 @@ export class InicioComponent implements OnInit {
           this.servicioDescarga
             .descargarArchivo(1, dato.imagen)
             .subscribe((imagen) => {
-              dato.imagen = imagen.ruta;
+              dato.imagen = imagen;
             });
           this.lista.push(dato);
         });

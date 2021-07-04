@@ -9,7 +9,7 @@
   <thead class="white-text">
     <tr>
       <th class="center-align">Codigo Solicitud</th>
-      <th class="center-align">Recibo</th>
+      <th class="center-align">Falta Pagar</th>
       <th class="center-align">Subir pago</th>
     </tr>
   </thead>
@@ -17,13 +17,13 @@
   <tbody>
     <tr *ngFor="let x of lista">
       <td class="center-align">
-        {{ x.codigoSolicitud }}
+        {{ x.codigo }}
       </td>
       <td class="center-align">
-        {{ x.recibo_consignacion }}
+        {{ x.falta }}
       </td>
       <td class="center-align">
-        <a class="edit" routerLink="../subir-pago/{{ x.codigoSolicitud }}"
+        <a class="edit" routerLink="../subir-pago/{{ x.codigo }}"
           ><i class="orange-text material-icons" title="Upload"
             >file_upload</i
           ></a

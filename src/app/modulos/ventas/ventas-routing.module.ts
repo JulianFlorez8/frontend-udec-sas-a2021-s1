@@ -21,8 +21,9 @@ const routes: Routes = [
     component: EditarClienteComponent,
   },
   {
-    path: 'eliminar-cliente/:codigo',
+    path: 'eliminar-cliente',
     component: EliminarClienteComponent,
+    outlet: 'modal'
   },
   {
     path: 'listar-cliente',

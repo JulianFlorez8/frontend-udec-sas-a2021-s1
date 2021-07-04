@@ -34,7 +34,7 @@ const routes: Routes = [
 
   },
   {
-    path: 'eliminar-proyecto/:codigo',
+    path: 'eliminar-proyecto',
     component: EliminarProyectoComponent,
     outlet: 'modal',
   },
@@ -54,7 +54,7 @@ const routes: Routes = [
 
   },
   {
-    path: 'eliminar-bloque/:codigo',
+    path: 'eliminar-bloque',
     component: EliminarBloqueComponent,
     outlet: 'modal',
   },
@@ -74,7 +74,7 @@ const routes: Routes = [
   
   },
   {
-    path: 'eliminar-ciudad/:codigo',
+    path: 'eliminar-ciudad',
     component: EliminarCiudadComponent,
     outlet: 'modal',
   },
@@ -93,7 +93,7 @@ const routes: Routes = [
 
   },
   {
-    path: 'eliminar-inmueble/:codigo',
+    path: 'eliminar-inmueble',
     component: EliminarInmuebleComponent,
     outlet: 'modal',
   },

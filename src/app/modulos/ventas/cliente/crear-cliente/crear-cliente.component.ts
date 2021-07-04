@@ -8,6 +8,7 @@ import { ArchivosService } from 'src/app/services/parametrizacion/archivos.servi
 import { CiudadService } from 'src/app/services/parametrizacion/ciudad.service';
 import { ClienteService } from 'src/app/services/ventas/cliente.service';
 import { PaisService } from 'src/app/services/parametrizacion/pais.service';
+import { SeguridadService } from 'src/app/services/seguridad/seguridad.service';
 
 @Component({
   selector: 'app-crear-cliente',
@@ -24,6 +25,7 @@ export class CrearClienteComponent implements OnInit {
     private servicioSubida: ArchivosService,
     private fb: FormBuilder, 
     private service: ClienteService,
+    private servicioSeguridad: SeguridadService,
     private servicioCiudades: CiudadService,
     private servicioPaises: PaisService,
     private router: Router,
@@ -39,7 +41,7 @@ export class CrearClienteComponent implements OnInit {
       documento: ['', [Validators.required]],
       nombre: ['', [Validators.required]],
       apellido1: ['', [Validators.required]],
-      apellido2: ['', [Validators.required]],
+      apellido2: ['', []],
       fecha_nacimiento: ['', [Validators.required]],
       image: ['', [Validators.required]],
       celular: ['', [Validators.required]],
@@ -52,8 +54,8 @@ export class CrearClienteComponent implements OnInit {
       nombre_ref_personal: ['', [Validators.required]],
       telefono_ref_personal: ['', [Validators.required]],
       pais: ['',[Validators.required]],
-      codigo_ciudad: ['', [Validators.required]],
-      DocumentoUsuario: ['', [Validators.required]],
+      codigo_ciudad: ['', [Validators.required]]
+      
     });
   }
 
@@ -62,8 +64,6 @@ export class CrearClienteComponent implements OnInit {
       alert('Formulario Invalido');
     } else {
       let cliente = this.getUsuarioData();
-      cliente.DocumentoUsuario=10;
-      console.log(cliente.DocumentoUsuario);
       console.log(cliente);
       this.service.creacionCliente(cliente).subscribe((data) => {
         console.log(data);
@@ -90,7 +90,7 @@ export class CrearClienteComponent implements OnInit {
     model.Correo = this.fgv.correo.value;
     model.Direccion= this.fgv.direccion.value;
     model.Total_Ingresos= this.fgv.total_ingresos.value;
-    model.DocumentoUsuario=parseInt(this.fgv.DocumentoUsuario.value);
+    model.DocumentoUsuario=this.servicioSeguridad.getDocumento();
     model.Datos_Trabajo= this.fgv.datos_trabajo.value;
     model.Nombre_Ref_Familiar= this.fgv.nombre_ref_familiar.value;
     model.Telefono_Ref_Familiar=this.fgv.telefono_ref_familiar.value.toString();

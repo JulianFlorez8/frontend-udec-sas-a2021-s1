@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PagosModel } from 'src/app/models/ventas/pagos.model';
 import { ArchivosService } from 'src/app/services/parametrizacion/archivos.service';
 import { PagoService } from 'src/app/services/ventas/pago.service';
+import { SolicitudService } from 'src/app/services/ventas/solicitud.service';
 
 @Component({
   selector: 'app-subir-pago',
@@ -20,6 +21,7 @@ export class SubirPagoComponent implements OnInit {
     private servicioSubida: ArchivosService,
     private fb: FormBuilder,
     private service: PagoService,
+    private servicioSolicitudes: SolicitudService,
     private router: Router,
     private route: ActivatedRoute,
     ) {
@@ -54,15 +56,36 @@ export class SubirPagoComponent implements OnInit {
     } else {
       let pago = this.getProyectoData();
       console.log(pago);
-      this.service.creacionPago(pago).subscribe((data) => {
-        console.log(data);
-        if (data) {
-          alert('Pago Exitoso');
-          this.router.navigate(["/inicio"]);
-        } else {
-          alert('Fallo el registro');
+      if(pago.codigoSolicitud)
+      this.servicioSolicitudes.obtenerPagosSolicitud(pago.codigoSolicitud).subscribe(pagos=>{
+        let pagado=0;
+        pagos.forEach(pago=>{
+          pagado=pagado+pago.valor;
+        })
+    let pagare= pagado+pago.valor;
+    if(pago.codigoSolicitud)
+      this.servicioSolicitudes.obtenerSolicitud(pago.codigoSolicitud).subscribe(x=>{
+        if(x.ofertaEconomica)
+        if(pagare<=x.ofertaEconomica)
+        {
+
+          this.service.creacionPago(pago).subscribe((data) => {
+            console.log(data);
+            if (data) {
+              alert('Pago Exitoso');
+              this.router.navigate(["/inicio"]);
+            } else {
+              alert('Fallo el registro');
+            }
+          });
         }
-      });
+        else{
+          alert('Existe eun excedente en el pago');
+        }
+        
+      })
+      
+    })
     }
   }
 

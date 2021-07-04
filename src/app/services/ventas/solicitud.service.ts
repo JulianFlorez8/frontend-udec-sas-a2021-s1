@@ -65,6 +65,9 @@ export class SolicitudService {
   obtenerSolicitudesEnEstudio():Observable<SolicitudEstudioModel[]>{//Sin filtro
     return this.http.get<SolicitudEstudioModel[]>(`${ServiceConfig.BASE_URL}solicitudes-en-estudio`)    
   }
+  obtenerSolicitudesAceptadas():Observable<SolicitudEstudioModel[]>{//Sin filtro
+    return this.http.get<SolicitudEstudioModel[]>(`${ServiceConfig.BASE_URL}solicitudes-Aceptadas`)    
+  }
 
 
   parcharSolicitudes(model: SolicitudEstudioModel):Observable<SolicitudEstudioModel>{//Sin filtro

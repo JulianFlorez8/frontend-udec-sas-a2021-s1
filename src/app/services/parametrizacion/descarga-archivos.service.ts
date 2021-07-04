@@ -11,8 +11,8 @@ export class DescargaArchivosService {
   constructor(
     private http: HttpClient
   ) { }//1 PROYECTO 2 CLIENTE 3 PAGO
-  descargarArchivo(tipo: number, nombreArchivo: string):Observable<ArchivoModel>{
-    return this.http.get<ArchivoModel>( `${ServiceConfig.BASE_URL}${this.entity}/${tipo}/${nombreArchivo}`, {
+  descargarArchivo(tipo: number, nombreArchivo: string):Observable<string>{
+    return this.http.get<string>( `${ServiceConfig.BASE_URL}${this.entity}/${tipo}/${nombreArchivo}`, {
       headers: new HttpHeaders({})
     })
 

@@ -4,7 +4,7 @@
       <div class="card-image waves-effect waves-block waves-light">
         <img
           class="activator"
-          src="assets/proyectsImages/proy1.jpg"
+          src="assets/documentosVarios/proyectos/{{x.imagen}}"
           (click)="btnClick(i)"
         />
       </div>
@@ -18,7 +18,7 @@
           {{ x.descripcion.slice(0, 100) }}...
         </p>
         <div class="card-action">
-          <button
+          <button *ngIf="logeado"
             class="waves-effect waves-light btn activator"
             routerLink="../ventas/crear-solicitud/{{x.codigo}}"
           >

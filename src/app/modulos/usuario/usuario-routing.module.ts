@@ -15,7 +15,7 @@ const routes: Routes = [
     component: EditarUsuarioComponent,
   },
   {
-    path: 'eliminar-usuario/:Documento',
+    path: 'eliminar-usuario',
     component: EliminarUsuarioComponent,
     outlet: 'modal',
   },
