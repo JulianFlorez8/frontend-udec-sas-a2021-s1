@@ -5,24 +5,17 @@
         <div class="row">
           <h3 class="center-align">Eliminar Usuario</h3>
           <article class="col s6 offset-s3">
-            <form [formGroup]="fgValidator">
-                <div class="input-field">
-                    <i class="material-icons prefix">perm_identity</i>
-                    <label for="bloque">Usuario</label>
-                    <select formControlName="Usuario" class="browser-default pl" id="Usuario">
-                      <option></option>
-                    </select>
-                  </div>
-              <p class="center-align">
-                <button
-                  class="waves-effect waves-light btn"
-                  type="submit"
-                  (click)="eliminacionUsuario()"
-                >
-                  <i class="material-icons right"></i>Eliminar
-                </button>
-              </p>
-            </form>
+            
+        <h4 ><p id="codigo">¿Seguro que desea eliminar el usuario {{elemento}} ?</p></h4>
+        <p class="center-align">
+          <button
+            class="waves-effect waves-light btn"
+            
+            (click)="eliminarElemento()"
+          >
+            <i class="material-icons right"></i>Eliminar
+          </button>
+        </p>
           </article>
         </div>
       </section>

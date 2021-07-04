@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CiudadModel } from 'src/app/models/parametrizacion/ciudad.model';
 import { PaisService } from 'src/app/services/parametrizacion/pais.service';
+import { SeguridadService } from 'src/app/services/seguridad/seguridad.service';
 import { CiudadService } from '../../../../services/parametrizacion/ciudad.service';
 @Component({
   selector: 'app-listar-ciudad',
@@ -9,7 +10,8 @@ import { CiudadService } from '../../../../services/parametrizacion/ciudad.servi
 })
 export class ListarCiudadComponent implements OnInit {
   constructor(private service: CiudadService,
-    private servicioPais:PaisService) {}
+    private servicioPais:PaisService,
+    private servicioSeguridad: SeguridadService) {}
   lista: CiudadModel[] = [];
   page = 5;
   ngOnInit(): void {
@@ -35,5 +37,10 @@ export class ListarCiudadComponent implements OnInit {
         console.log('error');
       }
     );
+  }
+  ponerid(id:any, elemento: any){
+    console.log("id:"+id);
+    this.servicioSeguridad.setIdUnivesal(id,elemento);
+    //EliminarPaisComponent.elemento="";
   }
 }

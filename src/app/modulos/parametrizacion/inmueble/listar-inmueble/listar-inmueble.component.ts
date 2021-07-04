@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InmuebleModel } from 'src/app/models/parametrizacion/inmueble.model';
 import { BloqueService } from 'src/app/services/parametrizacion/bloque.service';
+import { SeguridadService } from 'src/app/services/seguridad/seguridad.service';
 import { InmuebleService } from '../../../../services/parametrizacion/inmueble.service';
 
 @Component({
@@ -10,7 +11,8 @@ import { InmuebleService } from '../../../../services/parametrizacion/inmueble.s
 })
 export class ListarInmuebleComponent implements OnInit {
   constructor(private service: InmuebleService,
-    private servicioBloque: BloqueService) {}
+    private servicioBloque: BloqueService,
+    private servicioSeguridad:SeguridadService) {}
   lista: InmuebleModel[] = [];
   ngOnInit(): void {
     this.obtenerLista();
@@ -30,5 +32,10 @@ export class ListarInmuebleComponent implements OnInit {
         console.log('error');
       }
     );
+  }
+  ponerid(id:any, elemento: any){
+    console.log("id:"+id);
+    this.servicioSeguridad.setIdUnivesal(id,elemento);
+    //EliminarPaisComponent.elemento="";
   }
 }

@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { InmuebleModel } from 'src/app/models/parametrizacion/inmueble.model';
+import { ClienteModel } from 'src/app/models/ventas/cliente.model';
 import { SolicitudEstudioModel } from 'src/app/models/ventas/solicitudEstudio.model';
+import { BloqueService } from 'src/app/services/parametrizacion/bloque.service';
+import { InmuebleService } from 'src/app/services/parametrizacion/inmueble.service';
+import { ProyectoService } from 'src/app/services/parametrizacion/proyecto.service';
+import { ClienteService } from 'src/app/services/ventas/cliente.service';
 import { SolicitudService } from 'src/app/services/ventas/solicitud.service';
 
 @Component({
@@ -12,9 +18,15 @@ import { SolicitudService } from 'src/app/services/ventas/solicitud.service';
 export class CrearSolicitudComponent implements OnInit {
   fgValidator: FormGroup = this.fb.group({});
   elementoID: string='';
+  inmuebles: InmuebleModel[]=[];
+  clientes: ClienteModel[]=[];
   constructor(
     private fb: FormBuilder, 
     private service: SolicitudService,
+    private servicioClientes: ClienteService,
+    private servicioInmuebles: InmuebleService,
+    private servicioProyectos: ProyectoService,
+    private servicioBloque: BloqueService,
     private router: Router,
     private route: ActivatedRoute,
     ) {
@@ -22,12 +34,14 @@ export class CrearSolicitudComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    this.llenarSelects();
     this.FormularioValidacion();
   }
   FormularioValidacion() {
     this.fgValidator = this.fb.group({
       documento: ['', [Validators.required]],
       oferta: ['', [Validators.required]],
+      inmueble: ['',[Validators.required]]
     });
   }
   getSolicitudData(): SolicitudEstudioModel {
@@ -35,7 +49,7 @@ export class CrearSolicitudComponent implements OnInit {
     model.documentoCliente = parseInt(this.fgv.documento.value);
     model.ofertaEconomica = parseInt(this.fgv.oferta.value);
     model.estado= 'En Estudio';
-    model.codigoInmueble=parseInt(this.elementoID);
+    model.codigoInmueble=parseInt(this.fgv.inmueble.value);
     let date: Date = new Date();
     let dia='';
     let mes='';
@@ -87,5 +101,21 @@ export class CrearSolicitudComponent implements OnInit {
       
     }
 
+  }
+  llenarSelects(){
+    
+    this.servicioProyectos.obtenerBloquesProyecto(parseInt(this.elementoID)).subscribe(bloques=>{
+      bloques.forEach(bloque=>{
+        if(bloque.codigo)
+        this.servicioBloque.obtenerBloqueInmueble(bloque.codigo).subscribe(inmuebles=>{
+          inmuebles.forEach(inmueble=>{
+            this.inmuebles.push(inmueble);
+          })
+        })
+      })
+    })
+    this.servicioClientes.obtenerClientes().subscribe(clientes=>{
+      this.clientes=clientes;
+    })
   }
 }

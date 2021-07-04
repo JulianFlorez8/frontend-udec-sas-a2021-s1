@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BloqueModel } from 'src/app/models/parametrizacion/bloque.model';
+import { SeguridadService } from 'src/app/services/seguridad/seguridad.service';
 import { BloqueService } from '../../../../services/parametrizacion/bloque.service';
 
 @Component({
@@ -8,7 +9,8 @@ import { BloqueService } from '../../../../services/parametrizacion/bloque.servi
   styleUrls: ['./listar-bloque.component.css'],
 })
 export class ListarBloqueComponent implements OnInit {
-  constructor(private service: BloqueService) {}
+  constructor(private service: BloqueService,
+    private servicioSeguridad: SeguridadService) {}
   lista: BloqueModel[] = [];
   ngOnInit(): void {
     this.obtenerLista();
@@ -30,5 +32,10 @@ export class ListarBloqueComponent implements OnInit {
         console.log('error');
       }
     );
+  }
+  ponerid(id:any, elemento: any){
+    console.log("id:"+id);
+    this.servicioSeguridad.setIdUnivesal(id,elemento);
+    //EliminarPaisComponent.elemento="";
   }
 }

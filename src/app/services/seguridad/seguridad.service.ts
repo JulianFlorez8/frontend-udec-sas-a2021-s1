@@ -34,6 +34,8 @@ export class SeguridadService {
       return false;
     }else{
       sesion.logeado=true;
+      sesion.codigo=0;
+      sesion.elemento='';
       localStorage.setItem('session', JSON.stringify(sesion))
       this.setDatosUsuario(sesion);
       return true;
@@ -67,6 +69,14 @@ export class SeguridadService {
     }
     
   }
+  getUsuario(){
+    let actualSesion = this.getSesion();
+    if(actualSesion)
+    {
+      return JSON.parse(actualSesion).usuario;
+
+    }
+  }
   getDocumento(): number {
     let actualSesion = this.getSesion();
     if(actualSesion)
@@ -77,5 +87,38 @@ export class SeguridadService {
     else{
       return 0;
     }
+  }
+  getIdUniversal(): number{
+    let actualSesion= this.getSesion();
+    if(actualSesion)
+    {
+      return JSON.parse(actualSesion).codigo;
+    }
+    else{
+      return 0
+    }
+  }
+  getElementoUniversal(): string{
+    let actualSesion= this.getSesion();
+    if(actualSesion)
+    {
+      return JSON.parse(actualSesion).elemento;
+    }
+    else{
+      return '';
+    }
+  }
+  setIdUnivesal(idNuevo: number, elementoNuevo: string){
+    let x= new  InicioModel;
+    
+    x.logeado=true;
+    x.token=this.getToken();
+    x.usuario=this.getUsuario();
+    x.codigo=idNuevo;
+    x.elemento=elementoNuevo;
+    localStorage.setItem('session', JSON.stringify(x));
+    if(x.usuario)
+    console.log("id guardado es: "+x.codigo+" "+x.elemento);
+
   }
 }

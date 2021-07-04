@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { UsuarioModel } from 'src/app/models/usuario.model';
 import { SeguridadService } from 'src/app/services/seguridad/seguridad.service';
@@ -11,75 +12,27 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
   styleUrls: ['./eliminar-usuario.component.css']
 })
 export class EliminarUsuarioComponent implements OnInit {
-
-  suscripcion?: Subscription;
-  fgValidator: FormGroup = this.fb.group({});
-  usuarios?: UsuarioModel[];
-  objeto: string | undefined = '';
   constructor(
     private fb: FormBuilder, 
     private service: UsuariosService,
-    private serviceSeguridad: SeguridadService
-  ) { }
-
+    private serviceSeguridad: SeguridadService,
+    private router: Router,
+    private route: ActivatedRoute,
+    ) {
+    }
+    elementoID?: number;
+    elemento?: string;
+    suscripcion?: Subscription;
   ngOnInit(): void {
-    this.FormularioValidacion();
-    this.llenarUsuarios();
-  }
-  FormularioValidacion() {
-    this.fgValidator = this.fb.group({
-      usuario: ['', [Validators.required]],
-      
+    this.suscripcion = this.serviceSeguridad.getDatosUsuario().subscribe((data) => {
+      this.elementoID=data.codigo;
+      this.elemento=data.elemento;
     });
   }
-
-  eliminacionUsuario() {
-    if (this.fgValidator.invalid) {
-      alert('Formulario Invalido');
-    } else {
-      let usuario = this.getUsuarioData();
-      this.eliminarUsuario(usuario);
-    }
-  }
-  //Obtenego datos del formulario y los paso al modelo de usuario
-  getUsuarioData(): number {
-    
-    return this.fgv.usuario.value;
-  }
-  get fgv() {
-    return this.fgValidator.controls;
-  }
-  llenarUsuarios(){
-    this.service.obtenerUsuarios().subscribe(usuarios=>{
-      //console.log(paises);
-      this.usuarios=usuarios;
-      //console.log(this.paises[0].nombre);
-      const selectorProyecto=document.getElementById('usuario');
-      this.usuarios?.forEach(
-        usuario=>{
-          const opcion= document.createElement('option');
-          let nombreusuario= usuario.Nombre;
-          let codigousuario= usuario.Documento;
-          if(codigousuario)
-          {
-            opcion.value = codigousuario.toString();
-          opcion.text= nombreusuario;
-          }
-          
-          if(selectorProyecto)
-          {
-            selectorProyecto.appendChild(opcion);
-          }
-        }
-      )
-     
-    })
-  }
-  
-  eliminarUsuario(idUsuario: number){
-    this.service.eliminarUsuario(idUsuario);
+  eliminarElemento(){
+    console.log("Eliminando "+ this.serviceSeguridad.getElementoUniversal())
+    this.service.eliminarUsuario(this.serviceSeguridad.getIdUniversal());
     
   }
 
 }
-

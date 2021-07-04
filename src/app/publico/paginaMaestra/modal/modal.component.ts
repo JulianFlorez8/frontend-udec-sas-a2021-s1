@@ -11,5 +11,7 @@ export class ModalComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  ponerid(id: string){
+    console.log(id);
+  }
 }

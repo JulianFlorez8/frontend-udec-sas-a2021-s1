@@ -72,7 +72,14 @@
         <a class="edit" routerLink="../editar-cliente/{{ x.Documento }}"
           ><i class="orange-text material-icons" title="Edit">&#xE254;</i></a
         >
-        <a class="delete" routerLink="../eliminar-cliente/{{ x.Documento }}"
+        <a
+          class="delete modal-trigger"
+          data-target="modal1"
+          (click)="ponerid(x.Nombre,x.Documento)"
+          [routerLink]="[
+            '/parametrizacion',
+            { outlets: { modal: ['eliminar-cliente'] } }
+          ]"
           ><i class="red-text material-icons" title="Delete">&#xE872;</i></a
         >
       </td>

@@ -61,6 +61,7 @@
         <a
           class="delete modal-trigger col s1"
           data-target="modal1"
+          (click)="ponerid(x.codigo,x.nombre)"
           [routerLink]="[
             '/parametrizacion',
             { outlets: { modal: ['eliminar-proyecto'] } }

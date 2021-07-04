@@ -21,21 +21,20 @@ export class EliminarCiudadComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     ) {
-      this.elementoID= this.route.snapshot.params["codigo"];
     }
-    elementoID: string='';
+    elementoID?: number;
+    elemento?: string;
+    suscripcion?: Subscription;
   ngOnInit(): void {
-    this.ponerValor();
+    this.suscripcion = this.serviceSeguridad.getDatosUsuario().subscribe((data) => {
+      this.elementoID=data.codigo;
+      this.elemento=data.elemento;
+    });
   }
-  ponerValor(){
-    const selectorProyecto=document.getElementById('codigo');
-    if( selectorProyecto)
-    {
-      selectorProyecto.innerText="¿Seguro desea eliminar la Ciudad  "+ this.elementoID+ " ?";
-    }
-  }
-  eliminarCiudad(){
-    this.service.eliminarCiudad(parseInt(this.elementoID));
+  eliminarElemento(){
+    console.log("Eliminando "+ this.serviceSeguridad.getElementoUniversal())
+    this.service.eliminarCiudad(this.serviceSeguridad.getIdUniversal());
     
   }
+
 }

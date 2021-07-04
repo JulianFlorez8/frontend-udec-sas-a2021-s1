@@ -14,7 +14,7 @@ export class ListarClienteComponent implements OnInit {
 
   constructor(
     private service: ClienteService,
-    private secService: SeguridadService,
+    private servicioSeguridad: SeguridadService,
     private servicioCiudad: CiudadService
   ) {}
   lista: ClienteModel[] = [];
@@ -23,7 +23,7 @@ export class ListarClienteComponent implements OnInit {
   rol: string | undefined = '';
   ngOnInit(): void {
     this.obtenerLista();
-    this.suscripcion = this.secService.getDatosUsuario().subscribe((data) => {
+    this.suscripcion = this.servicioSeguridad.getDatosUsuario().subscribe((data) => {
       this.rol = data.usuario?.Rol;
     });
   }
@@ -45,5 +45,10 @@ export class ListarClienteComponent implements OnInit {
   }
   imprimirUsuario(id: any) {
     console.log(id);
+  }
+  ponerid(id:any, elemento: any){
+    console.log("id:"+id);
+    this.servicioSeguridad.setIdUnivesal(id,elemento);
+    //EliminarPaisComponent.elemento="";
   }
 }

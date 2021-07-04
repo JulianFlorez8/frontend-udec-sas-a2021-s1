@@ -48,6 +48,7 @@
         >
         <a
           class="delete modal-trigger"
+          (click)="ponerid(x.codigo,x.identificador)"
           data-target="modal1"
           [routerLink]="[
             '/parametrizacion',

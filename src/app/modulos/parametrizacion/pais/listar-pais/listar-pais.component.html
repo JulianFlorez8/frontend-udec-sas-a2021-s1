@@ -40,12 +40,14 @@
         <a
           class="delete modal-trigger"
           data-target="modal1"
+          (click)="ponerid(x.codigo,x.nombre)"
           [routerLink]="[
             '/parametrizacion',
             { outlets: { modal: ['eliminar-pais'] } }
           ]"
           ><i class="red-text material-icons" title="Delete">&#xE872;</i></a
         >
+        
       </td>
     </tr>
   </tbody>

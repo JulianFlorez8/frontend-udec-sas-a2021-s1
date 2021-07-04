@@ -12,7 +12,7 @@ import { SeguridadService } from 'src/app/services/seguridad/seguridad.service';
 export class ListarUsuarioComponent implements OnInit {
   constructor(
     private service: UsuariosService,
-    private secService: SeguridadService
+    private servicioSeguridad: SeguridadService
   ) {}
   lista: UsuarioModel[] = [];
 
@@ -20,7 +20,7 @@ export class ListarUsuarioComponent implements OnInit {
   rol: string | undefined = '';
   ngOnInit(): void {
     this.obtenerLista();
-    this.suscripcion = this.secService.getDatosUsuario().subscribe((data) => {
+    this.suscripcion = this.servicioSeguridad.getDatosUsuario().subscribe((data) => {
       this.rol = data.usuario?.Rol;
     });
   }
@@ -38,5 +38,10 @@ export class ListarUsuarioComponent implements OnInit {
   }
   imprimirUsuario(id: any) {
     console.log(id);
+  }
+  ponerid(id:any, elemento: any){
+    console.log("id:"+id);
+    this.servicioSeguridad.setIdUnivesal(id,elemento);
+    //EliminarPaisComponent.elemento="";
   }
 }

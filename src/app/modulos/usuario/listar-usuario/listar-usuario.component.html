@@ -27,7 +27,6 @@
       <th class="center-align">Documento</th>
       <th class="center-align">Rol</th>
       <th class="center-align">Usuario</th>
-      <th class="center-align">Codigo ciudad</th>
       <th class="center-align">Acciones</th>
     </tr>
   </thead>
@@ -61,16 +60,21 @@
       <td class="center-align">
         {{ x.Usuario }}
       </td>
-      <td class="center-align">
-        {{ x.codigoCiudad }}
-      </td>
+      
       <td class="center-align">
         <a class="edit" routerLink="../editar-usuario/{{ x.Documento }}"
           ><i class="orange-text material-icons" title="Edit">&#xE254;</i></a
         >
-        <a class="delete" routerLink="../eliminar-usuario/{{ x.Documento }}"
-          ><i class="red-text material-icons" title="Delete">&#xE872;</i></a
-        >
+        <a
+        class="delete modal-trigger"
+        data-target="modal1"
+        (click)="ponerid(x.Documento,x.Nombre)"
+        [routerLink]="[
+          '/parametrizacion',
+          { outlets: { modal: ['eliminar-usuario'] } }
+        ]"
+        ><i class="red-text material-icons" title="Delete">&#xE872;</i></a
+      >
       </td>
     </tr>
   </tbody>

@@ -112,7 +112,7 @@ const routes: Routes = [
  
   },
   {
-    path: 'eliminar-pais/:codigo',
+    path: 'eliminar-pais',
     component: EliminarPaisComponent,
     outlet: 'modal',
   },

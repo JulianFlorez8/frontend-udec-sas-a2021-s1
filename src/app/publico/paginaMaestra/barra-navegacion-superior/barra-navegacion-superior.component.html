@@ -51,11 +51,17 @@
       ><i class="material-icons white-text">payment</i><span>Ventas</span></a
     >
   </li>
-  <li>
+  <li *ngIf="rol == 'Administrador'">
     <a class="dropdown-trigger" data-target="dropdown2"
       ><i class="material-icons white-text">description</i
       ><span>Informes ></span></a
     >
+  </li>
+  <li>
+    <a routerLink="seguridad/cambiar-contrasena" class="sidenav-close">
+      <i class="material-icons white-text">security</i>
+      <span>Cambiar contraseña</span>
+    </a>
   </li>
 </ul>
 
@@ -109,7 +115,7 @@
   </li>
   <li>
     <a routerLink="ventas/listar-solicitud" class="sidenav-close"
-      >Solicitudes</a
+      >Solicitudes de Estudio</a
     >
   </li>
   <li>
@@ -117,15 +123,16 @@
   </li>
 </ul>
 
+
 <ul class="sidenav" id="mobile-demo">
   <li *ngIf="rol == 'Administrador'">
     <a class="sidenav-trigger sidenav-close" data-target="menu-side">
       Administrador
     </a>
   </li>
-  <li><a routerLink="sass.html">Sass</a></li>
+<!-- <li><a routerLink="sass.html">Sass</a></li>
   <li><a routerLink="badges.html">Components</a></li>
-  <li><a routerLink="collapsible.html">Javascript</a></li>
+  <li><a routerLink="collapsible.html">Javascript</a></li>--> 
   <li *ngIf="!logeado">
     <a routerLink="seguridad/iniciar-sesion">Iniciar sesión</a>
   </li>

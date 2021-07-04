@@ -4,16 +4,16 @@
     <article class="col s6 offset-s3">
       
         
-        <h4 ><p id="codigo"></p></h4>
-        <p class="center-align">
-          <button
-            class="waves-effect waves-light btn"
-            type="submit"
-            (click)="eliminarCiudad()"
-          >
-            <i class="material-icons right"></i>Eliminar
-          </button>
-        </p>
+      <h4 ><p id="codigo">¿Seguro que desea eliminar la ciudad {{elemento}} ?</p></h4>
+      <p class="center-align">
+        <button
+          class="waves-effect waves-light btn"
+          
+          (click)="eliminarElemento()"
+        >
+          <i class="material-icons right"></i>Eliminar
+        </button>
+      </p>
       
     </article>
   </div>

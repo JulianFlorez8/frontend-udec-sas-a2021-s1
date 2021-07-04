@@ -45,6 +45,7 @@
         <a
           class="delete modal-trigger"
           data-target="modal1"
+          (click)="ponerid(x.codigo,x.nombre)"
           [routerLink]="[
             '/parametrizacion',
             { outlets: { modal: ['eliminar-ciudad'] } }

@@ -68,6 +68,7 @@
         >
         <a
           class="delete"
+          (click)="ponerid(x.codigo,x.nombre)"
           [routerLink]="[
             '/parametrizacion',
             { outlets: { modal: ['eliminar-bloque'] } }
