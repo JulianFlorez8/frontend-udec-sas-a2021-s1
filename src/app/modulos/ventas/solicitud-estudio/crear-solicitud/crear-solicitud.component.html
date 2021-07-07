@@ -1,45 +1,54 @@
-
-    <section class="container">
-        <div class="row">
-          <h3 class="center-align">Crear Solicitud de estudio</h3>
-          <article class="col s6 offset-s3">
-            <form [formGroup]="fgValidator">
-              <div class="input-field">
-                <label for="inmueble">Inmueble </label>
-                <select
-                  formControlName="inmueble"
-                  class="browser-default pl"
-                  id="inmueble"
-                >
-                    <option *ngFor="let y of inmuebles" value="{{y.codigo}}">{{y.identificador}}</option>
-                </select>
-              </div>
-              <div class="input-field">
-                <label for="documento">Documento Cliente</label>
-                <select
-                  formControlName="documento"
-                  class="browser-default pl"
-                  id="documento"
-                >
-                    <option *ngFor="let x of clientes" value="{{x.Documento}}">{{x.Nombre}} {{x.Apellido_1}}</option>
-                </select>
-              </div>
-              <div class="input-field">
-                <label for="oferta">Oferta Economica</label>
-                <input formControlName="oferta" type="number" name="oferta" required />
-              </div>
-
-              <p class="center-align">
-                <button
-                  class="waves-effect waves-light btn"
-                  type="submit"
-                  (click)="CrearSolicitud()"
-                >
-                  <i class="material-icons right"></i>Registrar
-                </button>
-              </p>
-            </form>
-          </article>
+<section class="container">
+  <div class="row">
+    <h3 class="center-align">Crear Solicitud de estudio</h3>
+    <article class="col s6 offset-s3">
+      <form [formGroup]="fgValidator">
+        <div class="input-field">
+          <i class="material-icons prefix">business</i>
+          <select
+            formControlName="inmueble"
+            class="browser-default pl"
+            id="inmueble"
+          >
+            <option value="" disabled selected>Inmueble</option>
+            <option *ngFor="let y of inmuebles" value="{{ y.codigo }}">
+              {{ y.identificador }}
+            </option>
+          </select>
         </div>
-      </section>
-      
+        <div class="input-field">
+          <i class="material-icons prefix">person_pin</i>
+          <select
+            formControlName="documento"
+            class="browser-default pl"
+            id="documento"
+          >
+            <option value="" disabled selected>Documento Cliente</option>
+            <option *ngFor="let x of clientes" value="{{ x.Documento }}">
+              {{ x.Nombre }} {{ x.Apellido_1 }}
+            </option>
+          </select>
+        </div>
+        <div class="input-field">
+          <label for="oferta">Oferta Economica</label>
+          <input
+            formControlName="oferta"
+            type="number"
+            name="oferta"
+            required
+          />
+        </div>
+
+        <p class="center-align">
+          <button
+            class="waves-effect waves-light btn"
+            type="submit"
+            (click)="CrearSolicitud()"
+          >
+            <i class="material-icons right"></i>Registrar
+          </button>
+        </p>
+      </form>
+    </article>
+  </div>
+</section>

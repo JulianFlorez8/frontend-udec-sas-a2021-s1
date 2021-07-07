@@ -1,1 +1,83 @@
 /* You can add global styles to this file, and also import other style files */
+
+.waves-effect.waves-light.btn {
+  border-radius: 20px;
+  background-color: rgba(240, 76, 112, 0.562);
+}
+
+.btn {
+  width: 100%;
+}
+
+h3 {
+  color: white;
+}
+
+label {
+  color: white;
+}
+
+i {
+  color: white;
+}
+
+select {
+  background: rgba(0, 0, 0, 0.062);
+  color: white;
+  text-indent: 30px;
+}
+
+option {
+  background: rgb(79 22 35);
+  opacity: 0.2;
+  color: white;
+}
+
+.input-field label {
+  color: rgb(255, 255, 255);
+}
+
+.input {
+  color: rgb(255, 255, 255);
+}
+
+/* label focus color */
+.input-field input:focus + label {
+  color: rgb(255, 255, 255);
+}
+/* label underline focus color */
+.input-field input:focus {
+  border-bottom: 1px solid rgb(255, 255, 255);
+  box-shadow: 0 1px 0 0 rgb(255, 255, 255);
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+  color: rgb(255, 255, 255);
+}
+input,
+select,
+textarea {
+  color: rgb(255, 255, 255);
+}
+
+textarea:focus,
+input:focus {
+  color: rgb(255, 255, 255);
+}
+
+@-webkit-keyframes autofill {
+  0%,
+  100% {
+    color: #666;
+    background: transparent;
+  }
+}
+
+input:-webkit-autofill {
+  -webkit-animation-delay: 1s; /* Safari support - any positive time runs instantly */
+  -webkit-animation-name: autofill;
+  -webkit-animation-fill-mode: both;
+}
+input:-webkit-autofill {
+  -webkit-text-fill-color: white;
+}

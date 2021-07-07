@@ -25,8 +25,8 @@
             "aot": true,
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
-              "src/styles.css",
-              "node_modules/materialize-css/dist/css/materialize.min.css"
+              "node_modules/materialize-css/dist/css/materialize.min.css",
+              "src/styles.css"
             ],
             "scripts": [
               "node_modules/materialize-css/dist/js/materialize.min.js",

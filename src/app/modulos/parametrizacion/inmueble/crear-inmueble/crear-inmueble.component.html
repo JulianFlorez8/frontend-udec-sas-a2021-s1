@@ -1,51 +1,62 @@
-
 <!--<form [formGroup]="crearUsuarioValidator">-->
-    <section class="container">
-        <div class="row">
-          <h3 class="center-align">Creacion Inmueble</h3>
-          <article class="col s6 offset-s3">
-            <form [formGroup]="fgValidator">
-              <div class="input-field">
-                <i class="material-icons prefix">perm_identity</i>
-                <label for="identificador">Identificador</label>
-                <input formControlName="identificador" type="text" name="identificador" required />
-              </div>
-      
-              <div class="input-field">
-                <i class="material-icons prefix">person_pin</i>
-                <label for="valor">Valor:</label>
-                <input
-                  formControlName="valor"
-                  type="number"
-                  name="valor"
-                  required
-                />
-              </div>
-              <div class="input-field">
-                
-                <label for="proyecto">Proyecto</label>
-                <select formControlName="proyecto" class="browser-default pl" id="proyecto">
-                  <option *ngFor="let x of proyectos" value="{{x.codigo}}">{{x.nombre}}</option>
-                </select>
-              </div>
-             
-              <div class="input-field" *ngIf="bloques">
-                <label for="bloque">Bloque</label>
-                <select formControlName="bloque" class="browser-default pl" id="bloque">
-                  <option *ngFor="let x of bloques" value="{{x.codigo}}">{{x.nombre}}</option>
-                </select>
-              </div>
-              <p class="center-align">
-                <button
-                  class="waves-effect waves-light btn"
-                  type="submit"
-                  (click)="RegitrarInmueble()"
-                >
-                  <i class="material-icons right"></i>Registrar
-                </button>
-              </p>
-            </form>
-          </article>
+<section class="container">
+  <div class="row">
+    <h3 class="center-align">Creacion Inmueble</h3>
+    <article class="col s6 offset-s3">
+      <form [formGroup]="fgValidator">
+        <div class="input-field">
+          <i class="material-icons prefix">perm_identity</i>
+          <label for="identificador">Identificador</label>
+          <input
+            formControlName="identificador"
+            type="text"
+            name="identificador"
+            required
+          />
         </div>
-      </section>
-      
+
+        <div class="input-field">
+          <i class="material-icons prefix">monetization_on</i>
+          <label for="valor">Valor:</label>
+          <input formControlName="valor" type="number" name="valor" required />
+        </div>
+        <div class="input-field">
+          <i class="material-icons prefix">business</i>
+          <select
+            formControlName="proyecto"
+            class="browser-default pl"
+            id="proyecto"
+          >
+            <option value="" disabled selected>Proyecto</option>
+            <option *ngFor="let x of proyectos" value="{{ x.codigo }}">
+              {{ x.nombre }}
+            </option>
+          </select>
+        </div>
+
+        <div class="input-field" *ngIf="bloques">
+          <i class="material-icons prefix">location_city</i>
+          <select
+            formControlName="bloque"
+            class="browser-default pl"
+            id="bloque"
+          >
+            <option value="" disabled selected>Bloque</option>
+            <option *ngFor="let x of bloques" value="{{ x.codigo }}">
+              {{ x.nombre }}
+            </option>
+          </select>
+        </div>
+        <p class="center-align">
+          <button
+            class="waves-effect waves-light btn"
+            type="submit"
+            (click)="RegitrarInmueble()"
+          >
+            <i class="material-icons right"></i>Registrar
+          </button>
+        </p>
+      </form>
+    </article>
+  </div>
+</section>

@@ -43,19 +43,21 @@
   <li *ngIf="rol == 'Administrador'">
     <a class="dropdown-trigger" data-target="dropdown1">
       <i class="material-icons white-text">edit</i>
-      <span>Parametrización ></span>
+      <span>Parametrización</span>
+      <i class="material-icons white-text right">arrow_drop_down</i>
     </a>
   </li>
   <li *ngIf="rol == 'Vendedor'">
     <a class="dropdown-trigger" data-target="dropdown3"
-      ><i class="material-icons white-text">payment</i><span>Ventas</span></a
-    >
+      ><i class="material-icons white-text">payment</i><span>Ventas</span>
+      <i class="material-icons white-text right">arrow_drop_down</i>
+    </a>
   </li>
-  <li *ngIf="rol == 'Administrador'">
+  <li>
     <a class="dropdown-trigger" data-target="dropdown2"
-      ><i class="material-icons white-text">description</i
-      ><span>Informes ></span></a
-    >
+      ><i class="material-icons white-text">description</i><span>Informes</span>
+      <i class="material-icons white-text right">arrow_drop_down</i>
+    </a>
   </li>
   <li>
     <a routerLink="seguridad/cambiar-contrasena" class="sidenav-close">
@@ -123,16 +125,15 @@
   </li>
 </ul>
 
-
 <ul class="sidenav" id="mobile-demo">
   <li *ngIf="rol == 'Administrador'">
     <a class="sidenav-trigger sidenav-close" data-target="menu-side">
       Administrador
     </a>
   </li>
-<!-- <li><a routerLink="sass.html">Sass</a></li>
+  <!-- <li><a routerLink="sass.html">Sass</a></li>
   <li><a routerLink="badges.html">Components</a></li>
-  <li><a routerLink="collapsible.html">Javascript</a></li>--> 
+  <li><a routerLink="collapsible.html">Javascript</a></li>-->
   <li *ngIf="!logeado">
     <a routerLink="seguridad/iniciar-sesion">Iniciar sesión</a>
   </li>

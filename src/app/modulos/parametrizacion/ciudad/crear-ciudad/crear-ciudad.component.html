@@ -1,34 +1,40 @@
-
 <!--<form [formGroup]="crearUsuarioValidator">-->
-    <section class="container">
-        <div class="row">
-          <h3 class="center-align">Creación Ciudad</h3>
-          <article class="col s6 offset-s3">
-            <form [formGroup]="fgValidator">
-              <div class="input-field">
-                <i class="material-icons prefix">perm_identity</i>
-                <label for="nombre">Nombre</label>
-                <input formControlName="nombre" type="text" name="nombre" required />
-              </div>
-             
-              <div class="input-field">
-                <i class="material-icons prefix">perm_identity</i>
-                <label for="pais">Pais</label>
-                <select formControlName="codigoPais" class="browser-default pl" id="pais">
-                  <option *ngFor="let x of paises" value="{{x.codigo}}">{{x.nombre}}</option>
-                </select>
-              </div>
-              <p class="center-align">
-                <button
-                  class="waves-effect waves-light btn"
-                  type="submit"
-                  (click)="RegitrarCiudad()"
-                >
-                  <i class="material-icons right"></i>Registrar
-                </button>
-              </p>
-            </form>
-          </article>
+<section class="container">
+  <div class="row">
+    <h3 class="center-align">Creación Ciudad</h3>
+    <article class="col s6 offset-s3">
+      <form [formGroup]="fgValidator">
+        <div class="input-field">
+          <i class="material-icons prefix">perm_identity</i>
+          <label for="nombre">Nombre</label>
+          <input formControlName="nombre" type="text" name="nombre" required />
         </div>
-      </section>
-      
+
+        <div class="input-field">
+          <i class="material-icons prefix">assistant_photo</i>
+
+          <select
+            placeholder="Pais"
+            formControlName="codigoPais"
+            class="browser-default pl"
+            id="pais"
+          >
+            <option value="" disabled selected>País</option>
+            <option *ngFor="let x of paises" value="{{ x.codigo }}">
+              {{ x.nombre }}
+            </option>
+          </select>
+        </div>
+        <p class="center-align">
+          <button
+            class="waves-effect waves-light btn"
+            type="submit"
+            (click)="RegitrarCiudad()"
+          >
+            <i class="material-icons right"></i>Registrar
+          </button>
+        </p>
+      </form>
+    </article>
+  </div>
+</section>

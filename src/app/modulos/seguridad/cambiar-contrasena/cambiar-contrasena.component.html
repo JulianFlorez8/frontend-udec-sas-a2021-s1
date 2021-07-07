@@ -1,89 +1,101 @@
 <section class="container">
-    <div class="row">
-      <h3 class="center-align">Cambio de Contraseña</h3>
-      <article class="col s6 offset-s3">
-        <form [formGroup]="fgValidator">
-            <div class="row">
-                <div class="input-field col s12">
-                  <i class="material-icons prefix white-text">mail_outline</i>
-                  <input
-                    formControlName="Usuario"
-                    class="Usuario"
-                    id="Usuario"
-                    type="text"
-                  />
-                  <label for="Usuario" data-error="wrong" data-success="right"
-                    >Usuario</label
-                  >
-                  <div
-                    class="mensajeValidacion"
-                    *ngIf="
-                      fgv.Usuario.errors && (fgv.Usuario.dirty || fgv.Usuario.touched)
-                    "
-                  >
-                    <strong>Este campo es requerido</strong>
-                  </div>
-                </div>
-              </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <i class="material-icons prefix white-text">lock_outline</i>
-              <input formControlName="contrasenaActual" id="contrasenaActual" type="password" />
-              <label for="contrasena">Contraseña Actual</label>
-              <div
-                class="mensajeValidacion"
-                *ngIf="
-                  fgv.contrasenaActual.errors &&
-                  (fgv.contrasenaActual.dirty || fgv.contrasenaActual.touched)
-                "
-              >
-                <strong>Este campo es requerido</strong>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <i class="material-icons prefix white-text">lock_outline</i>
-              <input formControlName="contrasenaNueva" id="contrasenaNueva" type="password" />
-              <label for="contrasenaNueva">Contraseña Nueva</label>
-              <div
-                class="mensajeValidacion"
-                *ngIf="
-                  fgv.contrasenaNueva.errors &&
-                  (fgv.contrasenaNueva.dirty || fgv.contrasenaNueva.touched)
-                "
-              >
-                <strong>Este campo es requerido</strong>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <i class="material-icons prefix white-text">lock_outline</i>
-              <input formControlName="confirmeContrasena" id="confirmeContrasena" type="password" />
-              <label for="confirmeContrasena">Confirme Contraseña</label>
-              <div
-                class="mensajeValidacion"
-                *ngIf="
-                  fgv.confirmeContrasena.errors &&
-                  (fgv.confirmeContrasena.dirty || fgv.confirmeContrasena.touched)
-                "
-              >
-                <strong>Este campo es requerido</strong>
-              </div>
-            </div>
-          </div>
-          
-          <p class="center-align">
-            <button
-              class="waves-effect waves-light btn"
-              type="submit"
-              (click)="RecuperarContrasena()"
+  <div class="row">
+    <h3 class="center-align">Cambio de Contraseña</h3>
+    <article class="col s6 offset-s3">
+      <form [formGroup]="fgValidator">
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix white-text">mail_outline</i>
+            <input
+              formControlName="Usuario"
+              class="Usuario"
+              id="Usuario"
+              type="text"
+            />
+            <label for="Usuario" data-error="wrong" data-success="right"
+              >Usuario</label
             >
-              <i class="material-icons right"></i>Cambiar Contraseña
-            </button>
-          </p>
-        </form>
-      </article>
-    </div>
-  </section>
+            <div
+              class="mensajeValidacion"
+              *ngIf="
+                fgv.Usuario.errors && (fgv.Usuario.dirty || fgv.Usuario.touched)
+              "
+            >
+              <strong>Este campo es requerido</strong>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix white-text">lock_outline</i>
+            <input
+              formControlName="contrasenaActual"
+              id="contrasenaActual"
+              type="password"
+            />
+            <label for="contrasena">Contraseña Actual</label>
+            <div
+              class="mensajeValidacion"
+              *ngIf="
+                fgv.contrasenaActual.errors &&
+                (fgv.contrasenaActual.dirty || fgv.contrasenaActual.touched)
+              "
+            >
+              <strong>Este campo es requerido</strong>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix white-text">lock_outline</i>
+            <input
+              formControlName="contrasenaNueva"
+              id="contrasenaNueva"
+              type="password"
+            />
+            <label for="contrasenaNueva">Contraseña Nueva</label>
+            <div
+              class="mensajeValidacion"
+              *ngIf="
+                fgv.contrasenaNueva.errors &&
+                (fgv.contrasenaNueva.dirty || fgv.contrasenaNueva.touched)
+              "
+            >
+              <strong>Este campo es requerido</strong>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <i class="material-icons prefix white-text">lock_outline</i>
+            <input
+              formControlName="confirmeContrasena"
+              id="confirmeContrasena"
+              type="password"
+            />
+            <label for="confirmeContrasena">Confirme Contraseña</label>
+            <div
+              class="mensajeValidacion"
+              *ngIf="
+                fgv.confirmeContrasena.errors &&
+                (fgv.confirmeContrasena.dirty || fgv.confirmeContrasena.touched)
+              "
+            >
+              <strong>Este campo es requerido</strong>
+            </div>
+          </div>
+        </div>
+
+        <p class="center-align">
+          <button
+            class="waves-effect waves-light btn"
+            type="submit"
+            (click)="RecuperarContrasena()"
+          >
+            <i class="material-icons right"></i>Cambiar Contraseña
+          </button>
+        </p>
+      </form>
+    </article>
+  </div>
+</section>
